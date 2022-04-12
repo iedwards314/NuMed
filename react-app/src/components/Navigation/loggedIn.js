@@ -8,7 +8,7 @@ const LoggedInNav = () => {
   const user = SessionCheck();
   return (
     <nav className="main-nav">
-      <ul class="main-nav-list">
+      <ul className="main-nav-list">
         <li>
           <NavLink className="main-nav-link" to={`/users/${user.id}`} exact={true} activeClassName="active">
             Profile

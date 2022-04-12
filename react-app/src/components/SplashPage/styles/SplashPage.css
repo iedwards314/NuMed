@@ -1,0 +1,66 @@
+/* Hero Section */
+
+.section-hero {
+    padding: 4.8rem 0 9.6rem 0;
+}
+
+.hero {
+    max-width: 130rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9.6rem;
+    align-items: center;
+}
+
+.hero-text span {
+    color: #d31882;
+}
+
+.hero-description {
+    font-size: 2rem;
+    line-height: 1.5;
+    margin-bottom: 4.8rem;
+}
+
+.hero-img-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 9.6rem;
+}
+
+.hero-image {
+    width: 95%;
+    height: 95%;
+    border-radius: 9px;
+    object-fit: cover;
+}
+
+/* Specialty Cards */
+.section-specialties{
+    padding: 9.6rem 0;
+    background-color: #014989;
+    color: #fff
+}
+
+.specialty-heading {
+    color: #fff;
+}
+
+.specialty {
+    overflow: hidden;
+    border-radius: 11px;
+}
+
+.specialty-image{
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Footer Section */
+.footer {
+    padding: 12.8rem 0;
+    border-top: 1px solid #eee;
+    background-color: black;
+    color: #fff;
+}

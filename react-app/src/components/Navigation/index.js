@@ -13,7 +13,7 @@ const Navigation = () => {
         return(
             <>
                 <NavLink to="/">
-                    <img class="logo" alt="NuMed logo" src={logo} />
+                    <img className="logo" alt="NuMed logo" src={logo} />
                 </NavLink>
             </>
         )

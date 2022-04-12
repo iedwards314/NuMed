@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const LoggedOutNav = () => {
   return (
     <nav className="main-nav">
-      <ul class="main-nav-list">
+      <ul className="main-nav-list">
         <li>
           <NavLink className="main-nav-link" to='/login' exact={true} activeClassName='active'>
             Login

@@ -31,7 +31,7 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1;
     color: #3e3e3e;
 }
@@ -40,6 +40,44 @@ body {
     max-width: 120rem;
     margin: 0 auto;
     padding: 0 3.2rem;
+}
+
+.grid {
+    display: grid;
+    row-gap: 9.6rem;
+    column-gap: 6.4rem;
+}
+
+.grid--2--cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3--cols {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--center--v {
+    align-items: center;
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-third {
+    font-weight: 700;
+    color: #333;
+    letter-spacing: -0.5px;
+}
+
+.heading-primary {
+    font-size: 4.4rem;
+    line-height: 1.05;
+    margin-bottom: 3.2rem;
+}
+
+.heading-secondary{
+    font-size: 3.0rem;
+    line-height: 1.2;
+    margin-bottom: 3.2rem;
 }
 
 .btn,
@@ -74,4 +112,18 @@ body {
 .btn--form:hover {
     background-color: #014989;;
     color: #fff;
+}
+
+/* Positional helper classes */
+
+.center-text {
+    text-align: center;
+}
+
+.margin-right-sm {
+    margin-right: 1.6rem !important;
+}
+
+.marin-bottom-md{
+    margin-bottom: 4.8rem !important;
 }
