@@ -20,6 +20,16 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
+    const newErrors = [];
+
+    if (password !== repeatPassword) {
+      newErrors.push("Passwords do not match.")
+    }
+
+    if (newErrors.length > 0) {
+      setErrors(newErrors)
+      return;
+    }
   };
 
   const updateUsername = (e) => {
