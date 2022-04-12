@@ -50,11 +50,37 @@
 .specialty {
     overflow: hidden;
     border-radius: 11px;
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+}
+
+.specialty:hover {
+    transform: translateY(-1.2rem);
+    box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.6);
 }
 
 .specialty-image{
     width: 100%;
     object-fit: cover;
+}
+
+.specialty-content{
+    padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+    background-color: #fff;
+    color: #333;
+}
+
+.specialty-name {
+    font-size: 2.0rem;
+    color: rgb(13, 38, 72);
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+}
+
+.specialty-description{
+    font-weight: 400;
+    color: rgb(97, 104, 113);
+    font-size: 1.4rem;
 }
 
 /* Footer Section */

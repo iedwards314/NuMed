@@ -23,7 +23,7 @@ const SpecialtyCards = () => {
                     </div>
                 </div>
                 <div className="specialty">
-                    <img src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNsaW5pY3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" className="specialty-image" alt="Doctor Specialty" />
+                    <img src="https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWVkaWNhbCUyMGRldmljZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" className="specialty-image" alt="Doctor Specialty" />
                     <div className="specialty-content">
                         <p className="specialty-name">Heart Health</p>
                         <p className="specialty-description">Lower heart attack risk with a customized plan and monitoring.</p>
@@ -37,14 +37,14 @@ const SpecialtyCards = () => {
                     </div>
                 </div>
                 <div className="specialty">
-                    <img src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNsaW5pY3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" className="specialty-image" alt="Doctor Specialty" />
+                    <img src="https://images.unsplash.com/photo-1616587896649-79b16d8b173d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fHZpZGVvJTIwY2FsbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" className="specialty-image" alt="Doctor Specialty" />
                     <div className="specialty-content">
                         <p className="specialty-name">COVID-19 Care</p>
                         <p className="specialty-description">Testing, vaccines, and care all under one roof.</p>
                     </div>
                 </div>
                 <div className="specialty">
-                    <img src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGNsaW5pY3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" className="specialty-image" alt="Doctor Specialty" />
+                    <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHlvZ2F8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" className="specialty-image" alt="Doctor Specialty" />
                     <div className="specialty-content">
                         <p className="specialty-name">Stress & Anxiety</p>
                         <p className="specialty-description">Reduce anxiety, stress with doctor support and self-care tools.</p>
