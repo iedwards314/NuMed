@@ -3,6 +3,7 @@ import LoggedInNav from "./loggedIn";
 import LoggedOutNav from "./loggedOut";
 import { SessionCheck } from "../../utils/user";
 import logo from "../../logos/NuMed-Logo-blue.png"
+import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
 
@@ -11,9 +12,9 @@ const Navigation = () => {
     const logoNavLinks = () => {
         return(
             <>
-                <a href="/">
+                <NavLink to="/">
                     <img class="logo" alt="NuMed logo" src={logo} />
-                </a>
+                </NavLink>
             </>
         )
     }

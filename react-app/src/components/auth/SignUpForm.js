@@ -96,7 +96,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className="btn btn--form" type='submit'>Become a Patient</button>
     </form>
   );
 };

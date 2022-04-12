@@ -27,7 +27,11 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to={`/users/${user.id}`} />;
+  }
+
+  const demoLogin = async () => {
+    await dispatch(login("demo@aa.io", "password"));
   }
 
   return (
@@ -57,6 +61,10 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button className="btn btn--form" type='submit'>I Need a Doctor</button>
+        <div className='login-tosignup'>
+          <p className="demo-login-text" style={{ margin: "0px 5px 0px 0px", padding: "20px 0px" }}>Want to try the site?</p>
+          <p className="main-nav-link" onClick={demoLogin} style={{ color: "#1f6fe5", cursor: "pointer" }}>Demo Login</p>
+      </div>
       </div>
     </form>
   );
