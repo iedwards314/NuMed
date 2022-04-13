@@ -7,9 +7,15 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    username = db.Column(db.String(100), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    address = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(60), nullable=False)
+    state = db.Column(db.String(50), nullable=False)
+    phone = db.Column(db.String(15), nullable=False)
+    doctor_id = db.Column(db.Boolean(), nullable=False)
+
 
     @property
     def password(self):
