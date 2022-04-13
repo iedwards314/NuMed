@@ -8,6 +8,7 @@ import { authenticate } from './store/session';
 import Navigation from './components/Navigation';
 import SplashPage from './components/SplashPage';
 import ProfilePage from './components/ProfilePage';
+import InsuranceForm from './components/Insurance/createForm.js';
 // import User from './components/User';
 // import UsersList from './components/UsersList';
 // import NavBar from './components/NavBar';
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <ProfilePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/insurance/create' exact={true} >
+          <InsuranceForm />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashPage />
