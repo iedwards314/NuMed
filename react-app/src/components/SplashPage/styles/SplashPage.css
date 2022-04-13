@@ -1,0 +1,92 @@
+/* Hero Section */
+
+.section-hero {
+    padding: 4.8rem 0 9.6rem 0;
+}
+
+.hero {
+    max-width: 130rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9.6rem;
+    align-items: center;
+}
+
+.hero-text span {
+    color: #d31882;
+}
+
+.hero-description {
+    font-size: 2rem;
+    line-height: 1.5;
+    margin-bottom: 4.8rem;
+}
+
+.hero-img-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 9.6rem;
+}
+
+.hero-image {
+    width: 95%;
+    height: 95%;
+    border-radius: 9px;
+    object-fit: cover;
+}
+
+/* Specialty Cards */
+.section-specialties{
+    padding: 9.6rem 0;
+    background-color: #014989;
+    color: #fff
+}
+
+.specialty-heading {
+    color: #fff;
+}
+
+.specialty {
+    overflow: hidden;
+    border-radius: 11px;
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+}
+
+.specialty:hover {
+    transform: translateY(-1.2rem);
+    box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.6);
+}
+
+.specialty-image{
+    width: 100%;
+    object-fit: cover;
+}
+
+.specialty-content{
+    padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+    background-color: #fff;
+    color: #333;
+}
+
+.specialty-name {
+    font-size: 2.0rem;
+    color: rgb(13, 38, 72);
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+}
+
+.specialty-description{
+    font-weight: 400;
+    color: rgb(97, 104, 113);
+    font-size: 1.4rem;
+}
+
+/* Footer Section */
+.footer {
+    padding: 12.8rem 0;
+    border-top: 1px solid #eee;
+    background-color: black;
+    color: #fff;
+}

@@ -1,0 +1,138 @@
+/*
+--- 01 TYPOGRAPHY SYSTEM
+- FONT SIZE SYSTEM
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights:
+Defualt: 400
+medium: 500
+semi-bold: 600
+Bold: 700
+
+- SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+-Border Radius (px)
+
+Default: 24px
+
+*/
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Convert 1rem to 10px */
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1;
+    color: #3e3e3e;
+}
+
+.container {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 3.2rem;
+}
+
+.grid {
+    display: grid;
+    row-gap: 9.6rem;
+    column-gap: 6.4rem;
+}
+
+.grid--2--cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3--cols {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--center--v {
+    align-items: center;
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-third {
+    font-weight: 700;
+    color: #333;
+    letter-spacing: -0.5px;
+}
+
+.heading-primary {
+    font-size: 4.4rem;
+    line-height: 1.05;
+    margin-bottom: 3.2rem;
+}
+
+.heading-secondary{
+    font-size: 3.0rem;
+    line-height: 1.2;
+    margin-bottom: 3.2rem;
+}
+
+.subheading {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.75px;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 1.6rem 3.2rem;
+    border-radius: 24px;
+    transition: all 0.3s;
+}
+
+.btn--action:link,
+.btn--action:visited {
+    background-color: #1f6fe5;
+    color: #fff;
+}
+
+.btn--action:hover,
+.btn--action:active {
+    background-color: #014989;
+}
+
+.btn--form {
+    background-color: #1d74f7;
+    color: #fff;
+    align-self: end;
+    padding: 1.2rem;
+}
+
+.btn--form:hover {
+    background-color: #014989;;
+    color: #fff;
+}
+
+/* Positional helper classes */
+
+.center-text {
+    text-align: center;
+}
+
+.margin-right-sm {
+    margin-right: 1.6rem !important;
+}
+
+.marin-bottom-md{
+    margin-bottom: 4.8rem !important;
+}

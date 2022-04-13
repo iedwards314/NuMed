@@ -20,6 +20,16 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
+    const newErrors = [];
+
+    if (password !== repeatPassword) {
+      newErrors.push("Passwords do not match.")
+    }
+
+    if (newErrors.length > 0) {
+      setErrors(newErrors)
+      return;
+    }
   };
 
   const updateUsername = (e) => {
@@ -86,7 +96,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className="btn btn--form" type='submit'>Become a Patient</button>
     </form>
   );
 };
