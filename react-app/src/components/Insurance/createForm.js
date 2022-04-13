@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { SessionCheck } from "../../utils/user";
 
 
 const InsuranceForm = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const user = SessionCheck();
     const patientId = user.id;
 
@@ -44,6 +46,10 @@ const InsuranceForm = () => {
             console.log("Success in submitting insurance");
         } catch (error) {
             console.log("There was an error in submitted insurance");
+        }
+        if(createdInsurance) {
+            setHasSubmitted(false);
+            history.push(`/users/${patientId}`)
         }
     }
 
