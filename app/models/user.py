@@ -16,6 +16,9 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(15), nullable=False)
     doctor_id = db.Column(db.Boolean(), nullable=False)
 
+    insurance = db.relationship("Insurance", back_populates="user", cascade="all, delete")
+
+
 
     @property
     def password(self):
