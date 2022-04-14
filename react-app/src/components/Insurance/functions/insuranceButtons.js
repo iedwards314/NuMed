@@ -1,8 +1,13 @@
+import { NavLink } from "react-router-dom";
 
-const insuranceButtons = () => {
+const insuranceButtons = (policy) => {
+    const policyId = policy.id;
+
     return(
         <div>
-            <button>Edit</button>
+            <NavLink to={`/insurance/${policy.id}`}>
+                <p>Edit</p>
+            </NavLink>
             <button>Delete</button>
         </div>
     )

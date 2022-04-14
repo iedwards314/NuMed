@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { SessionCheck } from "../../utils/user";
+import { getInsurancePolicy, editInsurancePolicy } from "../../store/insurance";
 
 
-const InsuranceForm = () => {
+const UpdateInsuranceForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = SessionCheck();
     const patientId = user.id;
-    const {insuranceId} = useParams();
-    const insurance = useSelector((state) => state.insurance.selected[insuranceId]);
+    const { policyId } = useParams();
+    const insurance = useSelector((state) => state.insurance_policies.insurance_policies[policyId]);
 
-    const [insuranceCo, setinsuranceCo] = useState(`${insurance?.insuranceCo}`);
-    const [subscriberNum, setSubscriberNum] = useState(`${insurance?.subscriberNum}`);
-    const [groupNum, setGroupNum] = useState(`${insurance?.groupNum}`);
+    const [insuranceCo, setinsuranceCo] = useState(`${insurance?.insurance_co}`);
+    const [subscriberNum, setSubscriberNum] = useState(`${insurance?.subscriber_num}`);
+    const [groupNum, setGroupNum] = useState(`${insurance?.group_num}`);
     const [errors, setErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -36,6 +37,10 @@ const InsuranceForm = () => {
         setErrors(errors);
     }, [insuranceCo, subscriberNum, groupNum])
 
+    useEffect(() => {
+        dispatch(getInsurancePolicy(policyId))
+      }, [dispatch, policyId]);
+
     const updateInsuranceCo = (e) => setinsuranceCo(e.target.value);
     const updateSubscriberNum = (e) => setSubscriberNum(e.target.value);
     const updateGroupNum = (e) => setGroupNum(e.target.value);
@@ -45,6 +50,7 @@ const InsuranceForm = () => {
         setHasSubmitted(true);
         if(errors.length) return alert("Error Submitted")
         const payload = {
+            id: parseInt(policyId),
             user_id: patientId,
             insurance_co: insuranceCo,
             subscriber_num: subscriberNum,
@@ -53,8 +59,9 @@ const InsuranceForm = () => {
         let updatedInsurance;
         try {
             // Thunk
-            // updatedInsurance = await dispatch(updateInsurance(payload));
-            console.log("Success in submitting insurance");
+            console.log("the policyId is...", parseInt(policyId), "the payload is...", payload)
+            updatedInsurance = await dispatch(editInsurancePolicy(payload, policyId));
+            // console.log("Success in submitting insurance");
         } catch (error) {
             console.log("There was an error in submitted insurance info to the database");
         }
@@ -109,10 +116,10 @@ const InsuranceForm = () => {
                         />
                     </label>
                 </div>
-                <button type="submit">Add Insurance Info</button>
+                <button type="submit">Update Insurance Info</button>
             </form>
         </section>
     )
 }
 
-export default InsuranceForm;
+export default UpdateInsuranceForm;

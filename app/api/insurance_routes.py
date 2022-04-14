@@ -42,7 +42,7 @@ def delete_insurance_policy(id):
 def edit_insurance_policy(id):
     insurance_policy = dict(request.json)
     # changed id to variable
-    data = Insurance_Policy.query.get(insurance_policy[id])
+    data = Insurance_Policy.query.get(id)
 
     data.insurance_co = insurance_policy['insurance_co'],
     data.subscriber_num = insurance_policy['subscriber_num'],

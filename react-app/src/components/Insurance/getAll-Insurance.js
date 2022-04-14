@@ -37,7 +37,7 @@ const GetAllInsurance = () => {
                                 <p className="insurance-header">Group Number</p>
                                 <p>{policy.group_num}</p>
                             </div>
-                            {insuranceButtons()}
+                            {insuranceButtons(policy)}
                         </li>
                     ))}
                 </ul>
