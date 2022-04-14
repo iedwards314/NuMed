@@ -8,8 +8,10 @@ const SplashPage = () => {
 
     return(
         <>
-            <HeroFunc />
-            <SpecialtyCards />
+            <main>
+                <HeroFunc />
+                <SpecialtyCards />
+            </main>
             <FooterFunc />
         </>
     )

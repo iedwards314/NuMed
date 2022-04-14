@@ -1,0 +1,18 @@
+.section-profile-body {
+    padding: 4.8rem 0 9.6rem 0;
+}
+
+.grid-profile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.profile-nav-list{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-nav-item{
+    padding: 1rem;
+}
