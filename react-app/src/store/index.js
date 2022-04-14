@@ -5,7 +5,7 @@ import insuranceReducer from './insurance';
 
 const rootReducer = combineReducers({
   session,
-  insuranceReducer
+  insurance_policies: insuranceReducer
 
 });
 

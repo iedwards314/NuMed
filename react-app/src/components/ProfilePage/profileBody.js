@@ -14,8 +14,8 @@ const ProfileBody = () => {
                     <h1>Patient Details</h1>
                     <h2>Insurance Details</h2>
                     <div className="insurance-container">
+                        <NavLink to="/insurance/create">Add Insurance</NavLink>
                         {GetAllInsurance()}
-                        <NavLink to="/insurance/create">Add/Update Insurance</NavLink>
                     </div>
                 </div>
                 <div className="profile-right">

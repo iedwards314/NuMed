@@ -48,7 +48,6 @@ export const getInsurancePolicy = (insurancePolicyId) => async (dispatch) => {
 }
 
 export const addInsurancePolicy = (insurance_policy) => async (dispatch) => {
-    console.log("the insurance policy form submitted is...", insurance_policy);
     const response = await fetch(`/api/insurance/create`, {
         method: "POST",
         headers: {
@@ -60,6 +59,36 @@ export const addInsurancePolicy = (insurance_policy) => async (dispatch) => {
         const insurance_policy = await response.json();
         dispatch(addOne(insurance_policy))
         return insurance_policy
+    }
+}
+
+export const editInsurancePolicy = (insurance_policy, id) => async (dispatch) => {
+    const response = await fetch(`/api/insurance/edit/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(insurance_policy)
+    });
+    if (response.ok) {
+        const insurance_policy = await response.json();
+        dispatch(editOne(insurance_policy))
+        return insurance_policy;
+    }
+}
+
+export const deleteInsurancePolicy = (insurance_policy) => async (dispatch) => {
+    const response = await fetch(`/api/insurance/delete/${insurance_policy.id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(insurance_policy),
+    });
+    if (response.ok) {
+        const insurance_policy = await response.json();
+        dispatch(deleteOne(insurance_policy))
+        return insurance_policy;
     }
 }
 
