@@ -31,10 +31,11 @@ const getOne = (insurance_policy) => ({
 
 export const getInsurancePolicies = (userId) => async (dispatch) => {
     const response = await fetch(`/api/insurance/user/${userId}`)
+    console.log("hitting the fetch");
     if (response.ok) {
-        const policies = await response.json();
-        dispatch(load(policies))
-        return policies
+        const insurance_policies = await response.json();
+        dispatch(load(insurance_policies))
+        return insurance_policies
     }
 }
 

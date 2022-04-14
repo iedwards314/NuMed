@@ -42,5 +42,5 @@ class User(db.Model, UserMixin):
             'state': self.state,
             'phone': self.phone,
             'doctor_id': self.doctor_id,
-            'insurance_policies': self.insurance_policies
+            # 'insurance_policies': self.insurance_policies
         }
