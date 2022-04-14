@@ -1,0 +1,20 @@
+/* insurance policy card list */
+
+.insurance-policies-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1.6rem;
+}
+
+.insurance-policy-card {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    line-height: 1.2;
+}
+
+.insurance-header{
+    color: #014989;
+}
