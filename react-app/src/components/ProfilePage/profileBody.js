@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
-import { SessionCheck } from '../../utils/user';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+// import { SessionCheck } from '../../utils/user';
+import GetAllInsurance from '../Insurance/getAll-Insurance';
 
 const ProfileBody = () => {
-    const user = SessionCheck();
+    // const user = SessionCheck();
 
 
     return (
@@ -13,15 +14,7 @@ const ProfileBody = () => {
                     <h1>Patient Details</h1>
                     <h2>Insurance Details</h2>
                     <div className="insurance-container">
-                        <ul>
-                            <li>
-                                <div className="insurance-policy">
-                                    <p>Insurance Name</p>
-                                    <p>Subscriber Number</p>
-                                    <p>Group Number</p>
-                                </div>
-                            </li>
-                        </ul>
+                        {GetAllInsurance()}
                         <NavLink to="/insurance/create">Add/Update Insurance</NavLink>
                     </div>
                 </div>
