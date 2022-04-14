@@ -6,21 +6,21 @@ def seed_insurance():
     aetna = Insurance_Policy(
         user_id='2',
         insurance_co='aetna',
-        subcriber_num='11111111111111',
+        subscriber_num='11111111111111',
         group_num='1111111111A'
         )
 
     unitedHealth = Insurance_Policy(
         user_id='3',
         insurance_co='united health',
-        subcriber_num='22222222222222',
+        subscriber_num='22222222222222',
         group_num='1111111111B'
         )
 
     anthem = Insurance_Policy(
         user_id='3',
         insurance_co='anthem',
-        subcriber_num='33333333333333',
+        subscriber_num='33333333333333',
         group_num='1111111111C'
         )
 

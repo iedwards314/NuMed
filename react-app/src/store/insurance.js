@@ -30,8 +30,7 @@ const getOne = (insurance_policy) => ({
 })
 
 export const getInsurancePolicies = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/insurance/user/${userId}`)
-    console.log("hitting the fetch");
+    const response = await fetch(`/api/insurance/user/${userId}`);
     if (response.ok) {
         const insurance_policies = await response.json();
         dispatch(load(insurance_policies))
@@ -44,6 +43,22 @@ export const getInsurancePolicy = (insurancePolicyId) => async (dispatch) => {
     if (response.ok) {
         const insurance_policy = await response.json();
         dispatch(getOne(insurance_policy))
+        return insurance_policy
+    }
+}
+
+export const addInsurancePolicy = (insurance_policy) => async (dispatch) => {
+    console.log("the insurance policy form submitted is...", insurance_policy);
+    const response = await fetch(`/api/insurance/create`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(insurance_policy),
+    });
+    if (response.ok) {
+        const insurance_policy = await response.json();
+        dispatch(addOne(insurance_policy))
         return insurance_policy
     }
 }

@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('insurance_co', sa.String(length=100), nullable=False),
-    sa.Column('subcriber_num', sa.String(length=30), nullable=False),
+    sa.Column('subscriber_num', sa.String(length=30), nullable=False),
     sa.Column('group_num', sa.String(length=30), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

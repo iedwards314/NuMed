@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SessionCheck } from "../../utils/user";
+import { addInsurancePolicy } from "../../store/insurance";
 
 
 const InsuranceForm = () => {
@@ -51,8 +52,7 @@ const InsuranceForm = () => {
         let createdInsurance;
         try {
             // Thunk
-            // createdInsurance = await dispatch(addInsurance(payload));
-            console.log("Success in submitting insurance");
+            createdInsurance = await dispatch(addInsurancePolicy(payload));
         } catch (error) {
             console.log("There was an error in submitted insurance");
         }

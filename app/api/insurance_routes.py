@@ -45,7 +45,7 @@ def edit_insurance_policy(id):
     data = Insurance_Policy.query.get(insurance_policy[id])
 
     data.insurance_co = insurance_policy['insurance_co'],
-    data.subsriber_num = insurance_policy['subsriber_num'],
+    data.subscriber_num = insurance_policy['subscriber_num'],
     data.group_num = insurance_policy['group_num'],
 
     db.session.commit()
