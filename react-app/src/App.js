@@ -10,6 +10,7 @@ import SplashPage from './components/SplashPage';
 import ProfilePage from './components/ProfilePage';
 import InsuranceForm from './components/Insurance/createForm.js';
 import UpdateInsuranceForm from './components/Insurance/updateInsurance';
+import DeleteInsurance from './components/Insurance/deleteInsurance';
 // import User from './components/User';
 // import UsersList from './components/UsersList';
 // import NavBar from './components/NavBar';
@@ -47,6 +48,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/insurance/:policyId' exact={true} >
           <UpdateInsuranceForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/insurance/delete/:policyId' exact={true} >
+          <DeleteInsurance />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashPage />
