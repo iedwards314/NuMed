@@ -14,9 +14,11 @@ const DeleteInsurance = () => {
 
     const insurance = useSelector((state) => state.insurance_policies.insurance_policies[policyId]);
 
-    const [insuranceCo, setinsuranceCo] = useState(`${insurance?.insurance_co}`);
-    const [subscriberNum, setSubscriberNum] = useState(`${insurance?.subscriber_num}`);
-    const [groupNum, setGroupNum] = useState(`${insurance?.group_num}`);
+    // removed setState functions as they were not used in this method
+
+    const [insuranceCo] = useState(`${insurance?.insurance_co}`);
+    const [subscriberNum] = useState(`${insurance?.subscriber_num}`);
+    const [groupNum] = useState(`${insurance?.group_num}`);
 
     useEffect(() => {
         dispatch(getInsurancePolicy(policyId))
