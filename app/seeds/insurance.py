@@ -1,23 +1,23 @@
-from app.models import db, Insurance
+from app.models import db, Insurance_Policy
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_insurance():
-    aetna = Insurance(
+    aetna = Insurance_Policy(
         user_id='2',
         insurance_co='aetna',
         subcriber_num='11111111111111',
         group_num='1111111111A'
         )
 
-    unitedHealth = Insurance(
+    unitedHealth = Insurance_Policy(
         user_id='3',
         insurance_co='united health',
         subcriber_num='22222222222222',
         group_num='1111111111B'
         )
 
-    anthem = Insurance(
+    anthem = Insurance_Policy(
         user_id='3',
         insurance_co='anthem',
         subcriber_num='33333333333333',

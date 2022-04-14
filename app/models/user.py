@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(15), nullable=False)
     doctor_id = db.Column(db.Boolean(), nullable=False)
 
-    insurance = db.relationship("Insurance", back_populates="user", cascade="all, delete")
+    insurance_policies = db.relationship("Insurance_Policy", back_populates="user", cascade="all, delete")
 
 
 
@@ -32,8 +32,15 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+            'phone': self.phone,
+            'doctor_id': self.doctor_id,
+            'insurance_policies': self.insurance_policies
         }

@@ -1,6 +1,6 @@
 from .db import db
 
-class Insurance(db.Model):
+class Insurance_Policy(db.Model):
     __tablename__='insurance'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
@@ -8,7 +8,7 @@ class Insurance(db.Model):
     subcriber_num = db.Column(db.String(30), nullable=False)
     group_num = db.Column(db.String(30), nullable=False)
 
-    user = db.relationship("User", back_populates="insurance")
+    user = db.relationship("User", back_populates="insurance_policies")
 
     # userId: patientId,
     # insurance_co: insuranceCo,
