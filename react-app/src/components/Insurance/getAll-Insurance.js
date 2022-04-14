@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SessionCheck } from "../../utils/user";
 import { getInsurancePolicies } from "../../store/insurance";
+import insuranceButtons from "./functions/insuranceButtons";
+import './styles/Insurance.css'
 
 
 const GetAllInsurance = () => {
@@ -22,25 +24,33 @@ const GetAllInsurance = () => {
     }, [dispatch, user.id])
 
     const insurancePolicyMap = () => {
-        return(
-            null
-        )
+        if(insuranceArr.length > 0){
+            return(
+                <ul>
+                    {insuranceArr?.map(policy => (
+                        <li key={policy.id} className="insurance-policy-card">
+                            <div className="insurance-policy">
+                                <p className="insurance-header">Insurance Name</p>
+                                <p>{policy.insurance_co}</p>
+                                <p className="insurance-header">Subscriber Number</p>
+                                <p>{policy.subscriber_num}</p>
+                                <p className="insurance-header">Group Number</p>
+                                <p>{policy.group_num}</p>
+                            </div>
+                            {insuranceButtons()}
+                        </li>
+                    ))}
+                </ul>
+            )
+        } else {
+            return null
+        }
     }
 
     return (
-        <div>
+        <div className="insurance-policies-container">
             {insurancePolicyMap()}
-            <ul>
-                <li>
-                    <div className="insurance-policy">
-                        <p>Insurance Name</p>
-                        <p>Subscriber Number</p>
-                        <p>Group Number</p>
-                        <p>{user ? user.id : null}</p>
 
-                    </div>
-                </li>
-            </ul>
         </div>
     )
 
