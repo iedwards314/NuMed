@@ -59,9 +59,8 @@ const UpdateInsuranceForm = () => {
         let updatedInsurance;
         try {
             // Thunk
-            console.log("the policyId is...", parseInt(policyId), "the payload is...", payload)
             updatedInsurance = await dispatch(editInsurancePolicy(payload, policyId));
-            // console.log("Success in submitting insurance");
+
         } catch (error) {
             console.log("There was an error in submitted insurance info to the database");
         }

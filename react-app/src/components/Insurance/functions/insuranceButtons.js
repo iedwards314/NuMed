@@ -5,7 +5,7 @@ const insuranceButtons = (policy) => {
 
     return(
         <div>
-            <NavLink to={`/insurance/${policy.id}`}>
+            <NavLink to={`/insurance/${policyId}`}>
                 <p>Edit</p>
             </NavLink>
             <button>Delete</button>
