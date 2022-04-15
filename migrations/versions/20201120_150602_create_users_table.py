@@ -27,11 +27,17 @@ def upgrade():
     sa.Column('city', sa.String(length=60), nullable=False),
     sa.Column('state', sa.String(length=50), nullable=False),
     sa.Column('phone', sa.String(length=15), nullable=False),
-    sa.Column('doctor_id', sa.Boolean(), nullable=False),
+    sa.Column('doctor_id', sa.Integer(), nullable=True),
+    sa.Column('image', sa.String(length=255), nullable=True),
+    sa.Column('specialty', sa.String(length=150), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+
+    # doctor_id = db.Column(db.Integer(20), nullable=True)
+    # image = db.Column(db.String(255), nullable=True)
+    # specialty = db.Column(db.String(150), nullable=True)
 
     # ### end Alembic commands ###qqqqqqqqq
 

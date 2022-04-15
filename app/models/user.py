@@ -14,7 +14,10 @@ class User(db.Model, UserMixin):
     city = db.Column(db.String(60), nullable=False)
     state = db.Column(db.String(50), nullable=False)
     phone = db.Column(db.String(15), nullable=False)
-    doctor_id = db.Column(db.Boolean(), nullable=False)
+    # Doctor specific fields
+    doctor_id = db.Column(db.Integer(), nullable=True)
+    image = db.Column(db.String(255), nullable=True)
+    specialty = db.Column(db.String(150), nullable=True)
 
     insurance_policies = db.relationship("Insurance_Policy", back_populates="user", cascade="all, delete")
 
@@ -32,6 +35,22 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        insuranceArr = []
+        for policy in self.insurance_policies:
+            insuranceArr.append({
+                "id": policy.__dict__["id"],
+                "insurance_co": policy.__dict__["insurance_co"],
+                "subscriber_num": policy.__dict__["subscriber_num"],
+                "group_num": policy.__dict__["group_num"],
+            })
+
+        #     {
+        #     'id': self.id,
+        #     'user_id': self.user_id,
+        #     'insurance_co': self.insurance_co,
+        #     'subscriber_num': self.subscriber_num,
+        #     'group_num': self.group_num,
+        # }
 
         return {
             'id': self.id,
@@ -42,5 +61,7 @@ class User(db.Model, UserMixin):
             'state': self.state,
             'phone': self.phone,
             'doctor_id': self.doctor_id,
-            # 'insurance_policies': self.insurance_policies
+            'image': self.image,
+            'specialty': self.specialty,
+            'insurance_policies': insuranceArr
         }
