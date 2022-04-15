@@ -1,3 +1,4 @@
+from app.models import appointment
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -22,6 +23,10 @@ class User(db.Model, UserMixin):
     specialty = db.Column(db.String(150), nullable=True)
 
     insurance_policies = db.relationship("Insurance_Policy", back_populates="user", cascade="all, delete")
+
+    appointment_doctor = db.relationship("Appointment", back_populates="doctor", cascade="all, delete")
+
+    appointment_patient = db.relationship("Appointment", back_populates="patient", cascade="all, delete")
 
 
 
