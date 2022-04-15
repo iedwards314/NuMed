@@ -4,19 +4,20 @@ def seed_Appointments():
     appointment1 = Appointment(
         patient_id= 2,
         doctor_id= 1,
-        description= "Annual Checkup",
-        ),
+        description= "Annual Checkup"
+        )
+
     appointment2 = Appointment(
         patient_id= 4,
         doctor_id= 1,
-        description= "Annual Checkup",
-        ),
+        description= "Annual Checkup"
+        )
 
     appointment3 = Appointment(
         patient_id= 4,
         doctor_id= 11,
-        description= "Stress Management visit",
-        ),
+        description= "Stress Management visit"
+        )
 
 
     db.session.add(appointment1)

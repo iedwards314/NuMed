@@ -1,5 +1,6 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+# from .doctors import seed_doctors
 from .insurance import seed_insurance, undo_insurance
 from .appointments import seed_Appointments, undo_Appointments
 

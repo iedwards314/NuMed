@@ -3,6 +3,11 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+appointment_relation = db.Table(
+    'appointment_relation',
+    db.Column('patient_id', db.Integer, db.ForeignKey("users.id")),
+    db.Column('doctor_id', db.Integer, db.ForeignKey("users.id"))
+)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -17,6 +22,7 @@ class User(db.Model, UserMixin):
     city = db.Column(db.String(60), nullable=False)
     state = db.Column(db.String(50), nullable=False)
     phone = db.Column(db.String(15), nullable=False)
+
     # Doctor specific fields
     doctor_id = db.Column(db.Integer(), nullable=True)
     image = db.Column(db.String(255), nullable=True)
@@ -24,11 +30,29 @@ class User(db.Model, UserMixin):
 
     insurance_policies = db.relationship("Insurance_Policy", back_populates="user", cascade="all, delete")
 
-    appointment_doctor = db.relationship("Appointment", back_populates="doctor", cascade="all, delete")
+    appointments = db.relationship(
+        "Appointment",
+        secondary="appointment_relation",
+        primaryjoin=(appointment_relation.c.patient_id == id),
+        secondaryjoin=(appointment_relation.c.doctor_id == id),
+        backref=db.backref("doctors", lazy="dynamic"),
+        lazy="dynamic"
+    )
 
-    appointment_patient = db.relationship("Appointment", back_populates="patient", cascade="all, delete")
+    # appointment_patient = db.relationship("Appointment", backref="patient")
+    # appointment_doctor = db.relationship("User", backref="doctor")
 
 
+# class Node(Base):
+#     __tablename__ = 'node'
+#     id = Column(Integer, primary_key=True)
+#     label = Column(String)
+#     right_nodes = relationship("Node",
+#                         secondary=node_to_node,
+#                         primaryjoin=id==node_to_node.c.left_node_id,
+#                         secondaryjoin=id==node_to_node.c.right_node_id,
+#                         backref="left_nodes"
+#     )
 
     @property
     def password(self):
@@ -74,3 +98,18 @@ class User(db.Model, UserMixin):
             'specialty': self.specialty,
             'insurance_policies': insuranceArr
         }
+
+#         return {
+#             'id': self.id,
+#             'first_name': self.first_name,
+#             'last_name': self.last_name,
+#             'username': self.username,
+#             'email': self.email,
+#             'address': self.address,
+#             'city': self.city,
+#             'state': self.state,
+            # 'phone': self.phone,
+            # 'doctor_id': self.doctor_id,
+            # 'image': self.image,
+            # 'specialty': self.specialty,
+#         }

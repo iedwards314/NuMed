@@ -1,6 +1,7 @@
 from .db import db
 from sqlalchemy.sql import func
-# from sqlalchemy import DateTime
+from sqlalchemy.types import DateTime
+from datetime import datetime
 
 class Appointment(db.Model):
     __tablename__='appointments'
@@ -8,11 +9,13 @@ class Appointment(db.Model):
     patient_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     doctor_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now(), nullable=False)
-    updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
-    patient = db.relationship("User", back_populates="appointment_patient")
-    doctor = db.relationship("User", back_populates="appointment_doctor")
+# node_to_node = Table("node_to_node", Base.metadata,
+#     Column("left_node_id", Integer, ForeignKey("node.id"), primary_key=True),
+#     Column("right_node_id", Integer, ForeignKey("node.id"), primary_key=True)
+# )
 
     def to_dict(self):
         return {

@@ -40,6 +40,25 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
+    # op.create_table('doctors',
+    # sa.Column('id', sa.Integer(), nullable=False),
+    # sa.Column('first_name', sa.String(length=100), nullable=False),
+    # sa.Column('last_name', sa.String(length=100), nullable=False),
+    # sa.Column('username', sa.String(length=40), nullable=False),
+    # sa.Column('email', sa.String(length=255), nullable=False),
+    # sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    # sa.Column('address', sa.String(length=255), nullable=False),
+    # sa.Column('city', sa.String(length=60), nullable=False),
+    # sa.Column('state', sa.String(length=50), nullable=False),
+    # sa.Column('phone', sa.String(length=15), nullable=False),
+    # sa.Column('doctor_id', sa.Integer(), nullable=True),
+    # sa.Column('image', sa.String(length=255), nullable=True),
+    # sa.Column('specialty', sa.String(length=150), nullable=True),
+    # sa.PrimaryKeyConstraint('id'),
+    # sa.UniqueConstraint('email'),
+    # sa.UniqueConstraint('username')
+    # )
+
     # id = db.Column(db.Integer, primary_key=True)
     # patient_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     # doctor_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
