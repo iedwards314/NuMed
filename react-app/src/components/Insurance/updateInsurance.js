@@ -58,6 +58,7 @@ const UpdateInsuranceForm = () => {
             group_num: groupNum
         }
         let updatedInsurance;
+        let updatedInsuranceList;
         try {
             // Thunk
             updatedInsurance = await dispatch(editInsurancePolicy(payload, policyId));
@@ -67,7 +68,6 @@ const UpdateInsuranceForm = () => {
         }
         if(updatedInsurance) {
             setHasSubmitted(false);
-            dispatch(getInsurancePolicies(patientId))
             history.push(`/users/${patientId}`)
         }
     }

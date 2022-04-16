@@ -47,6 +47,10 @@
     color: #fff;
 }
 
+.specialty-nav-link{
+    text-decoration: none;
+}
+
 .specialty {
     overflow: hidden;
     border-radius: 11px;

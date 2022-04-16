@@ -11,6 +11,8 @@ import ProfilePage from './components/ProfilePage';
 import InsuranceForm from './components/Insurance/createForm.js';
 import UpdateInsuranceForm from './components/Insurance/updateInsurance';
 import DeleteInsurance from './components/Insurance/deleteInsurance';
+import DoctorsList from './components/DoctorsListPage';
+import SpecialtyList from './components/SpecialtyListPage';
 // import User from './components/User';
 // import UsersList from './components/UsersList';
 // import NavBar from './components/NavBar';
@@ -42,6 +44,12 @@ function App() {
         </Route>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <ProfilePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/doctors/:specialty' exact={true} >
+          <SpecialtyList />
+        </ProtectedRoute>
+        <ProtectedRoute path='/doctors' exact={true} >
+          <DoctorsList />
         </ProtectedRoute>
         <ProtectedRoute path='/insurance/create' exact={true} >
           <InsuranceForm />
