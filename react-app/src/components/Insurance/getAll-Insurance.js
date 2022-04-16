@@ -1,21 +1,13 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 import { SessionCheck } from "../../utils/user";
-import { getInsurancePolicies } from "../../store/insurance";
 import insuranceButtons from "./functions/insuranceButtons";
 import './styles/Insurance.css'
 
 
 const GetAllInsurance = () => {
-    const dispatch = useDispatch();
+
     const user = SessionCheck();
-
-    const insuranceObj = useSelector((state) => state.insurance_policies.insurance_policies)
-    const insuranceArr = Object.values(insuranceObj);
-
-    useEffect(() => {
-        dispatch(getInsurancePolicies(user.id))
-    }, [dispatch, user.id])
+    const insuranceArr = user.insurance_policies;
 
     const insurancePolicyMap = () => {
         if(insuranceArr.length > 0){

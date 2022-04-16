@@ -14,7 +14,7 @@ const ProfilePage = () => {
             <>
                 <main>
                     <HeaderFunc />
-                    <ProfileBody />
+                    <ProfileBody user={user} />
                 </main>
             </>
         )

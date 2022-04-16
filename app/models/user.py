@@ -1,4 +1,4 @@
-from app.models import appointment
+
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -75,13 +75,15 @@ class User(db.Model, UserMixin):
                 "group_num": policy.__dict__["group_num"],
             })
 
-        #     {
-        #     'id': self.id,
-        #     'user_id': self.user_id,
-        #     'insurance_co': self.insurance_co,
-        #     'subscriber_num': self.subscriber_num,
-        #     'group_num': self.group_num,
-        # }
+        # insuranceArr = {}
+        # for policy in self.insurance_policies:
+        #     insuranceArr[policy["id"]] = {
+        #         "id":policy.__dict__["id"],
+        #         "insurance_co":policy.__dict__["insurance_co"],
+        #         "subscriber_num":policy.__dict__["subscriber_num"],
+        #         "group_num":policy.__dict__["group_num"],
+        #     }
+
 
         return {
             'id': self.id,
