@@ -7,7 +7,8 @@ import './styles/Insurance.css'
 const GetAllInsurance = () => {
 
     const user = SessionCheck();
-    const insuranceArr = user.insurance_policies;
+    const insuranceObj = user.insurance_policies;
+    const insuranceArr = Object.values(insuranceObj);
 
     const insurancePolicyMap = () => {
         if(insuranceArr.length > 0){

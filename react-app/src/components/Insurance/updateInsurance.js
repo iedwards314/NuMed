@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { SessionCheck } from "../../utils/user";
-import { getInsurancePolicy, editInsurancePolicy } from "../../store/insurance";
+import { getInsurancePolicy, getInsurancePolicies, editInsurancePolicy } from "../../store/insurance";
 
 
 const UpdateInsuranceForm = () => {
@@ -11,7 +11,8 @@ const UpdateInsuranceForm = () => {
     const user = SessionCheck();
     const patientId = user.id;
     const { policyId } = useParams();
-    const insurance = useSelector((state) => state.insurance_policies.insurance_policies[policyId]);
+
+    const insurance = useSelector((state) => state.session.user.insurance_policies[policyId]);
 
     const [insuranceCo, setinsuranceCo] = useState(`${insurance?.insurance_co}`);
     const [subscriberNum, setSubscriberNum] = useState(`${insurance?.subscriber_num}`);
@@ -66,6 +67,7 @@ const UpdateInsuranceForm = () => {
         }
         if(updatedInsurance) {
             setHasSubmitted(false);
+            dispatch(getInsurancePolicies(patientId))
             history.push(`/users/${patientId}`)
         }
     }

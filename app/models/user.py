@@ -66,23 +66,25 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        insuranceArr = []
+        # insuranceArr = []
+        # for policy in self.insurance_policies:
+        #     insuranceArr.append({
+        #         "id": policy.__dict__["id"],
+        #         "insurance_co": policy.__dict__["insurance_co"],
+        #         "subscriber_num": policy.__dict__["subscriber_num"],
+        #         "group_num": policy.__dict__["group_num"],
+        #     })
+
+        insurance_policies_dict = {}
         for policy in self.insurance_policies:
-            insuranceArr.append({
+            # print("policy is...", policy)
+            key=policy.__dict__["id"]
+            insurance_policies_dict[key] = {
                 "id": policy.__dict__["id"],
                 "insurance_co": policy.__dict__["insurance_co"],
                 "subscriber_num": policy.__dict__["subscriber_num"],
                 "group_num": policy.__dict__["group_num"],
-            })
-
-        # insuranceArr = {}
-        # for policy in self.insurance_policies:
-        #     insuranceArr[policy["id"]] = {
-        #         "id":policy.__dict__["id"],
-        #         "insurance_co":policy.__dict__["insurance_co"],
-        #         "subscriber_num":policy.__dict__["subscriber_num"],
-        #         "group_num":policy.__dict__["group_num"],
-        #     }
+            }
 
 
         return {
@@ -98,7 +100,7 @@ class User(db.Model, UserMixin):
             'doctor_id': self.doctor_id,
             'image': self.image,
             'specialty': self.specialty,
-            'insurance_policies': insuranceArr
+            'insurance_policies': insurance_policies_dict
         }
 
 #         return {

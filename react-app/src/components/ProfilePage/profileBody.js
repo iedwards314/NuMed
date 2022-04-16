@@ -12,8 +12,6 @@ const ProfileBody = (user) => {
         if(!lowerNav) setLowerNav("Appointments")
     }, [lowerNav, insurance])
 
-    console.log("user in profile page is...", user);
-
     return (
         <section className="section-profile-body">
             <div className="container grid grid-profile center-text" >
