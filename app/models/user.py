@@ -84,6 +84,7 @@ class User(db.Model, UserMixin):
                 "insurance_co": policy.__dict__["insurance_co"],
                 "subscriber_num": policy.__dict__["subscriber_num"],
                 "group_num": policy.__dict__["group_num"],
+                "user_id":policy.__dict__["user_id"]
             }
 
 

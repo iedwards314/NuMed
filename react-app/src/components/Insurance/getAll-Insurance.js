@@ -1,14 +1,20 @@
 
-import { SessionCheck } from "../../utils/user";
-import insuranceButtons from "./functions/insuranceButtons";
+import InsuranceButtons from "./functions/insuranceButtons";
+import { getInsurancePolicies } from "../../store/insurance"
 import './styles/Insurance.css'
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 
-const GetAllInsurance = () => {
+const GetAllInsurance = ({user}) => {
 
-    const user = SessionCheck();
-    const insuranceObj = user.insurance_policies;
+    const dispatch = useDispatch();
+    const insuranceObj = user?.insurance_policies;
     const insuranceArr = Object.values(insuranceObj);
+
+    useEffect(()=>{
+        dispatch(getInsurancePolicies(user.id))
+    }, [dispatch, user.id])
 
     const insurancePolicyMap = () => {
         if(insuranceArr.length > 0){
@@ -24,7 +30,7 @@ const GetAllInsurance = () => {
                                 <p className="insurance-header">Group Number</p>
                                 <p>{policy.group_num}</p>
                             </div>
-                            {insuranceButtons(policy)}
+                            <InsuranceButtons user={user} policy={policy} />
                         </li>
                     ))}
                 </ul>

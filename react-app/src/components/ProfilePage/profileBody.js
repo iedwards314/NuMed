@@ -3,9 +3,11 @@ import { NavLink } from 'react-router-dom';
 import GetAllInsurance from '../Insurance/getAll-Insurance';
 import LowerNavProfileButtons from './function/LowerNavButtons';
 
-const ProfileBody = (user) => {
+const ProfileBody = ({user}) => {
     const [lowerNav, setLowerNav] = useState("")
     const insurance = user?.insurance_policies
+
+    // console.log("user in profile body is...", user)
 
     useEffect (()=> {
         LowerNavProfileButtons(lowerNav)
