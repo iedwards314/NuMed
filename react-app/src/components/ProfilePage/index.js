@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useParams } from "react-router-dom";
-import { SessionCheck, UserCheck } from "../../utils/user";
+import { UserCheck } from "../../utils/user";
 import HeaderFunc from "./header";
 import ProfileBody from "./profileBody";
 import "./styles/ProfilePage.css";
@@ -10,9 +9,8 @@ const ProfilePage = () => {
 
     const [user, setUser] = useState({});
     const { userId }  = useParams();
-    const stateSessionInsurance = useSelector(state => state.session.insurance_policies);
 
-    console.log("the state is...", stateSessionInsurance )
+    // console.log("user in 'profile page index'...", user);
 
     useEffect(() => {
       if (!userId) {

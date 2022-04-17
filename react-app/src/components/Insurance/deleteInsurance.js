@@ -9,10 +9,10 @@ const DeleteInsurance = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = SessionCheck();
-    const patientId = user.id;
-    const { policyId } = useParams();
 
-    const insurance = useSelector((state) => state.session.user.insurance_policies[policyId]);
+    const patientId = user?.id;
+    const { policyId } = useParams();
+    const insurance = useSelector(state => state.insurance_policies.insurance_policies[policyId]);
 
     // removed setState functions as they were not used in this method
 
@@ -59,7 +59,7 @@ const DeleteInsurance = () => {
                     <p>Do you really want to delete this insurance info?</p>
                 </div>
                 <button type="submit">Delete Insurance Info</button>
-                <NavLink to={`/users/${user.id}`}>
+                <NavLink to={`/users/${user?.id}`}>
                     <div>
                         <p>Cancel</p>
                     </div>
