@@ -12,7 +12,7 @@ const DeleteInsurance = () => {
     const patientId = user.id;
     const { policyId } = useParams();
 
-    const insurance = useSelector((state) => state.insurance_policies.insurance_policies[policyId]);
+    const insurance = useSelector((state) => state.session.user.insurance_policies[policyId]);
 
     // removed setState functions as they were not used in this method
 

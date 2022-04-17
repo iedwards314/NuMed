@@ -9,13 +9,17 @@ const InsuranceForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = SessionCheck();
-    const patientId = user.id;
+
+    const patientId = user?.id;
 
     const [insuranceCo, setinsuranceCo] = useState("");
     const [subscriberNum, setSubscriberNum] = useState("");
     const [groupNum, setGroupNum] = useState("");
     const [errors, setErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
+
+
+
 
     useEffect(() => {
         let errors = [];
@@ -56,6 +60,7 @@ const InsuranceForm = () => {
         } catch (error) {
             console.log("There was an error in submitted insurance");
         }
+
         if(createdInsurance) {
             setHasSubmitted(false);
             history.push(`/users/${patientId}`)
