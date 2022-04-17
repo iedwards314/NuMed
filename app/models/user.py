@@ -54,10 +54,12 @@ class User(db.Model, UserMixin):
 #                         backref="left_nodes"
 #     )
 
+    # if "sends hashed_password data"
     @property
     def password(self):
         return self.hashed_password
 
+    # hash all passwords
     @password.setter
     def password(self, password):
         self.hashed_password = generate_password_hash(password)

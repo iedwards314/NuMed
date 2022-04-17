@@ -1,35 +1,120 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { signUp } from "../../store/session";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const newErrors = [];
+
+    if (first_name.length <= 0 || first_name.length > 100) {
+      newErrors.push(
+        "Please enter your first name between 1 and 100 characters in length."
+      );
+    }
+    if (last_name.length <= 0 || last_name.length > 100) {
+      newErrors.push(
+        "Please enter your last name between 1 and 100 characters in length."
+      );
+    }
+    if (username.length <= 0 || username.length > 40) {
+      newErrors.push(
+        "Please enter a username between 1 and 40 characters in length."
+      );
+    }
+    if (email.length <= 0 || email.length > 255) {
+      newErrors.push(
+        "Please enter an email between 1 and 255 characters in length."
+      );
+    }
+    if (password.length <= 0 || password > 255) {
+      newErrors.push(
+        "Please enter a password between 1 and 255 characters in length."
+      );
+    }
+    if (password !== repeatPassword) {
+      newErrors.push("Passwords do not match.");
+    }
+    if (address.length <= 0 || address.length > 255) {
+      newErrors.push(
+        "Please enter an address between 1 and 255 characters in length."
+      );
+    }
+    if (city.length <= 0 || city.length > 60) {
+      newErrors.push(
+        "Please enter a city between 1 and 60 characters in length."
+      );
+    }
+    if (state.length <= 0 || state.length > 50) {
+      newErrors.push(
+        "Please enter a state between 1 and 50 characters in length "
+      );
+    }
+    if (phone.length <= 0 || phone.length > 50) {
+      newErrors.push(
+        "Please enter a phone number betwee 1 and 15 characters in length "
+      );
+    }
+    setErrors(newErrors);
+  }, [
+    first_name,
+    last_name,
+    username,
+    email,
+    address,
+    city,
+    state,
+    phone,
+    password,
+    repeatPassword,
+  ]);
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+    if (errors.length) return alert("Error submitting");
+    const payload = {
+      first_name,
+      last_name,
+      username,
+      email,
+      password,
+      address,
+      city,
+      state,
+      phone,
+    };
+    try {
+      console.log("attempted sign-up with...", payload);
+      const data = await dispatch(signUp(payload));
       if (data) {
-        setErrors(data)
+        setErrors(data);
       }
+    } catch (error) {
+      console.log("error in sign up");
     }
-    const newErrors = [];
+  };
 
-    if (password !== repeatPassword) {
-      newErrors.push("Passwords do not match.")
-    }
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
 
-    if (newErrors.length > 0) {
-      setErrors(newErrors)
-      return;
-    }
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updateUsername = (e) => {
@@ -48,8 +133,24 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const updateAddress = (e) => {
+    setAddress(e.target.value);
+  };
+
+  const updateCity = (e) => {
+    setCity(e.target.value);
+  };
+
+  const updateState = (e) => {
+    setState(e.target.value);
+  };
+
+  const updatePhone = (e) => {
+    setPhone(e.target.value);
+  };
+
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to="/" />;
   }
 
   return (
@@ -60,10 +161,28 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
+        <label>First Name</label>
+        <input
+          type="text"
+          name="first_name"
+          onChange={updateFirstName}
+          value={first_name}
+        ></input>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type="text"
+          name="last_name"
+          onChange={updateLastName}
+          value={last_name}
+        ></input>
+      </div>
+      <div>
         <label>User Name</label>
         <input
-          type='text'
-          name='username'
+          type="text"
+          name="username"
           onChange={updateUsername}
           value={username}
         ></input>
@@ -71,8 +190,8 @@ const SignUpForm = () => {
       <div>
         <label>Email</label>
         <input
-          type='text'
-          name='email'
+          type="email"
+          name="email"
           onChange={updateEmail}
           value={email}
         ></input>
@@ -80,8 +199,8 @@ const SignUpForm = () => {
       <div>
         <label>Password</label>
         <input
-          type='password'
-          name='password'
+          type="password"
+          name="password"
           onChange={updatePassword}
           value={password}
         ></input>
@@ -89,14 +208,52 @@ const SignUpForm = () => {
       <div>
         <label>Repeat Password</label>
         <input
-          type='password'
-          name='repeat_password'
+          type="password"
+          name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
         ></input>
       </div>
-      <button className="btn btn--form" type='submit'>Become a Patient</button>
+      <div>
+        <label>Address</label>
+        <input
+          type="text"
+          name="address"
+          onChange={updateAddress}
+          value={address}
+        ></input>
+      </div>
+      <div>
+        <label>City</label>
+        <input
+          type="text"
+          name="city"
+          onChange={updateCity}
+          value={city}
+        ></input>
+      </div>
+      <div>
+        <label>State</label>
+        <input
+          type="text"
+          name="state"
+          onChange={updateState}
+          value={state}
+        ></input>
+      </div>
+      <div>
+        <label>Phone Number</label>
+        <input
+          type="text"
+          name="phone"
+          onChange={updatePhone}
+          value={phone}
+        ></input>
+      </div>
+      <button className="btn btn--form" type="submit">
+        Become a Patient
+      </button>
     </form>
   );
 };
