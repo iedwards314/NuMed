@@ -8,6 +8,7 @@ class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     patient_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     doctor_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    start_time = db.Column(db.DateTime, nullable=False)
     description = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
@@ -22,6 +23,7 @@ class Appointment(db.Model):
             'id': self.id,
             'patient_id': self.patient_id,
             'doctor_id': self.doctor_id,
+            'start_time': self.start_time,
             'description': self.description,
             'created_at': self.created_at,
             'updated_at': self.updated_at,

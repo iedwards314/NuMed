@@ -3,8 +3,21 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 
 const CreateAppointmentForm = () => {
-    const placeholder = new Date("04/18/2022 9:00 AM");
+    const today = new Date()
+    const tomorrow = new Date(today)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    console.log("tomorrow", tomorrow);
+
+
+    console.log("CST converted tomorrow time is...", tomorrow.toLocaleDateString('en-US'))
+
+    const placeholder = new Date(tomorrow.toLocaleDateString('en-US'));
     console.log("placeholder is...", placeholder);
+
+    const max = new Date(today)
+    max.setDate(max.getDate()+60)
+    const maxPlaceholder = new Date(max.toLocaleDateString('en-US'));
+    console.log("max placeholder is...", maxPlaceholder)
 
     const [value, setValue] = useState(placeholder);
     const minDate = placeholder
@@ -38,6 +51,7 @@ const CreateAppointmentForm = () => {
                         minDate={minDate}
                         maxDate={maxDate}
                         tileDisabled={({ date }) => date.getDay()=== 0 || date.getDay() === 6}
+                        calendarType={"US"}
                     />
                     <select>
                         <option value="9:00 AM">9:00 AM</option>
