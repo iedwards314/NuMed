@@ -6,9 +6,8 @@ const CreateAppointmentForm = () => {
     const today = new Date()
     const tomorrow = new Date(today)
     tomorrow.setDate(tomorrow.getDate() + 1)
+
     console.log("tomorrow", tomorrow);
-
-
     console.log("CST converted tomorrow time is...", tomorrow.toLocaleDateString('en-US'))
 
     const placeholder = new Date(tomorrow.toLocaleDateString('en-US'));
@@ -21,17 +20,6 @@ const CreateAppointmentForm = () => {
 
     const [value, setValue] = useState(placeholder);
     const minDate = placeholder
-    const maxDate = new Date("06/18/2022 4:00 PM")
-
-    console.log("value is...", value);
-    console.log("minDate is...", minDate);
-    console.log("maxDate is...", maxDate);
-
-    console.log("value.getYear()", value.getFullYear());
-    console.log("value.getMonth()", value.getMonth());
-    console.log("value.getDate()", value.getDate());
-    console.log("value.getHours()", value.getHours());
-
 
     useEffect( () => {
 
@@ -49,21 +37,26 @@ const CreateAppointmentForm = () => {
                         onChange={setValue}
                         value={value}
                         minDate={minDate}
-                        maxDate={maxDate}
+                        maxDate={maxPlaceholder}
                         tileDisabled={({ date }) => date.getDay()=== 0 || date.getDay() === 6}
                         calendarType={"US"}
                     />
                     <select>
-                        <option value="9:00 AM">9:00 AM</option>
-                        <option value="10:00 AM">10:00 AM</option>
-                        <option value="11:00 AM">10:00 AM</option>
-                        <option value="01:00 PM">1:00 PM</option>
-                        <option value="02:00 PM">2:00 PM</option>
-                        <option value="03:00 PM">3:00 PM</option>
-                        <option value="04:00 PM">4:00 PM</option>
+                        <option value="09">9:00 AM</option>
+                        <option value="10">10:00 AM</option>
+                        <option value="11">10:00 AM</option>
+                        <option value="01">1:00 PM</option>
+                        <option value="02">2:00 PM</option>
+                        <option value="03">3:00 PM</option>
+                        <option value="04">4:00 PM</option>
                     </select>
                     <button> Submit </button>
                 </form>
+            </div>
+            <div>
+                <h2>Doctor Name</h2>
+                <p>Doctor Specialty</p>
+                <p>Doctor Image</p>
             </div>
         </section>
     )
