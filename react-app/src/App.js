@@ -61,7 +61,7 @@ function App() {
         <ProtectedRoute path='/insurance/delete/:policyId' exact={true} >
           <DeleteInsurance />
         </ProtectedRoute>
-        <ProtectedRoute path='/appointment/create' exact={true} >
+        <ProtectedRoute path='/appointments/create/:doctorId' exact={true} >
           <CreateAppointmentForm />
         </ProtectedRoute>
         <Route path='/' exact={true} >

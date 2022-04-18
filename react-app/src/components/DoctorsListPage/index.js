@@ -6,23 +6,29 @@ const DoctorsList = () => {
 
     useEffect(() => {
       async function fetchData() {
-        const response = await fetch('/api/users/');
+        const response = await fetch('/api/doctors/');
         const responseData = await response.json();
-        setDoctors(responseData.users);
+        console.log("response from route doctors is...", responseData)
+        setDoctors(responseData.doctors);
+        console.log("response from route doctors responseData.users is...", responseData.doctors)
       }
       fetchData();
     }, []);
 
-    const doctorsComponents = doctors.map((user) => {
+    const doctorsComponents = doctors?.map((user) => {
       return (
         <li key={user.id}>
-          <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+          <NavLink to={`/appointments/create/${user.id}`}>
+            <div className='Doctor-info-container'>
+              {`Dr. ${user.last_name}`}
+            </div>
+          </NavLink>
         </li>
       );
     });
 
     return (
-        <section>
+        <section className='container'>
             <h2>Doctors List</h2>
             <ul>{doctorsComponents}</ul>
         </section>

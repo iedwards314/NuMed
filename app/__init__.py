@@ -10,6 +10,8 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.insurance_routes import insurance_routes
 from .api.appointment_routes import appointment_routes
+from .api.doctor_routes import doctor_routes
+
 
 from .seeds import seed_commands
 
@@ -35,6 +37,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(insurance_routes,url_prefix='/api/insurance')
 app.register_blueprint(appointment_routes,url_prefix='/api/appointments')
+app.register_blueprint(doctor_routes,url_prefix='/api/doctors')
 db.init_app(app)
 Migrate(app, db)
 

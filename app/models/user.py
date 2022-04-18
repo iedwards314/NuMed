@@ -106,17 +106,20 @@ class User(db.Model, UserMixin):
             'insurance_policies': insurance_policies_dict
         }
 
-#         return {
-#             'id': self.id,
-#             'first_name': self.first_name,
-#             'last_name': self.last_name,
-#             'username': self.username,
-#             'email': self.email,
-#             'address': self.address,
-#             'city': self.city,
-#             'state': self.state,
-            # 'phone': self.phone,
-            # 'doctor_id': self.doctor_id,
-            # 'image': self.image,
-            # 'specialty': self.specialty,
-#         }
+    def to_dict_doctor(self):
+        """
+        To dict method for doctor object creation (removed address and insurance)
+        """
+        return {
+            'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'username': self.username,
+            'email': self.email,
+            'city': self.city,
+            'state': self.state,
+            'phone': self.phone,
+            'doctor_id': self.doctor_id,
+            'image': self.image,
+            'specialty': self.specialty,
+        }

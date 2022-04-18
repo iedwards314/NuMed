@@ -4,21 +4,24 @@ def seed_Appointments():
     appointment1 = Appointment(
         patient_id= 2,
         doctor_id= 1,
-        start_time= "2022-05-17 10:00:00",
+        start_time= 10,
+        start_date= "2022-05-17",
         description= "Annual Checkup"
         )
 
     appointment2 = Appointment(
         patient_id= 4,
         doctor_id= 1,
-        start_time= "2022-05-17 09:00:00",
+        start_time= 9,
+        start_date= "2022-05-17",
         description= "Annual Checkup"
         )
 
     appointment3 = Appointment(
         patient_id= 4,
         doctor_id= 11,
-        start_time= "2022-05-17 09:00:00",
+        start_time= 9,
+        start_date= "2022-05-17",
         description= "Stress Management visit"
         )
 
