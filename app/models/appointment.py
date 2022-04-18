@@ -24,6 +24,7 @@ class Appointment(db.Model):
             'id': self.id,
             'patient_id': self.patient_id,
             'doctor_id': self.doctor_id,
+            'doctor_id': self.doctor_id.name,
             'start_date': self.start_date,
             'start_time': self.start_time,
             'description': self.description,
