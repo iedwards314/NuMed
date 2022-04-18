@@ -5,23 +5,14 @@ import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { addAppointment } from '../../store/appointments';
 import { SessionCheck } from '../../utils/user';
+import { maxDateFunc, stringCalenderDateFunc, tomorrowFunc } from './functions/calendarFuncs';
 
 const CreateAppointmentForm = () => {
-    const today = new Date()
-    const tomorrow = new Date(today)
-    // compute tomorrow
-    tomorrow.setDate(tomorrow.getDate() + 1)
-    //convert to local time
-    const placeholder = new Date(tomorrow.toLocaleDateString('en-US'));
-    // Patients must select apt at least next day
-    const minDate = placeholder
 
-    const max = new Date(today)
-    // 2 month selection window
-    max.setDate(max.getDate()+60)
-    const maxPlaceholder = new Date(max.toLocaleDateString('en-US'));
-    console.log("max placeholder is...", maxPlaceholder)
-
+    const minDate = tomorrowFunc()
+    let placeholder = tomorrowFunc()
+    const maxPlaceholder = maxDateFunc()
+    // form variables
     const dispatch = useDispatch()
     const user = SessionCheck();
     const patientId = user?.id
@@ -30,9 +21,10 @@ const CreateAppointmentForm = () => {
     const { doctorId } = useParams();
 
 
-    const [value, setValue] = useState(placeholder);
-    const [appointmentTime, setAppointmentTime] = useState("9");
     const [doctor, setDoctor] = useState({})
+    const [apptDate, setApptDate] = useState(placeholder);
+    const [appointmentTime, setAppointmentTime] = useState("9");
+    const [apptDescription, setApptDescription] = useState("");
     const [hasSubmitted, setHasSubmitted] =useState(false)
     const [errors, setErrors] =useState([]);
 
@@ -40,21 +32,27 @@ const CreateAppointmentForm = () => {
         setAppointmentTime(e.target.value)
     }
 
+    const updateApptDescription = (e) => {
+        setApptDescription(e.target.value)
+    }
+
     useEffect( () => {
-        console.log("select appointment time is...", appointmentTime);
-        console.log("select appointment date is...", value);
-        console.log("doctor is...", doctorId)
+        // console.log("select appointment time is...", appointmentTime);
+        // console.log("select appointment date is...", apptDate);
+        // console.log("doctor is...", doctorId);
+        // console.log("Apt description is...", apptDescription);
 
         if (!doctorId) {
             return;
           }
           (async () => {
-            const response = await fetch(`/api/users/${doctorId}`);
+            const response = await fetch(`/api/doctors/${doctorId}`);
             const doctor = await response.json();
             setDoctor(doctor);
           })();
 
-    }, [value, appointmentTime, doctorId])
+
+    }, [apptDate, appointmentTime, doctorId, apptDescription, errors])
 
     if (!doctor) {
         return null;
@@ -63,14 +61,30 @@ const CreateAppointmentForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
+
+        let errors = [];
+        if(apptDescription) {
+            if(apptDescription.length < 8 || apptDescription.length > 255) errors.push("Please enter a discription of the need for your appointment that is more than 30 but less than 255 characters. Example is 'feel sick' ")
+        }
+
+        setErrors(errors);
+
         if(errors.length) return alert("Error Submitted")
+
+        //clean submission date into correct backend figure
+        let submissionDate = stringCalenderDateFunc(apptDate);
+
         const payload = {
+            patient_id: patientId,
+            doctor_id: parseInt(doctorId),
+            start_time: parseInt(appointmentTime),
+            start_date: submissionDate
         }
         let createdAppointment;
         try {
             // Thunk
             // createdAppointment = await dispatch(addAppointment(payload));
-            console.log("successfully submitted...", payload)
+            console.log("successfully attempted submission...", payload)
         } catch (error) {
             console.log("There was an error in submitted insurance");
         }
@@ -81,8 +95,6 @@ const CreateAppointmentForm = () => {
         }
     }
 
-
-
     return (
         <section className='container'>
             <h1>Create Appointment Form</h1>
@@ -92,8 +104,8 @@ const CreateAppointmentForm = () => {
             ))}
                 <form onSubmit={handleSubmit}>
                     <Calendar
-                        onChange={setValue}
-                        value={value}
+                        onChange={setApptDate}
+                        value={apptDate}
                         minDate={minDate}
                         maxDate={maxPlaceholder}
                         tileDisabled={({ date }) => date.getDay()=== 0 || date.getDay() === 6}
@@ -111,6 +123,15 @@ const CreateAppointmentForm = () => {
                         <option value="15">3:00 PM to 4:00 PM</option>
                         <option value="16">4:00 PM to 5:00 PM</option>
                     </select>
+                    <textarea
+                        placeholder="Please tell us what about the reason for the appointment"
+                        wrap='soft'
+                        value={apptDescription}
+                        onChange={updateApptDescription}
+                        required
+                    >
+                    </textarea>
+
                     <button type="submit"> Submit </button>
                 </form>
             </div>
