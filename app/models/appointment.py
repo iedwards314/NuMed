@@ -1,4 +1,5 @@
 from .db import db
+from app.models.user import User
 from sqlalchemy.sql import func
 from sqlalchemy.types import DateTime
 from datetime import datetime
@@ -14,17 +15,24 @@ class Appointment(db.Model):
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
-# node_to_node = Table("node_to_node", Base.metadata,
-#     Column("left_node_id", Integer, ForeignKey("node.id"), primary_key=True),
-#     Column("right_node_id", Integer, ForeignKey("node.id"), primary_key=True)
-# )
-
     def to_dict(self):
+
+        doctor = User.query.get(self.doctor_id)
+        doctor_dict = doctor.to_dict()
+        doctor_info = {
+            "dr_last_name": doctor_dict["last_name"],
+            "dr_first_name": doctor_dict["first_name"],
+            "dr_image": doctor_dict["image"],
+            "dr_phone": doctor_dict["phone"],
+            "dr_specialty": doctor_dict["specialty"],
+            "dr_username": doctor_dict["username"],
+        }
+
         return {
             'id': self.id,
             'patient_id': self.patient_id,
             'doctor_id': self.doctor_id,
-            'doctor_id': self.doctor_id.name,
+            'doctor_info': doctor_info,
             'start_date': self.start_date,
             'start_time': self.start_time,
             'description': self.description,

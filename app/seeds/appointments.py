@@ -3,7 +3,7 @@ from app.models import db, Appointment
 def seed_Appointments():
     appointment1 = Appointment(
         patient_id= 2,
-        doctor_id= 1,
+        doctor_id= 6,
         start_time= 10,
         start_date= "2022-05-17",
         description= "Annual Checkup"
@@ -11,7 +11,7 @@ def seed_Appointments():
 
     appointment2 = Appointment(
         patient_id= 4,
-        doctor_id= 1,
+        doctor_id= 6,
         start_time= 9,
         start_date= "2022-05-17",
         description= "Annual Checkup"
