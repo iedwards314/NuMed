@@ -1,5 +1,5 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { SessionCheck } from "../../utils/user"
 import {getAppointments} from "../../store/appointments.js"
@@ -10,8 +10,10 @@ const GetAllAppointments = () => {
     const dispatch = useDispatch();
 
     console.log("user in Get all apts is...", user);
-    const appointmentsObj = user?.appointments;
-    console.log("user appointments are...", user?.appointments)
+
+    const appointmentsObj = useState(state => state);
+    console.log("user appointments are...", appointmentsObj)
+
     let appointmentsArr;
     if(appointmentsObj) appointmentsArr = Object.values(appointmentsObj)
     if(appointmentsArr !== undefined){
@@ -29,22 +31,6 @@ const GetAllAppointments = () => {
     const appointmentMap = (user) => {
         return (
             <div>
-                <ul>
-                    <li>
-                        <br />
-                        <br />
-                        <br />
-                        <p>{`${user?.first_name} ${user?.last_name}'s, appointment list `}</p>
-                        <p>Example Appointment</p>
-                        <p>Example Doctor</p>
-                        <p>Example Description</p>
-                        <br />
-                        <br />
-                        <br />
-                        <button>eChange </button>
-                        <button>eCancel </button>
-                    </li>
-                </ul>
                 <ul>
                     {appointmentsArr ? appointmentsArr.map = (appointment, idx) => (
                         <li key={idx}>
