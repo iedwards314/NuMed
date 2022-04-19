@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import insuranceReducer from './insurance';
 import appointmentsReducer from './appointments';
+import doctorReducer from './doctors';
 
 const rootReducer = combineReducers({
   session,
   insurance_policies: insuranceReducer,
-  appointments: appointmentsReducer
+  appointments: appointmentsReducer,
+  doctors: doctorReducer
 
 });
 

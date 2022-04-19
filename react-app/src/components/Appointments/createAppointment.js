@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { addAppointment } from '../../store/appointments';
+import { getDoctor } from '../../store/doctors';
 import { SessionCheck } from '../../utils/user';
 import { maxDateFunc, stringCalenderDateFunc, tomorrowFunc } from './functions/calendarFuncs';
 
@@ -19,9 +20,9 @@ const CreateAppointmentForm = () => {
     const history = useHistory();
 
     const { doctorId } = useParams();
+    const {stateDoctor} = useSelector(state => state.doctors.selected);
 
-
-    const [doctor, setDoctor] = useState({})
+    const [doctor, setDoctor] = useState(stateDoctor)
     const [apptDate, setApptDate] = useState(placeholder);
     const [appointmentTime, setAppointmentTime] = useState("9");
     const [apptDescription, setApptDescription] = useState("");
@@ -39,24 +40,12 @@ const CreateAppointmentForm = () => {
     useEffect( () => {
         // console.log("select appointment time is...", appointmentTime);
         // console.log("select appointment date is...", apptDate);
-        // console.log("doctor is...", doctorId);
+        // console.log("doctorId is...", doctorId);
+        console.log("doctor is...", doctor);
+
         // console.log("Apt description is...", apptDescription);
-
-        if (!doctorId) {
-            return;
-          }
-          (async () => {
-            const response = await fetch(`/api/doctors/${doctorId}`);
-            const doctor = await response.json();
-            setDoctor(doctor);
-          })();
-
-
-    }, [apptDate, appointmentTime, doctorId, apptDescription, errors])
-
-    if (!doctor) {
-        return null;
-    }
+        dispatch(getDoctor(doctorId))
+    }, [apptDate, appointmentTime, doctorId, apptDescription, errors, doctor])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -136,7 +125,7 @@ const CreateAppointmentForm = () => {
                 </form>
             </div>
             <div>
-                <h2>Doctor Name</h2>
+                <h2>{`Appointment with Dr. ${doctor?.last_name}`}</h2>
                 <p>Doctor Specialty</p>
                 <p>Doctor Image</p>
             </div>
