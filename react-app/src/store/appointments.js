@@ -94,6 +94,7 @@ export const deleteAppointment = (appointment) => async (dispatch) => {
 
 const initialState = {
     appointments: {},
+    selected: {}
 }
 
 const appointmentsReducer = (state = initialState, action) => {

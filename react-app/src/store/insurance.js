@@ -94,6 +94,7 @@ export const deleteInsurancePolicy = (insurance_policy) => async (dispatch) => {
 
 const initialState = {
     insurance_policies: {},
+    selected: {}
 }
 
 const insuranceReducer = (state = initialState, action) => {

@@ -11,6 +11,7 @@ const GetAllAppointments = () => {
 
     console.log("user in Get all apts is...", user);
     const appointmentsObj = user?.appointments;
+    console.log("user appointments are...", user?.appointments)
     let appointmentsArr;
     if(appointmentsObj) appointmentsArr = Object.values(appointmentsObj)
     if(appointmentsArr !== undefined){

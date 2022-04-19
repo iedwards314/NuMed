@@ -1,4 +1,5 @@
 
+
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -39,21 +40,6 @@ class User(db.Model, UserMixin):
         lazy="dynamic"
     )
 
-    # appointment_patient = db.relationship("Appointment", backref="patient")
-    # appointment_doctor = db.relationship("User", backref="doctor")
-
-
-# class Node(Base):
-#     __tablename__ = 'node'
-#     id = Column(Integer, primary_key=True)
-#     label = Column(String)
-#     right_nodes = relationship("Node",
-#                         secondary=node_to_node,
-#                         primaryjoin=id==node_to_node.c.left_node_id,
-#                         secondaryjoin=id==node_to_node.c.right_node_id,
-#                         backref="left_nodes"
-#     )
-
     # if "sends hashed_password data"
     @property
     def password(self):
@@ -89,6 +75,14 @@ class User(db.Model, UserMixin):
                 "user_id":policy.__dict__["user_id"]
             }
 
+        # appointments_table = Appointment.query.get(self.id)
+        appointments = {}
+        for appointment in self.appointments:
+            key= appointment.__dict__["id"]
+            appointments.__dict__[key] = {
+                "id" : appointment.__dict__["id"]
+            }
+
 
         return {
             'id': self.id,
@@ -103,7 +97,8 @@ class User(db.Model, UserMixin):
             'doctor_id': self.doctor_id,
             'image': self.image,
             'specialty': self.specialty,
-            'insurance_policies': insurance_policies_dict
+            'insurance_policies': insurance_policies_dict,
+            # 'appointments': appointments_dict
         }
 
     def to_dict_doctor(self):

@@ -31,6 +31,7 @@ export const getDoctor = (doctorId) => async (dispatch) => {
 
 const initialState = {
     doctors: {},
+    selected: {}
 }
 
 const doctorReducer = (state = initialState, action) => {

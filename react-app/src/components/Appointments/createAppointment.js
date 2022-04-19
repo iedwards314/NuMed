@@ -20,9 +20,9 @@ const CreateAppointmentForm = () => {
     const history = useHistory();
 
     const { doctorId } = useParams();
-    const {stateDoctor} = useSelector(state => state.doctors.selected);
+    // const {stateDoctor} = useSelector(state => state.doctors.selected);
 
-    const [doctor, setDoctor] = useState(stateDoctor)
+    const [doctor, setDoctor] = useState("")
     const [apptDate, setApptDate] = useState(placeholder);
     const [appointmentTime, setAppointmentTime] = useState("9");
     const [apptDescription, setApptDescription] = useState("");
@@ -44,7 +44,6 @@ const CreateAppointmentForm = () => {
         console.log("doctor is...", doctor);
 
         // console.log("Apt description is...", apptDescription);
-        dispatch(getDoctor(doctorId))
     }, [apptDate, appointmentTime, doctorId, apptDescription, errors, doctor])
 
     const handleSubmit = async (e) => {
