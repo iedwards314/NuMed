@@ -1,11 +1,19 @@
 
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { SessionCheck } from "../../utils/user"
 
 
 const GetAllAppointments = () => {
     const user = SessionCheck();
+    const dispatch = useDispatch();
 
     console.log("user in Get all apts is...", user);
+
+    useEffect(() => {
+
+    },[dispatch])
+
 
     const appointmentMap = (user) => {
         return (
