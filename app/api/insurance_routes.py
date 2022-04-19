@@ -15,7 +15,7 @@ def get_insurance_policy(id):
     return insurance_policy.to_dict()
 
 @insurance_routes.route('/create', methods=['POST'])
-def create_project():
+def create_insurance():
     data = dict(request.json)
     new_insurance_policy = Insurance_Policy(
         user_id = data['user_id'],

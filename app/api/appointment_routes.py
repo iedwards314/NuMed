@@ -15,3 +15,40 @@ def get_appointments_patient(id):
     return {'appointments': [appointment.to_dict() for appointment in appointments]}
 
     # return {'insurance_policies': [insurance_policy.to_dict() for insurance_policy in insurance_policies]}
+
+@appointment_routes.route('/create', methods=['POST'])
+def create_appointment():
+    data = dict(request.json)
+    new_appointment = Appointment(
+
+        patient_id = data['patient_id'],
+        doctor_id = data['doctor_id'],
+        start_date = data['start_date'],
+        start_time = data['start_time'],
+        description = data['description'],
+    )
+
+    db.session.add(new_appointment)
+    db.session.commit()
+    return new_appointment.to_dict()
+
+@appointment_routes.route('/delete/<int:id>', methods=['DELETE'])
+def delete_appointment(id):
+    data = dict(request.json)
+    appointment = Appointment.query.get(id)
+    res = {"id": id}
+    db.session.delete(appointment)
+    db.session.commit()
+    return res
+
+@appointment_routes.route('/edit/<int:id>', methods=["PUT"])
+def edit_appointment(id):
+    appointment = dict(request.json)
+    data = Appointment.query.get(id)
+
+    data.start_date = appointment['start_date']
+    data.start_time = appointment['start_time']
+    data.description = appointment['description']
+
+    db.session.commit()
+    return data.to_dict()
