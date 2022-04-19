@@ -6,13 +6,11 @@ import {getAppointments} from "../../store/appointments.js"
 
 
 const GetAllAppointments = () => {
-    const user = SessionCheck();
-    const dispatch = useDispatch();
 
-    console.log("user in Get all apts is...", user);
-
-    const appointmentsObj = useState(state => state);
-    console.log("user appointments are...", appointmentsObj)
+    const user = null
+    // const appointmentsObj = useState(state => state.session)
+    const appointmentsObj = {}
+    console.log("appointment object is... appointmentsObj")
 
     let appointmentsArr;
     if(appointmentsObj) appointmentsArr = Object.values(appointmentsObj)
@@ -21,12 +19,6 @@ const GetAllAppointments = () => {
 
         console.log("index 0 of appointments array is...", appointmentsArr[0])
     }
-
-
-    useEffect(() => {
-        dispatch(getAppointments(user.id))
-    },[dispatch])
-
 
     const appointmentMap = (user) => {
         return (
