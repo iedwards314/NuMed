@@ -1,13 +1,13 @@
 
-
+# from app.models.appointment import Appointment as AppointmeentModel
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 appointment_relation = db.Table(
-    'appointment_relation',
-    db.Column('patient_id', db.Integer, db.ForeignKey("users.id")),
-    db.Column('doctor_id', db.Integer, db.ForeignKey("users.id"))
+    'appointment_relation', db.Model.metadata,
+    db.Column('patient_id', db.Integer, db.ForeignKey("users.id"), primary_key=True),
+    db.Column('doctor_id', db.Integer, db.ForeignKey("users.id"), primary_key=True)
 )
 
 class User(db.Model, UserMixin):
@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
     insurance_policies = db.relationship("Insurance_Policy", back_populates="user", cascade="all, delete")
 
     appointments = db.relationship(
-        "Appointment",
+        "User",
         secondary="appointment_relation",
         primaryjoin=(appointment_relation.c.patient_id == id),
         secondaryjoin=(appointment_relation.c.doctor_id == id),
@@ -75,14 +75,6 @@ class User(db.Model, UserMixin):
                 "user_id":policy.__dict__["user_id"]
             }
 
-        # appointments_table = Appointment.query.get(self.id)
-        appointments = {}
-        for appointment in self.appointments:
-            key= appointment.__dict__["id"]
-            appointments.__dict__[key] = {
-                "id" : appointment.__dict__["id"]
-            }
-
 
         return {
             'id': self.id,
@@ -98,7 +90,6 @@ class User(db.Model, UserMixin):
             'image': self.image,
             'specialty': self.specialty,
             'insurance_policies': insurance_policies_dict,
-            # 'appointments': appointments_dict
         }
 
     def to_dict_doctor(self):

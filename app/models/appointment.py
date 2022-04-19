@@ -1,5 +1,5 @@
 from .db import db
-from app.models.user import User
+from app.models.user import User, appointment_relation
 from sqlalchemy.sql import func
 from sqlalchemy.types import DateTime
 from datetime import datetime
@@ -28,9 +28,18 @@ class Appointment(db.Model):
             "dr_username": doctor_dict["username"],
         }
 
+        patient = User.query.get(self.patient_id)
+        patient_dict = patient.to_dict()
+        patient_info = {
+            'patient_first_name': patient_dict['first_name'],
+            'patient_last_name': patient_dict['last_name'],
+            'patient_username': patient_dict['username'],
+        }
+
         return {
             'id': self.id,
             'patient_id': self.patient_id,
+            'patient_info': patient_info,
             'doctor_id': self.doctor_id,
             'doctor_info': doctor_info,
             'start_date': self.start_date,
