@@ -1,11 +1,11 @@
 import GetAllAppointments from "../../Appointments/viewAppointments"
 
-const LowerNavProfileButtons = ({lowerNav, user}) => {
+const LowerNavProfileButtons = ({lowerNav, user, appointments}) => {
 
     if(lowerNav === "Appointments"){
         return (
             <>
-                {GetAllAppointments(user)}
+                {GetAllAppointments(user, appointments)}
             </>
         )
     }

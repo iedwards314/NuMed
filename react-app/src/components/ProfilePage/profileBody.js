@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import GetAllInsurance from '../Insurance/getAll-Insurance';
 import LowerNavProfileButtons from './function/LowerNavButtons';
 
-const ProfileBody = ({user}) => {
+const ProfileBody = ({user, appointments}) => {
     const [lowerNav, setLowerNav] = useState("")
     const insurance = user?.insurance_policies
 
@@ -44,7 +44,7 @@ const ProfileBody = ({user}) => {
                         </li>
                     </ul>
                     <h2>{`View ${lowerNav}`}</h2>
-                    <LowerNavProfileButtons lowerNav={lowerNav} user={user} />
+                    <LowerNavProfileButtons lowerNav={lowerNav} user={user} appointments={appointments} />
 
                 </div>
             </div>
