@@ -14,6 +14,7 @@ const ProfilePage = () => {
   //appointments, insurance
 
     const [user, setUser] = useState({});
+    const [appointments, setAppointments] = useState({})
     const { userId }  = useParams();
 
     console.log("user in 'profile page index'...", user);
@@ -28,8 +29,8 @@ const ProfilePage = () => {
         setUser(user);
       })();
       if(user){
-        dispatch(getAppointments(user.id))
-        dispatch(getInsurancePolicies(user.id))
+        dispatch(getAppointments(userId))
+        console.log("use effect working")
       }
 
     }, [userId]);

@@ -5,10 +5,10 @@ import { SessionCheck } from "../../utils/user"
 import {getAppointments} from "../../store/appointments.js"
 
 
-const GetAllAppointments = () => {
-
-    const user = null
-    // const appointmentsObj = useState(state => state.session)
+const GetAllAppointments = (user) => {
+    // const appointmentsObj = useState(state => state?.appointments)
+    const state = useState(state => state);
+    console.log("state get appointments", state)
     const appointmentsObj = {}
     console.log("appointment object is... appointmentsObj")
 

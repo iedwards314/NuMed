@@ -38,12 +38,7 @@ const CreateAppointmentForm = () => {
     }
 
     useEffect( () => {
-        // console.log("select appointment time is...", appointmentTime);
-        // console.log("select appointment date is...", apptDate);
-        // console.log("doctorId is...", doctorId);
-        console.log("doctor is...", doctor);
 
-        // console.log("Apt description is...", apptDescription);
     }, [apptDate, appointmentTime, doctorId, apptDescription, errors, doctor])
 
     const handleSubmit = async (e) => {

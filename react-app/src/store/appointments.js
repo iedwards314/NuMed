@@ -30,11 +30,12 @@ const getOne = (appointment) => ({
 })
 
 export const getAppointments = (userId) => async (dispatch) => {
+
     const response = await fetch(`/api/appointments/user/${userId}`);
     if (response.ok) {
-        const insurance_policies = await response.json();
-        dispatch(load(insurance_policies))
-        return insurance_policies
+        const appointments = await response.json();
+        dispatch(load(appointments))
+        return appointments
     }
 }
 
@@ -109,7 +110,7 @@ const appointmentsReducer = (state = initialState, action) => {
             })
             // console.log("allAppointments is...", allAppointments)
             newState = { ...state, appointments: allAppointments }
-            // console.log("new state is", newState)
+            console.log("new state is", newState)
             return newState
         case ADD_ONE:
             setState = {...state, appointments: {...state.appointments, [action.appointment.id]: action.appointment}, selected: {...state.selected}}

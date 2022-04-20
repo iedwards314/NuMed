@@ -12,10 +12,6 @@ const GetAllInsurance = ({user}) => {
     const insuranceObj = user?.insurance_policies;
     const insuranceArr = Object.values(insuranceObj);
 
-    useEffect(()=>{
-        dispatch(getInsurancePolicies(user.id))
-    }, [dispatch, user.id])
-
     const insurancePolicyMap = () => {
         if(insuranceArr.length > 0){
             return(
