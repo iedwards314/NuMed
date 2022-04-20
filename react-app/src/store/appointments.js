@@ -102,7 +102,7 @@ const appointmentsReducer = (state = initialState, action) => {
     let setState;
     switch (action.type) {
         case LOAD:
-            let newState = {}
+            let newState = {...state}
             const allAppointments = {};
             // console.log("action in store is...", action.appointments.appointments);
             action.appointments.appointments.forEach((appointment) => {

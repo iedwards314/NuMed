@@ -3,45 +3,31 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { SessionCheck } from "../../utils/user"
 import {getAppointments} from "../../store/appointments.js"
+import { useParams } from "react-router-dom";
 
 
-const GetAllAppointments = (user, appointments) => {
-    // const appointmentsObj = useState(state => state?.appointments)
+const GetAllAppointments = ({appointmentsObj}) => {
+
+    const user = SessionCheck()
+    console.log("user is...", user)
+    const dispatch = useDispatch()
+    const {userId} = useParams()
     const state = useState(state => state);
-    // console.log("state get appointments", state)
-    const appointmentsObj = {}
-    // console.log("appointment object is... appointmentsObj")
 
-    let appointmentsArr;
-    if(appointmentsObj) appointmentsArr = Object.values(appointmentsObj)
-    if(appointmentsArr !== undefined){
-        // console.log("appointment array values are...", appointmentsArr)
+    console.log("state in get all appointments is...", appointmentsObj)
 
-        // console.log("index 0 of appointments array is...", appointmentsArr[0])
-    }
 
-    const appointmentMap = (user) => {
-        return (
-            <div>
-                <ul>
-                    {appointmentsArr ? appointmentsArr.map = (appointment, idx) => (
-                        <li key={idx}>
-                            <p>Hitting appointment number {idx}</p>
-                            <button>Change </button>
-                            <button>Cancel </button>
-                        </li>
-                    ): null}
-                </ul>
-            </div>
-
-        )
-    }
+    // useEffect(() => {
+    //     dispatch(getAppointments(+userId))
+    //     console.log("in use effect state",state);
+    //   }, [dispatch, userId])
 
     return (
-        <section>
-            <h3>Appointments</h3>
-            {appointmentMap(user)}
-        </section>
+        <>
+            <ul>
+                <li key="1">Got this rending no errors</li>
+            </ul>
+        </>
     )
 
 }

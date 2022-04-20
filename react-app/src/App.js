@@ -14,6 +14,7 @@ import DeleteInsurance from './components/Insurance/deleteInsurance';
 import DoctorsList from './components/DoctorsListPage';
 import SpecialtyList from './components/SpecialtyListPage';
 import CreateAppointmentForm from './components/Appointments/createAppointment';
+import GetAllAppointments from './components/Appointments/viewAppointments';
 // import User from './components/User';
 // import UsersList from './components/UsersList';
 // import NavBar from './components/NavBar';
@@ -60,6 +61,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/insurance/delete/:policyId' exact={true} >
           <DeleteInsurance />
+        </ProtectedRoute>
+        <ProtectedRoute path='/appointments/user/:userId' exact={true} >
+          <GetAllAppointments />
         </ProtectedRoute>
         <ProtectedRoute path='/appointments/create/:doctorId' exact={true} >
           <CreateAppointmentForm />
