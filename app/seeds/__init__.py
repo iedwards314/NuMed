@@ -1,6 +1,6 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
-# from .doctors import seed_doctors
+from .doctors import seed_doctors, undo_doctors
 from .insurance import seed_insurance, undo_insurance
 from .appointments import seed_Appointments, undo_Appointments
 
@@ -13,6 +13,7 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
+    seed_doctors()
     seed_insurance()
     seed_Appointments()
     # Add other seed functions here
@@ -22,6 +23,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_doctors()
     undo_insurance()
     undo_Appointments()
     # Add other undo functions here

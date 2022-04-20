@@ -10,11 +10,6 @@ class Insurance_Policy(db.Model):
 
     user = db.relationship("User", back_populates="insurance_policies")
 
-    # userId: patientId,
-    # insurance_co: insuranceCo,
-    # subscriber_num: subscriberNum,
-    # group_num: groupNum
-
     def to_dict(self):
         return {
             'id': self.id,
