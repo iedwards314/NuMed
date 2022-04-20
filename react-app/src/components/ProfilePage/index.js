@@ -39,6 +39,8 @@ const ProfilePage = () => {
 
     const userCheck = UserCheck(user, userId);
 
+    console.log("appointment after dispatch...", appointments)
+
     if(userCheck){
         return(
             <>
