@@ -11,13 +11,39 @@ const GetAllAppointments = () => {
   const dispatch = useDispatch();
 //   const [appts, setAppts] = useState({});
   const { userId } = useParams();
-
+  const state = useSelector(state => state?.appointments.appointments)
+  console.log("state GetAllApointments...", state);
   const apptsObj = useSelector((state) => state?.appointments);
   let apptsArr;
   if(apptsObj){
-      Object.values(apptsObj)
+      apptsArr = Object.values(Object.values(apptsObj)[0])
   }
   console.log("appts...", apptsArr)
+
+  //apptsArr[index][key] where appt[idx+1]
+
+  const doctorId = apptsArr[0]?.doctor_id //doctor Id
+  const doctorObj = apptsArr[0]?.doctor_info //doctor info, keys="dr_image", "dr_last_name", "dr_specialty", "dr_phone"
+
+  const patientObj = apptsArr[0]?.patient_info // patient info, keys="patient_first_name", "patient_last_name"
+
+
+  const variable = apptsArr[0]?.doctor_info?.dr_last_name //doctor Id
+
+  const apptMap = () => {
+      return(
+          <>
+          {apptsArr?.map((appt, idx)=>(
+            <li key={idx}>
+                <p>Dr. {appt.doctor_info?.dr_last_name}</p>
+                <p>{appt.doctor_info?.dr_specialty}</p>
+                <img src={appt.doctor_info?.dr_image} alt={`Dr.${appt.doctor_info?.dr_last_name}`}/>
+
+            </li>
+          ))}
+          </>
+      )
+  }
 
 //   useEffect(() => {
 //     (async () => {
@@ -31,15 +57,13 @@ const GetAllAppointments = () => {
     dispatch(getAppointments(userId));
 }, [dispatch, userId])
 
+
 if(apptsArr && apptsArr.length > 0){
 
     return (
       <>
-        <ul>
-          {apptsArr?.map((appt, idx) => {
-            <li key={idx}><p>{appt.doctor_info?.dr_last_name}</p></li>;
-          })}
-        </ul>
+      <div>{variable}</div>
+      {apptMap()}
       </>
     );
 } else return ("hello")

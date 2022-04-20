@@ -110,8 +110,8 @@ const appointmentsReducer = (state = initialState, action) => {
             })
             // console.log("allAppointments is...", allAppointments)
             newState = { ...state, appointments: allAppointments }
-            console.log("new state is", newState)
-            return newState
+            setState = {...newState}
+            return setState
         case ADD_ONE:
             setState = {...state, appointments: {...state.appointments, [action.appointment.id]: action.appointment}, selected: {...state.selected}}
             return setState
