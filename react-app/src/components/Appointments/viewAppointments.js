@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { SessionCheck } from "../../utils/user";
 import { useParams } from "react-router-dom";
 import { getAppointments } from "../../store/appointments";
+import './styles/Appointments.css'
+import { userFormatCalendarDateFunc } from "./functions/calendarFuncs";
 
 const GetAllAppointments = () => {
   const user = SessionCheck();
@@ -30,17 +32,36 @@ const GetAllAppointments = () => {
 
   const variable = apptsArr[0]?.doctor_info?.dr_last_name //doctor Id
 
+  const formattedDate = userFormatCalendarDateFunc(apptsArr[0]?.start_date)
+
+  console.log("start date is...", formattedDate)
+
   const apptMap = () => {
       return(
           <>
-          {apptsArr?.map((appt, idx)=>(
-            <li key={idx}>
-                <p>Dr. {appt.doctor_info?.dr_last_name}</p>
-                <p>{appt.doctor_info?.dr_specialty}</p>
-                <img src={appt.doctor_info?.dr_image} alt={`Dr.${appt.doctor_info?.dr_last_name}`}/>
+          <section className="container">
+              <h2 className="heading-secondary">{`Hello ${apptsArr[0]?.patient_info.patient_first_name}`}</h2>
+              <p className="heading-third marin-bottom-md">Your appointments are scheduled for the following...</p>
+          <ul>
 
+          {apptsArr?.map((appt, idx)=>(
+            <li key={idx} className="grid grid--2--cols">
+                <div className="doctor-img-container">
+                    <img src={appt.doctor_info?.dr_image} alt={`Dr.${appt.doctor_info?.dr_last_name}`}/>
+                </div>
+                <div className="appointment-info-container">
+                    <p>Dr. {appt.doctor_info?.dr_last_name}</p>
+                    <p>{appt.doctor_info?.dr_specialty}</p>
+                    <p>{`Specialty: ${appt.doctor_info?.dr_specialty}`}</p>
+                    <p>{`Date: ${userFormatCalendarDateFunc(appt.start_date)}`}</p>
+                    <p>{`Start time: ${appt.start_time} :00 AM CT`}</p>
+                    <button>edit</button>
+                    <button>delete</button>
+                </div>
             </li>
           ))}
+          </ul>
+          </section>
           </>
       )
   }
@@ -62,7 +83,6 @@ if(apptsArr && apptsArr.length > 0){
 
     return (
       <>
-      <div>{variable}</div>
       {apptMap()}
       </>
     );
