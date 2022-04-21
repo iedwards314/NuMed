@@ -2,12 +2,13 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SessionCheck } from "../../utils/user";
-import { useParams } from "react-router-dom";
-import { getAppointments } from "../../store/appointments";
+import { useHistory, useParams } from "react-router-dom";
+import { getAppointments, deleteAppointment } from "../../store/appointments";
 import './styles/Appointments.css'
 import { userFormatCalendarDateFunc } from "./functions/calendarFuncs";
 
 const GetAllAppointments = () => {
+  const history = useHistory();
   const user = SessionCheck();
   // console.log("user is...", user)
   const dispatch = useDispatch();
@@ -36,6 +37,25 @@ const GetAllAppointments = () => {
 
   console.log("start date is...", formattedDate)
 
+  const destroyAppt = async (e, apptId) => {
+    e.preventDefault();
+    const payload = {
+        id: parseInt(apptId),
+        user_id: userId,
+    }
+    let destroyed;
+    try {
+      console.log("hit distroyed", payload);
+        destroyed = await dispatch(deleteAppointment(payload))
+    } catch (error) {
+        console.log("error in delete")
+    }
+
+    // if (destroyed?.id) {
+    //     history.push(`/users/${userId}`);
+    // }
+}
+
   const apptMap = () => {
       return(
           <>
@@ -56,7 +76,7 @@ const GetAllAppointments = () => {
                     <p>{`Date: ${userFormatCalendarDateFunc(appt.start_date)}`}</p>
                     <p>{`Start time: ${appt.start_time} :00 AM CT`}</p>
                     <button>edit</button>
-                    <button>delete</button>
+                    <button onClick={(e) => destroyAppt(e, appt.id)}>delete</button>
                 </div>
             </li>
           ))}

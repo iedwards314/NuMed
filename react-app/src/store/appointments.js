@@ -49,7 +49,7 @@ export const getAppointment = (appointmentId) => async (dispatch) => {
 }
 
 export const addAppointment = (appointment) => async (dispatch) => {
-    const response = await fetch(`/api/appointment/create`, {
+    const response = await fetch(`/api/appointments/create`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export const addAppointment = (appointment) => async (dispatch) => {
 }
 
 export const editAppointment = (appointment, id) => async (dispatch) => {
-    const response = await fetch(`/api/appointment/edit/${id}`, {
+    const response = await fetch(`/api/appointments/edit/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export const editAppointment = (appointment, id) => async (dispatch) => {
 }
 
 export const deleteAppointment = (appointment) => async (dispatch) => {
-    const response = await fetch(`/api/insurance/delete/${appointment.id}`, {
+    const response = await fetch(`/api/appointments/delete/${appointment.id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -116,8 +116,9 @@ const appointmentsReducer = (state = initialState, action) => {
             setState = {...state, appointments: {...state.appointments, [action.appointment.id]: action.appointment}, selected: {...state.selected}}
             return setState
         case DELETE_ONE:
-            setState = {...state, appointments: {...state.appointments}, selected: {...state.selected}}
-            delete setState.appointments[action.appointmentId];
+            let deleteNewState = {...state}
+            delete deleteNewState.appointments[action.appointment.id];
+            setState = {...deleteNewState}
             return setState
         case EDIT_ONE:
             setState = {...state, appointments: {...state.appointments, [action.appointment.id]: action.appointment}, selected: {...state.selected}}
