@@ -43,7 +43,7 @@ const CreateAppointmentForm = () => {
 
     useEffect( () => {
         dispatch(getDoctor(doctorId))
-    }, [apptDate, appointmentTime, doctorId, apptDescription, errors])
+    }, [dispatch, apptDate, appointmentTime, doctorId, apptDescription, errors])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const SpecialtyList = () => {
 
     const [doctors, setDoctors] = useState([]);
-    const {specialty} = useParams() //string
+    // const {specialty} = useParams() //string
 
     useEffect(() => {
       async function fetchData() {
