@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { SessionCheck } from "../../utils/user";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { getAppointments, deleteAppointment } from "../../store/appointments";
 import './styles/Appointments.css'
 import { userFormatCalendarDateFunc } from "./functions/calendarFuncs";
@@ -75,7 +75,9 @@ const GetAllAppointments = () => {
                     <p>{`Specialty: ${appt.doctor_info?.dr_specialty}`}</p>
                     <p>{`Date: ${userFormatCalendarDateFunc(appt.start_date)}`}</p>
                     <p>{`Start time: ${appt.start_time} :00 AM CT`}</p>
-                    <button>edit</button>
+                    <NavLink to={`/appointments/edit/${appt.id}`}>
+                      <button>edit</button>
+                    </NavLink>
                     <button onClick={(e) => destroyAppt(e, appt.id)}>delete</button>
                 </div>
             </li>
