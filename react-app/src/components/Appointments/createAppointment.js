@@ -22,12 +22,16 @@ const CreateAppointmentForm = () => {
     const { doctorId } = useParams();
     // const {stateDoctor} = useSelector(state => state.doctors.selected);
 
-    const [doctor, setDoctor] = useState("")
+    const doctor = useSelector(state => state?.doctors?.selected)
     const [apptDate, setApptDate] = useState(placeholder);
     const [appointmentTime, setAppointmentTime] = useState("9");
     const [apptDescription, setApptDescription] = useState("");
     const [hasSubmitted, setHasSubmitted] =useState(false)
     const [errors, setErrors] =useState([]);
+
+    console.log("doctor in the create appt page is...", doctor);
+    console.log("doctor last name in the create appt page is...", doctor[doctorId]?.last_name);
+
 
     const selectAppointmentTime = (e) => {
         setAppointmentTime(e.target.value)
@@ -38,8 +42,8 @@ const CreateAppointmentForm = () => {
     }
 
     useEffect( () => {
-
-    }, [apptDate, appointmentTime, doctorId, apptDescription, errors, doctor])
+        dispatch(getDoctor(doctorId))
+    }, [dispatch, apptDate, appointmentTime, doctorId, apptDescription, errors])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,7 +51,7 @@ const CreateAppointmentForm = () => {
 
         let errors = [];
         if(apptDescription) {
-            if(apptDescription.length < 8 || apptDescription.length > 255) errors.push("Please enter a discription of the need for your appointment that is more than 30 but less than 255 characters. Example is 'feel sick' ")
+            if(apptDescription.length < 4 || apptDescription.length > 255) errors.push("Please enter a discription of the need for your appointment that is more than 4 but less than 255 characters. Example is 'sick' ")
         }
 
         setErrors(errors);
@@ -61,26 +65,27 @@ const CreateAppointmentForm = () => {
             patient_id: patientId,
             doctor_id: parseInt(doctorId),
             start_time: parseInt(appointmentTime),
-            start_date: submissionDate
+            start_date: submissionDate,
+            description: apptDescription
         }
         let createdAppointment;
         try {
             // Thunk
-            // createdAppointment = await dispatch(addAppointment(payload));
             console.log("successfully attempted submission...", payload)
+            createdAppointment = await dispatch(addAppointment(payload));
         } catch (error) {
             console.log("There was an error in submitted insurance");
         }
 
         if(createdAppointment) {
             setHasSubmitted(false);
-            history.push(`/users/${patientId}`)
+            history.push(`/appointments/user/${patientId}`)
         }
     }
 
     return (
         <section className='container'>
-            <h1>Create Appointment Form</h1>
+            <h1>{`Hello <Patient Name>, Please Create an Appointment`}</h1>
             <div>
             {hasSubmitted && errors?.map((error) => (
                 <p style={{color: 'red', margin:"0px"}}>{error}</p>
@@ -100,7 +105,7 @@ const CreateAppointmentForm = () => {
                     <select value={appointmentTime} onChange={selectAppointmentTime}>
                         <option value="09">9:00 AM to 10:00 AM</option>
                         <option value="10">10:00 AM to 11:00 AM</option>
-                        <option value="11">10:00 to 11:00 AM</option>
+                        <option value="11">11:00 AM to 12:00 PM</option>
                         <option value="13">1:00 PM to 2:00 PM</option>
                         <option value="14">2:00 PM to 3:00 PM</option>
                         <option value="15">3:00 PM to 4:00 PM</option>
@@ -119,9 +124,10 @@ const CreateAppointmentForm = () => {
                 </form>
             </div>
             <div>
-                <h2>{`Appointment with Dr. ${doctor?.last_name}`}</h2>
-                <p>Doctor Specialty</p>
+                <h2>{`Appointment with Dr. ${doctor[doctorId]?.last_name}`}</h2>
+                <p>{`Specialty: ${doctor[doctorId]?.specialty}`}</p>
                 <p>Doctor Image</p>
+                <img src={doctor[doctorId]?.image} alt={`Dr.${doctor[doctorId]?.last_name}`} />
             </div>
         </section>
     )

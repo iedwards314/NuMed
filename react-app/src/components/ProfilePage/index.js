@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavLink, useParams } from "react-router-dom";
 import { SessionCheck, UserCheck } from "../../utils/user";
 import HeaderFunc from "./header";
@@ -15,13 +15,6 @@ const ProfilePage = () => {
     const user = SessionCheck();
     const { userId }  = useParams();
     const userCheck = UserCheck(user, userId);
-    // const dispatch = useDispatch();
-    // const appointmentsObj = useState(state => state?.appointments)
-
-    // useEffect(() => {
-    //     dispatch(getAppointments(+userId))
-
-    //   }, [dispatch, userId])
 
     if(userCheck){
         return(
