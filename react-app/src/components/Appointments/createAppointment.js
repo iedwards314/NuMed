@@ -21,7 +21,8 @@ const CreateAppointmentForm = () => {
     const history = useHistory();
 
     const { doctorId } = useParams();
-    // const {stateDoctor} = useSelector(state => state.doctors.selected);
+
+    console.log("user is...", user);
 
     const doctor = useSelector(state => state?.doctors?.selected)
     const [apptDate, setApptDate] = useState(placeholder);
@@ -86,7 +87,7 @@ const CreateAppointmentForm = () => {
 
     return (
         <section className='container'>
-            <h1>{`Hello <Patient Name>, Please Create an Appointment`}</h1>
+            <h1>{`Hello ${user?.first_name}, Please Create an Appointment`}</h1>
             <div>
                 <h2>{`Appointment with Dr. ${doctor[doctorId]?.last_name}`}</h2>
                 <p>{`Specialty: ${doctor[doctorId]?.specialty}`}</p>
