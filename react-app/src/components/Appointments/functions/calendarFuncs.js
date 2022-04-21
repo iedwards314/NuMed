@@ -41,6 +41,7 @@ export const stringCalenderDateFunc = (apptDate) => {
 }
 
 export const userFormatCalendarDateFunc = (apptDate) => {
+    if(apptDate === undefined) return
     let res;
     let strArr = apptDate.split(' ');
     let weekDay = strArr[0];
