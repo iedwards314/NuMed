@@ -16,6 +16,11 @@ def get_appointments_patient(id):
 
     # return {'insurance_policies': [insurance_policy.to_dict() for insurance_policy in insurance_policies]}
 
+@appointment_routes.route('/<int:id>')
+def get_appointment(id):
+    appointment = Appointment.query.get(id)
+    return appointment.to_dict()
+
 @appointment_routes.route('/create', methods=['POST'])
 def create_appointment():
     data = dict(request.json)
