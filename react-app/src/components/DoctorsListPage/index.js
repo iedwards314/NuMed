@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import './styles/DoctorsList.css'
 
 const DoctorsList = () => {
     const [doctors, setDoctors] = useState([]);
@@ -13,12 +14,20 @@ const DoctorsList = () => {
       fetchData();
     }, []);
 
-    const doctorsComponents = doctors?.map((user) => {
+    console.log("doctors are...", doctors)
+
+    const doctorsComponents = doctors?.map((doctor) => {
       return (
-        <li key={user.id}>
-          <NavLink to={`/appointments/create/${user.id}`}>
-            <div className='Doctor-info-container'>
-              {`Dr. ${user.last_name}`}
+        <li key={doctor.id} className='specialty'>
+          <NavLink to={`/appointments/create/${doctor.id}`}>
+            <div className='doctor-info-container'>
+              <div className='doctor-image-container'>
+                <img className='specialty-image' src={`${doctor.image}`} alt={`Dr. {${doctor.last_name}`} />
+              </div>
+              <div className='doctor-info'>
+                <p>{`Dr. ${doctor.last_name}`}</p>
+                <p>{`Care Specialty: ${doctor.specialty}`}</p>
+              </div>
             </div>
           </NavLink>
         </li>
@@ -26,9 +35,11 @@ const DoctorsList = () => {
     });
 
     return (
-        <section className='container'>
-            <h2>Doctors List</h2>
-            <ul>{doctorsComponents}</ul>
+        <section className='container grid center grid--2--cols section-specialties'>
+            <h2 className='heading-third specialty-heading'>Choose from list of well qualified physicians to assist you</h2>
+            <div className='doctors-list-container'>
+              <ul className='doctors-list'>{doctorsComponents}</ul>
+            </div>
         </section>
     )
 }
