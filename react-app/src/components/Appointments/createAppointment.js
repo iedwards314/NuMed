@@ -7,6 +7,7 @@ import { addAppointment } from '../../store/appointments';
 import { getDoctor } from '../../store/doctors';
 import { SessionCheck } from '../../utils/user';
 import { maxDateFunc, stringCalenderDateFunc, tomorrowFunc } from './functions/calendarFuncs';
+import './styles/Appointments.css'
 
 const CreateAppointmentForm = () => {
 
@@ -87,6 +88,13 @@ const CreateAppointmentForm = () => {
         <section className='container'>
             <h1>{`Hello <Patient Name>, Please Create an Appointment`}</h1>
             <div>
+                <h2>{`Appointment with Dr. ${doctor[doctorId]?.last_name}`}</h2>
+                <p>{`Specialty: ${doctor[doctorId]?.specialty}`}</p>
+                <div className='doctor-img-container'>
+                    <img className='doctor-image' src={doctor[doctorId]?.image} alt={`Dr.${doctor[doctorId]?.last_name}`} />
+                </div>
+            </div>
+            <div>
             {hasSubmitted && errors?.map((error) => (
                 <p style={{color: 'red', margin:"0px"}}>{error}</p>
             ))}
@@ -123,12 +131,7 @@ const CreateAppointmentForm = () => {
                     <button type="submit"> Submit </button>
                 </form>
             </div>
-            <div>
-                <h2>{`Appointment with Dr. ${doctor[doctorId]?.last_name}`}</h2>
-                <p>{`Specialty: ${doctor[doctorId]?.specialty}`}</p>
-                <p>Doctor Image</p>
-                <img src={doctor[doctorId]?.image} alt={`Dr.${doctor[doctorId]?.last_name}`} />
-            </div>
+
         </section>
     )
 }

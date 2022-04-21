@@ -14,8 +14,6 @@ const DoctorsList = () => {
       fetchData();
     }, []);
 
-    console.log("doctors are...", doctors)
-
     const doctorsComponents = doctors?.map((doctor) => {
       return (
         <li key={doctor.id} className='specialty'>
@@ -35,7 +33,7 @@ const DoctorsList = () => {
     });
 
     return (
-        <section className='container grid center grid--2--cols section-specialties'>
+        <section className='container grid center grid--3--cols section-doctors'>
             <h2 className='heading-third specialty-heading'>Choose from list of well qualified physicians to assist you</h2>
             <div className='doctors-list-container'>
               <ul className='doctors-list'>{doctorsComponents}</ul>
