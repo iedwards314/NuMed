@@ -30,11 +30,12 @@ const getOne = (appointment) => ({
 })
 
 export const getAppointments = (userId) => async (dispatch) => {
+
     const response = await fetch(`/api/appointments/user/${userId}`);
     if (response.ok) {
-        const insurance_policies = await response.json();
-        dispatch(load(insurance_policies))
-        return insurance_policies
+        const appointments = await response.json();
+        dispatch(load(appointments))
+        return appointments
     }
 }
 
@@ -94,13 +95,14 @@ export const deleteAppointment = (appointment) => async (dispatch) => {
 
 const initialState = {
     appointments: {},
+    selected: {}
 }
 
 const appointmentsReducer = (state = initialState, action) => {
     let setState;
     switch (action.type) {
         case LOAD:
-            let newState = {}
+            let newState = {...state}
             const allAppointments = {};
             // console.log("action in store is...", action.appointments.appointments);
             action.appointments.appointments.forEach((appointment) => {
@@ -108,8 +110,8 @@ const appointmentsReducer = (state = initialState, action) => {
             })
             // console.log("allAppointments is...", allAppointments)
             newState = { ...state, appointments: allAppointments }
-            // console.log("new state is", newState)
-            return newState
+            setState = {...newState}
+            return setState
         case ADD_ONE:
             setState = {...state, appointments: {...state.appointments, [action.appointment.id]: action.appointment}, selected: {...state.selected}}
             return setState

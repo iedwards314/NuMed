@@ -1,12 +1,13 @@
 
+# from app.models.appointment import Appointment as AppointmeentModel
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 appointment_relation = db.Table(
-    'appointment_relation',
-    db.Column('patient_id', db.Integer, db.ForeignKey("users.id")),
-    db.Column('doctor_id', db.Integer, db.ForeignKey("users.id"))
+    'appointment_relation', db.Model.metadata,
+    db.Column('patient_id', db.Integer, db.ForeignKey("users.id"), primary_key=True),
+    db.Column('doctor_id', db.Integer, db.ForeignKey("users.id"), primary_key=True)
 )
 
 class User(db.Model, UserMixin):
@@ -31,28 +32,13 @@ class User(db.Model, UserMixin):
     insurance_policies = db.relationship("Insurance_Policy", back_populates="user", cascade="all, delete")
 
     appointments = db.relationship(
-        "Appointment",
+        "User",
         secondary="appointment_relation",
         primaryjoin=(appointment_relation.c.patient_id == id),
         secondaryjoin=(appointment_relation.c.doctor_id == id),
         backref=db.backref("doctors", lazy="dynamic"),
         lazy="dynamic"
     )
-
-    # appointment_patient = db.relationship("Appointment", backref="patient")
-    # appointment_doctor = db.relationship("User", backref="doctor")
-
-
-# class Node(Base):
-#     __tablename__ = 'node'
-#     id = Column(Integer, primary_key=True)
-#     label = Column(String)
-#     right_nodes = relationship("Node",
-#                         secondary=node_to_node,
-#                         primaryjoin=id==node_to_node.c.left_node_id,
-#                         secondaryjoin=id==node_to_node.c.right_node_id,
-#                         backref="left_nodes"
-#     )
 
     # if "sends hashed_password data"
     @property
@@ -103,7 +89,7 @@ class User(db.Model, UserMixin):
             'doctor_id': self.doctor_id,
             'image': self.image,
             'specialty': self.specialty,
-            'insurance_policies': insurance_policies_dict
+            'insurance_policies': insurance_policies_dict,
         }
 
     def to_dict_doctor(self):

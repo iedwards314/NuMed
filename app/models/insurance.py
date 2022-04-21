@@ -16,9 +16,12 @@ class Insurance_Policy(db.Model):
     # group_num: groupNum
 
     def to_dict(self):
+
         return {
             'id': self.id,
             'user_id': self.user_id,
+            'insurance_first_name': self.user.first_name,
+            'insurance_last_name': self.user.first_name,
             'insurance_co': self.insurance_co,
             'subscriber_num': self.subscriber_num,
             'group_num': self.group_num,

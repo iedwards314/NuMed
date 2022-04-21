@@ -39,3 +39,14 @@ export const stringCalenderDateFunc = (apptDate) => {
     }
     return submissionDate;
 }
+
+export const userFormatCalendarDateFunc = (apptDate) => {
+    let res;
+    let strArr = apptDate.split(' ');
+    let weekDay = strArr[0];
+    let day = strArr[1];
+    let month = strArr[2];
+    let year = strArr[3];
+    res = `${weekDay} ${month} ${day}, ${year}`
+    return res;
+}

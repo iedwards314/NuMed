@@ -6,8 +6,6 @@ const SpecialtyList = () => {
     const [doctors, setDoctors] = useState([]);
     const {specialty} = useParams() //string
 
-    console.log("The useParams specialty variable is...", specialty, "...the data type is...", typeof(specialty))
-
     useEffect(() => {
       async function fetchData() {
         const response = await fetch('/api/users/');

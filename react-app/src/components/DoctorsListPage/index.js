@@ -8,9 +8,7 @@ const DoctorsList = () => {
       async function fetchData() {
         const response = await fetch('/api/doctors/');
         const responseData = await response.json();
-        console.log("response from route doctors is...", responseData)
         setDoctors(responseData.doctors);
-        console.log("response from route doctors responseData.users is...", responseData.doctors)
       }
       fetchData();
     }, []);

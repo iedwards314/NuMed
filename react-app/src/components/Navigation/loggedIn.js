@@ -9,6 +9,11 @@ const LoggedInNav = () => {
   return (
     <nav className="main-nav">
       <ul className="main-nav-list">
+      <li>
+          <NavLink className="main-nav-link" to={`/appointments/user/${user.id}`} exact={true} activeClassName="active">
+            My Appointments
+          </NavLink>
+        </li>
         <li>
           <NavLink className="main-nav-link" to={`/users/${user.id}`} exact={true} activeClassName="active">
             Profile

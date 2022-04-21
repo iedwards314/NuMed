@@ -3,18 +3,24 @@ import InsuranceButtons from "./functions/insuranceButtons";
 import { getInsurancePolicies } from "../../store/insurance"
 import './styles/Insurance.css'
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { SessionCheck } from "../../utils/user";
+import { useParams } from "react-router-dom";
 
 
-const GetAllInsurance = ({user}) => {
+const GetAllInsurance = () => {
 
     const dispatch = useDispatch();
-    const insuranceObj = user?.insurance_policies;
+    const user = SessionCheck();
+    const {userId} = useParams();
+    const insurance = useSelector(state => state.insurance_policies)
+    // console.log("state in get insurance", insurance);
+    const insuranceObj = insurance?.insurance_policies;
     const insuranceArr = Object.values(insuranceObj);
 
-    useEffect(()=>{
-        dispatch(getInsurancePolicies(user.id))
-    }, [dispatch, user.id])
+    useEffect (() => {
+        dispatch(getInsurancePolicies(userId))
+    }, [dispatch, userId])
 
     const insurancePolicyMap = () => {
         if(insuranceArr.length > 0){
