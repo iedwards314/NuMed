@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { editAppointment, getAppointment, getAvailability } from '../../store/appointments';
-import { getDoctor } from '../../store/doctors';
+// import { getDoctor } from '../../store/doctors';
 import { SessionCheck } from '../../utils/user';
 import { maxDateFunc, stringCalenderDateFunc, tomorrowFunc } from './functions/calendarFuncs';
 import { apptTimeFunc, dbDateFrontendFunc } from './functions/apptTimeFunc';
@@ -54,7 +54,7 @@ const UpdateAppointmentForm = () => {
     useEffect( () => {
         dispatch(getAppointment(apptId))
         dispatch(getAvailability(stringCalenderDateFunc(apptDate), doctorId))
-    }, [dispatch, apptDate, appointmentTime, doctorId, apptDescription, errors])
+    }, [dispatch, apptId, apptDate, appointmentTime, doctorId, apptDescription, errors])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
