@@ -137,6 +137,26 @@ ul {
     margin-right: 1.6rem !important;
 }
 
-.marin-bottom-md{
+.margin-bottom-md{
     margin-bottom: 4.8rem !important;
+}
+
+.margin-bottom-sm {
+    margin-bottom: 3.2rem !important;
+}
+
+/* forms */
+.form-input{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-grid{
+    justify-content: center;
+}
+
+/* Errors */
+.errors {
+    color: red;
+    margin: 0px;
 }

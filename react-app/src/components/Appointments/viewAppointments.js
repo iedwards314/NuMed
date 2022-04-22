@@ -81,7 +81,7 @@ const GetAllAppointments = () => {
           <>
           <section className="container">
               <h2 className="heading-secondary">{`Hello ${apptsArr[0]?.patient_info.patient_first_name}`}</h2>
-              <p className="heading-third marin-bottom-md">Your appointments are scheduled for the following...</p>
+              <p className="heading-third margin-bottom-md">Your appointments are scheduled for the following...</p>
           <ul>
 
           {apptsArr?.map((appt, idx)=>(

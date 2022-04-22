@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
+import './styles/signup.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -65,7 +66,7 @@ const SignUpForm = () => {
         "Please enter a state between 1 and 50 characters in length "
       );
     }
-    if (phone.length <= 0 || phone.length > 50) {
+    if (phone.length <= 0 || phone.length > 15) {
       newErrors.push(
         "Please enter a phone number betwee 1 and 15 characters in length "
       );
@@ -154,13 +155,15 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <>
+    <section className="section-signup container grid form-grid center-text">
+    <form className="sign-up-container" onSubmit={onSignUp}>
+      <div className='errors margin-bottom-md'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className="form-input">
         <label>First Name</label>
         <input
           type="text"
@@ -169,7 +172,7 @@ const SignUpForm = () => {
           value={first_name}
         ></input>
       </div>
-      <div>
+      <div className="form-input">
         <label>Last Name</label>
         <input
           type="text"
@@ -178,7 +181,7 @@ const SignUpForm = () => {
           value={last_name}
         ></input>
       </div>
-      <div>
+      <div className="form-input">
         <label>User Name</label>
         <input
           type="text"
@@ -187,7 +190,7 @@ const SignUpForm = () => {
           value={username}
         ></input>
       </div>
-      <div>
+      <div className="form-input">
         <label>Email</label>
         <input
           type="email"
@@ -196,7 +199,7 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <div>
+      <div className="form-input">
         <label>Password</label>
         <input
           type="password"
@@ -205,7 +208,7 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
-      <div>
+      <div className="form-input">
         <label>Repeat Password</label>
         <input
           type="password"
@@ -215,7 +218,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <div>
+      <div className="form-input">
         <label>Address</label>
         <input
           type="text"
@@ -224,7 +227,7 @@ const SignUpForm = () => {
           value={address}
         ></input>
       </div>
-      <div>
+      <div className="form-input">
         <label>City</label>
         <input
           type="text"
@@ -233,7 +236,7 @@ const SignUpForm = () => {
           value={city}
         ></input>
       </div>
-      <div>
+      <div className="form-input">
         <label>State</label>
         <input
           type="text"
@@ -242,7 +245,7 @@ const SignUpForm = () => {
           value={state}
         ></input>
       </div>
-      <div>
+      <div className="form-input margin-bottom-sm">
         <label>Phone Number</label>
         <input
           type="text"
@@ -255,6 +258,8 @@ const SignUpForm = () => {
         Become a Patient
       </button>
     </form>
+    </section>
+    </>
   );
 };
 
