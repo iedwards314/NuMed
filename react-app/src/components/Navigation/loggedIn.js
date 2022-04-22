@@ -16,7 +16,7 @@ const LoggedInNav = () => {
         </li>
         <li>
           <NavLink className="main-nav-link" to={`/users/${user.id}`} exact={true} activeClassName="active">
-            Profile
+            My Profile
           </NavLink>
         </li>
         <li>
