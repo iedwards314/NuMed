@@ -42,7 +42,13 @@ const GetAllInsurance = () => {
                 </ul>
             )
         } else {
-            return null
+            return (
+                <>
+                    <div>
+                        <p>We have no insurance on file for you. Payment will be expected at time of service.</p>
+                    </div>
+                </>
+            )
         }
     }
 

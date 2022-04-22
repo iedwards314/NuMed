@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './styles/login.css';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -36,14 +37,14 @@ const LoginForm = () => {
 
   return (
     <>
-    <section className='section-login container'>
-    <form onSubmit={onLogin}>
+    <section className='section-login container grid form-grid center-text'>
+    <form className='login-container' onSubmit={onLogin}>
       <div className='errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className="form-input">
         <label htmlFor='email'>Email</label>
         <input
           name='email'
@@ -53,7 +54,7 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
       </div>
-      <div>
+      <div className="form-input margin-bottom-sm">
         <label htmlFor='password'>Password</label>
         <input
           name='password'
@@ -62,11 +63,11 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
+      </div>
         <button className="btn btn--form" type='submit'>I Need a Doctor</button>
         <div className='login-tosignup'>
           <p className="demo-login-text" style={{ margin: "0px 5px 0px 0px", padding: "20px 0px" }}>Want to try the site?</p>
           <p className="main-nav-link" onClick={demoLogin} style={{ color: "#1f6fe5", cursor: "pointer" }}>Demo Patient Login</p>
-      </div>
       </div>
     </form>
     </section>

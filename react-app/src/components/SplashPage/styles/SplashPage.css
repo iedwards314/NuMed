@@ -93,4 +93,20 @@
     border-top: 1px solid #eee;
     background-color: black;
     color: #fff;
+    font-size: 1.2rem;
+}
+
+.author-info-column {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.logo-github{
+    text-decoration: none;
+    color: #fff;
+}
+
+.logo-linkedIn{
+    text-decoration: none;
+    color: #fff;
 }

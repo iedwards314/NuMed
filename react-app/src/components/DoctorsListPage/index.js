@@ -33,9 +33,9 @@ const DoctorsList = () => {
     });
 
     return (
-        <section className='container grid center grid--3--cols section-doctors'>
-            <h2 className='heading-third specialty-heading'>Choose from list of well qualified physicians to assist you</h2>
+        <section className='container center-text section-doctors'>
             <div className='doctors-list-container'>
+            <h2 className='heading-third'>Choose from list of well qualified physicians to assist you</h2>
               <ul className='doctors-list'>{doctorsComponents}</ul>
             </div>
         </section>
