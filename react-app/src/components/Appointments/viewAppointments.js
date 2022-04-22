@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { SessionCheck } from "../../utils/user";
 import { NavLink, useParams } from "react-router-dom";
 import { getAppointments, deleteAppointment } from "../../store/appointments";
-import './styles/Appointments.css'
-import { stringCalenderDateFunc } from "./functions/calendarFuncs";
+import './styles/Appointments.css';
 import { dbDateFrontendFunc } from "./functions/apptTimeFunc";
 
 const GetAllAppointments = () => {
@@ -59,13 +58,9 @@ const GetAllAppointments = () => {
 
   const editDeleteButtons = (appt) => {
     const today = new Date()
-    const todayStr = stringCalenderDateFunc(today)
+    const aptDateObj = new Date(appt?.start_date)
 
-    console.log(appt?.start_date === `${todayStr}`, "appt.start_date is...", appt?.start_date)
-    console.log()
-
-    if(appt?.start_date !== todayStr){
-      console.log("Today is not the appt date, you can have reschedule buttons")
+    if(aptDateObj > today){
       return (
         <>
             <NavLink to={`/appointments/edit/${appt.id}`}>
@@ -75,7 +70,6 @@ const GetAllAppointments = () => {
         </>
       )
     } else {
-      console.log("Today is the appt date, you do not get to have reschedule buttons")
       return (
         <p>This event cannot be rescheduled</p>
       )
