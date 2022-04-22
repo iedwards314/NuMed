@@ -13,6 +13,15 @@ def get_doctors():
     doctors = User.query.filter(User.doctor_id != None).all()
     return {'doctors': [doctor.to_dict_doctor() for doctor in doctors]}
 
+@doctor_routes.route('/category/<specialty>')
+def get_doctors_specialty(specialty):
+    """
+    Returns a list of doctors for the doctors page
+
+    """
+    doctors = User.query.filter(User.specialty == specialty).all()
+    return {'doctors': [doctor.to_dict_doctor() for doctor in doctors]}
+
 @doctor_routes.route('/<id>')
 def get_one_doctor(id):
     """
