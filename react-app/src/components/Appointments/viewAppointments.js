@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { SessionCheck } from "../../utils/user";
 import { NavLink, useParams } from "react-router-dom";
 import { getAppointments, deleteAppointment } from "../../store/appointments";
-import './styles/Appointments.css'
+import './styles/Appointments.css';
 import { dbDateFrontendFunc } from "./functions/apptTimeFunc";
 
 const GetAllAppointments = () => {
@@ -54,14 +54,34 @@ const GetAllAppointments = () => {
     // if (destroyed?.id) {
     //     history.push(`/users/${userId}`);
     // }
-}
+  }
+
+  const editDeleteButtons = (appt) => {
+    const today = new Date()
+    const aptDateObj = new Date(appt?.start_date)
+
+    if(aptDateObj > today){
+      return (
+        <>
+            <NavLink to={`/appointments/edit/${appt.id}`}>
+              <button>edit</button>
+            </NavLink>
+            <button onClick={(e) => destroyAppt(e, appt.id)}>delete</button>
+        </>
+      )
+    } else {
+      return (
+        <p>This event cannot be rescheduled</p>
+      )
+    }
+  }
 
   const apptMap = () => {
       return(
           <>
           <section className="container">
               <h2 className="heading-secondary">{`Hello ${apptsArr[0]?.patient_info.patient_first_name}`}</h2>
-              <p className="heading-third marin-bottom-md">Your appointments are scheduled for the following...</p>
+              <p className="heading-third margin-bottom-md">Your appointments are scheduled for the following...</p>
           <ul>
 
           {apptsArr?.map((appt, idx)=>(
@@ -75,10 +95,7 @@ const GetAllAppointments = () => {
                     <p>{`Specialty: ${appt.doctor_info?.dr_specialty}`}</p>
                     <p>{`Date: ${(appt.start_date)}`}</p>
                     <p>{`Start time: ${dbDateFrontendFunc(appt.start_time)}`}</p>
-                    <NavLink to={`/appointments/edit/${appt.id}`}>
-                      <button>edit</button>
-                    </NavLink>
-                    <button onClick={(e) => destroyAppt(e, appt.id)}>delete</button>
+                    {editDeleteButtons(appt)}
                 </div>
             </li>
           ))}
