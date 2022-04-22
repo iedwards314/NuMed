@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAppointments, deleteAppointment } from "../../store/appointments";
 import './styles/Appointments.css'
-import { userFormatCalendarDateFunc } from "./functions/calendarFuncs";
+import { dbDateFrontendFunc } from "./functions/apptTimeFunc";
 
 const GetAllAppointments = () => {
   // const user = SessionCheck();
@@ -73,8 +73,8 @@ const GetAllAppointments = () => {
                     <p>Dr. {appt.doctor_info?.dr_last_name}</p>
                     <p>{appt.doctor_info?.dr_specialty}</p>
                     <p>{`Specialty: ${appt.doctor_info?.dr_specialty}`}</p>
-                    <p>{`Date: ${userFormatCalendarDateFunc(appt.start_date)}`}</p>
-                    <p>{`Start time: ${appt.start_time} :00 AM CT`}</p>
+                    <p>{`Date: ${(appt.start_date)}`}</p>
+                    <p>{`Start time: ${dbDateFrontendFunc(appt.start_time)}`}</p>
                     <NavLink to={`/appointments/edit/${appt.id}`}>
                       <button>edit</button>
                     </NavLink>

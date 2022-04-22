@@ -33,7 +33,7 @@ def upgrade():
     sa.Column('patient_id', sa.Integer(), nullable=False),
     sa.Column('doctor_id', sa.Integer(), nullable=False),
     sa.Column('start_time', sa.Integer(), nullable=False),
-    sa.Column('start_date', sa.Date(), nullable=False),
+    sa.Column('start_date', sa.String(), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('created_at', sa.Date(), nullable=False),
     sa.Column('updated_at', sa.Date(), nullable=False),

@@ -9,7 +9,7 @@ class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     patient_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     doctor_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    start_date = db.Column(db.DateTime, nullable=False)
+    start_date = db.Column(db.String, nullable=False)
     start_time = db.Column(db.Integer, nullable=False)
     description = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.now())
@@ -48,3 +48,10 @@ class Appointment(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
         }
+
+    def to_dict_availability(self):
+        return {
+            'doctor_id': self.doctor_id,
+            'start_date': self.start_date,
+            'start_time': self.start_time,
+            }

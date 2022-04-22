@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import User, db
+from app.models import User, appointment, db, Appointment
 from sqlalchemy import any_, null, or_
 
 doctor_routes = Blueprint('doctors', __name__)
