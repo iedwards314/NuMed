@@ -25,10 +25,19 @@ def seed_Appointments():
         description= "Stress Management visit"
         )
 
+    appointment4 = Appointment(
+        patient_id= 1,
+        doctor_id= 5,
+        start_time= 9,
+        start_date= "2022-04-17",
+        description= "Normal care visit"
+        )
+
 
     db.session.add(appointment1)
     db.session.add(appointment2)
     db.session.add(appointment3)
+    db.session.add(appointment4)
 
     db.session.commit()
 
