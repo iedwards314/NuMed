@@ -3,8 +3,16 @@ export const tomorrowFunc = () => {
     // configuring date logic
     const today = new Date()
     const tomorrow = new Date(today)
-    // compute tomorrow
-    tomorrow.setDate(tomorrow.getDate() + 1)
+    // compute tomorrow (skip weekends)
+    if(tomorrow.getDay() === 5){
+        tomorrow.setDate(tomorrow.getDate() + 3)
+    }
+    else if(tomorrow.getDay() === 6){
+        tomorrow.setDate(tomorrow.getDate() + 2)
+    }
+    else {
+        tomorrow.setDate(tomorrow.getDate() + 1)
+    }
 
     //convert to local time
     const tomorrowStr = new Date(tomorrow.toLocaleDateString('en-US'));

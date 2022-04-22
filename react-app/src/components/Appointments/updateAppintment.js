@@ -2,13 +2,12 @@ import React, {useEffect, useState} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { editAppointment, getAppointment, getAvailability } from '../../store/appointments';
 import { getDoctor } from '../../store/doctors';
 import { SessionCheck } from '../../utils/user';
 import { maxDateFunc, stringCalenderDateFunc, tomorrowFunc } from './functions/calendarFuncs';
-import { apptTimeFunc } from './functions/apptTimeFunc';
-
+import { apptTimeFunc, dbDateFrontendFunc } from './functions/apptTimeFunc';
 
 const UpdateAppointmentForm = () => {
 
@@ -103,7 +102,6 @@ const UpdateAppointmentForm = () => {
             return(
                 <>
                     {/* {docAvailArr?.map((aptTime, idx) => <p>{aptTime[idx].start_time}</p>)} */}
-                    <h1>this is working</h1>
                     <select value={appointmentTime} onChange={selectAppointmentTime}>
                             <option value="09">9:00 AM to 10:00 AM</option>
                             <option value="10">10:00 AM to 11:00 AM</option>
@@ -143,6 +141,8 @@ const UpdateAppointmentForm = () => {
                         tileDisabled={({ date }) => date.getDay()=== 0 || date.getDay() === 6}
                         calendarType={"US"}
                     />
+                    <p>{`Your currently scheduled for ${userApt?.start_date} at ${dbDateFrontendFunc(userApt?.start_time)}`}</p>
+                    <p>Please select your updated appointment data and time below:</p>
                     <label>
                         Start Time (all times are Central Time)
                     </label>
@@ -158,6 +158,9 @@ const UpdateAppointmentForm = () => {
 
                     <button type="submit"> Submit </button>
                 </form>
+                <NavLink to={`/appointments/user/${user.id}`} exact={true}>
+                        Cancel
+                </NavLink>
             </div>
             <div>
                 <h2>{`Appointment with Dr. ${doctor?.dr_last_name}`}</h2>

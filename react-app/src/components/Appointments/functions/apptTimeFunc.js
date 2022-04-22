@@ -45,10 +45,17 @@ export const apptTimeFunc = (docAvailArr) => {
     }
 }
 
-{/* <option value="09">9:00 AM to 10:00 AM</option>
-<option value="10">10:00 AM to 11:00 AM</option>
-<option value="11">11:00 AM to 12:00 PM</option>
-<option value="13">1:00 PM to 2:00 PM</option>
-<option value="14">2:00 PM to 3:00 PM</option>
-<option value="15">3:00 PM to 4:00 PM</option>
-<option value="16">4:00 PM to 5:00 PM</option> */}
+export const dbDateFrontendFunc = (time) => {
+    const schedObj = {
+        "9": "9:00 AM CT",
+        "10": "10:00 AM CT",
+        "11": "11:00 AM CT",
+        "13": "1:00 PM CT",
+        "14": "2:00 PM CT",
+        "15": "3:00 PM CT",
+        "16": "4:00 PM CT"
+    }
+    let res = schedObj[time]
+    return res;
+
+}

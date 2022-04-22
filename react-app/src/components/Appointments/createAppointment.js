@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { addAppointment, getAvailability } from '../../store/appointments';
 import { getDoctor } from '../../store/doctors';
 import { SessionCheck } from '../../utils/user';
@@ -165,6 +165,9 @@ const CreateAppointmentForm = () => {
 
                     <button type="submit"> Submit </button>
                 </form>
+                    <NavLink to={`/appointments/user/${user.id}`} exact={true}>
+                        Cancel
+                    </NavLink>
             </div>
 
         </section>
