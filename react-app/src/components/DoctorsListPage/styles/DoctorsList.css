@@ -7,3 +7,12 @@
 .doctors-list-container{
 
 }
+
+.doctor-image-container{
+    width: 40rem;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+}

@@ -168,6 +168,7 @@ const SignUpForm = () => {
         <input
           type="text"
           name="first_name"
+          placeholder="First Name"
           onChange={updateFirstName}
           value={first_name}
         ></input>
@@ -177,6 +178,7 @@ const SignUpForm = () => {
         <input
           type="text"
           name="last_name"
+          placeholder="Last Name"
           onChange={updateLastName}
           value={last_name}
         ></input>
@@ -186,6 +188,7 @@ const SignUpForm = () => {
         <input
           type="text"
           name="username"
+          placeholder="userame"
           onChange={updateUsername}
           value={username}
         ></input>
@@ -195,6 +198,7 @@ const SignUpForm = () => {
         <input
           type="email"
           name="email"
+          placeholder="email"
           onChange={updateEmail}
           value={email}
         ></input>

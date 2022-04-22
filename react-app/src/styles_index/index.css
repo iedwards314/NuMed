@@ -149,6 +149,7 @@ ul {
 .form-input{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1.2rem;
 }
 
 .form-grid{
