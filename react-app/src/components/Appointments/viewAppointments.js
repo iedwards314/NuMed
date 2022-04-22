@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAppointments, deleteAppointment } from "../../store/appointments";
 import './styles/Appointments.css'
+import { stringCalenderDateFunc } from "./functions/calendarFuncs";
 import { dbDateFrontendFunc } from "./functions/apptTimeFunc";
 
 const GetAllAppointments = () => {
@@ -54,7 +55,32 @@ const GetAllAppointments = () => {
     // if (destroyed?.id) {
     //     history.push(`/users/${userId}`);
     // }
-}
+  }
+
+  const editDeleteButtons = (appt) => {
+    const today = new Date()
+    const todayStr = stringCalenderDateFunc(today)
+
+    console.log(appt?.start_date === `${todayStr}`, "appt.start_date is...", appt?.start_date)
+    console.log()
+
+    if(appt?.start_date !== todayStr){
+      console.log("Today is not the appt date, you can have reschedule buttons")
+      return (
+        <>
+            <NavLink to={`/appointments/edit/${appt.id}`}>
+              <button>edit</button>
+            </NavLink>
+            <button onClick={(e) => destroyAppt(e, appt.id)}>delete</button>
+        </>
+      )
+    } else {
+      console.log("Today is the appt date, you do not get to have reschedule buttons")
+      return (
+        <p>This event cannot be rescheduled</p>
+      )
+    }
+  }
 
   const apptMap = () => {
       return(
@@ -75,10 +101,7 @@ const GetAllAppointments = () => {
                     <p>{`Specialty: ${appt.doctor_info?.dr_specialty}`}</p>
                     <p>{`Date: ${(appt.start_date)}`}</p>
                     <p>{`Start time: ${dbDateFrontendFunc(appt.start_time)}`}</p>
-                    <NavLink to={`/appointments/edit/${appt.id}`}>
-                      <button>edit</button>
-                    </NavLink>
-                    <button onClick={(e) => destroyAppt(e, appt.id)}>delete</button>
+                    {editDeleteButtons(appt)}
                 </div>
             </li>
           ))}
