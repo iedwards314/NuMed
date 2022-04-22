@@ -21,6 +21,20 @@ def get_appointment(id):
     appointment = Appointment.query.get(id)
     return appointment.to_dict()
 
+
+@appointment_routes.route('/availability/<start_date>/doctor/<int:doctor_id>')
+def get_one_doctor_availability(start_date, doctor_id):
+    """
+    Returns a daily schedule for a doctor
+    """
+
+    doc_sched = Appointment.query.filter(Appointment.start_date == start_date and Appointment.doctor_id == doctor_id)
+
+    res = {'availability': [appt.to_dict_availability() for appt in doc_sched]}
+
+
+    return res
+
 @appointment_routes.route('/create', methods=['POST'])
 def create_appointment():
     data = dict(request.json)

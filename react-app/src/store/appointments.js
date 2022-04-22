@@ -1,5 +1,6 @@
 const LOAD = "appointments/LOAD"
 const GET_ONE="appointments/GET_ONE"
+const GET_AVAIL="appointments/GET_AVAIL"
 const ADD_ONE = "appointments/ADD_ONE"
 const DELETE_ONE = "appointments/DELETE_ONE"
 const EDIT_ONE = "appointments/EDIT_ONE"
@@ -29,6 +30,11 @@ const getOne = (appointment) => ({
     appointment
 })
 
+const getAvail = (schedule) => ({
+    type: GET_AVAIL,
+    schedule
+})
+
 export const getAppointments = (userId) => async (dispatch) => {
 
     const response = await fetch(`/api/appointments/user/${userId}`);
@@ -45,6 +51,16 @@ export const getAppointment = (appointmentId) => async (dispatch) => {
         const appointment = await response.json();
         dispatch(getOne(appointment))
         return appointment
+    }
+}
+
+export const getAvailability = (start_date, doctor_id) => async (dispatch) => {
+    // console.log("start date in store is...", start_date)
+    const response = await fetch(`/api/appointments/availability/${start_date}/doctor/${doctor_id}`)
+    if (response.ok) {
+        const schedule = await response.json();
+        dispatch(getAvail(schedule))
+        return schedule
     }
 }
 
@@ -95,7 +111,8 @@ export const deleteAppointment = (appointment) => async (dispatch) => {
 
 const initialState = {
     appointments: {},
-    selected: {}
+    selected: {},
+    availability: {},
 }
 
 const appointmentsReducer = (state = initialState, action) => {
@@ -126,6 +143,11 @@ const appointmentsReducer = (state = initialState, action) => {
         case GET_ONE:
             setState = {...state, appointments: {...state.appointments}, selected: { [action.appointment.id]: {...action.appointment}}}
             return setState
+        case GET_AVAIL:
+            // console.log("action.schedule is...", action.schedule)
+            setState = {...state, appointments: {...state.appointments}, selected: {...state.selected}, availability: {...action.schedule}}
+            return setState
+
         default:
             return state;
     }
