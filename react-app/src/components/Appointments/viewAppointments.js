@@ -125,16 +125,25 @@ const GetAllAppointments = () => {
     dispatch(getAppointments(userId));
 }, [dispatch, userId])
 
+  if(userCheck){
+    if(apptsArr && apptsArr.length > 0){
 
-if(apptsArr && apptsArr.length > 0){
-
+        return (
+          <>
+          {apptMap()}
+          </>
+        );
+    } else {
+      return (
+        <>
+        <h2>You have no appointments scheduled</h2>
+        </>
+      )}
+  } else {
     return (
-      <>
-      {apptMap()}
-      </>
-    );
-} else return ("hello")
-
+      <h2 className="center-text">Unauthorized access 401</h2>
+    )
+  }
 };
 
 export default GetAllAppointments;
