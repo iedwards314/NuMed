@@ -164,27 +164,29 @@ const SignUpForm = () => {
         ))}
       </div>
       <div className="form-input">
-        <label>First Name</label>
+        <label>First Name*</label>
         <input
           type="text"
           name="first_name"
-          placeholder="First Name"
+          placeholder="first name (letters only)"
+          pattern="[a-zA-Z]+"
           onChange={updateFirstName}
           value={first_name}
         ></input>
       </div>
       <div className="form-input">
-        <label>Last Name</label>
+        <label>Last Name*</label>
         <input
           type="text"
           name="last_name"
-          placeholder="Last Name"
+          placeholder="last name(letters only)"
+          pattern="[a-zA-Z]+"
           onChange={updateLastName}
           value={last_name}
         ></input>
       </div>
       <div className="form-input">
-        <label>User Name</label>
+        <label>Username*</label>
         <input
           type="text"
           name="username"
@@ -194,7 +196,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div className="form-input">
-        <label>Email</label>
+        <label>Email*</label>
         <input
           type="email"
           name="email"
@@ -208,56 +210,66 @@ const SignUpForm = () => {
         <input
           type="password"
           name="password"
+          placeholder="password"
           onChange={updatePassword}
           value={password}
         ></input>
       </div>
       <div className="form-input">
-        <label>Repeat Password</label>
+        <label>Repeat Password*</label>
         <input
           type="password"
           name="repeat_password"
+          placeholder="confirm password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
         ></input>
       </div>
       <div className="form-input">
-        <label>Address</label>
+        <label>Address*</label>
         <input
           type="text"
           name="address"
+          placeholder="address"
           onChange={updateAddress}
           value={address}
         ></input>
       </div>
       <div className="form-input">
-        <label>City</label>
+        <label>City*</label>
         <input
           type="text"
           name="city"
+          placeholder="city (letters only)"
+          pattern="[a-zA-Z]+"
           onChange={updateCity}
           value={city}
         ></input>
       </div>
       <div className="form-input">
-        <label>State</label>
+        <label>State*</label>
         <input
           type="text"
           name="state"
+          placeholder="state (letters only)"
+          pattern="[a-zA-Z]+"
           onChange={updateState}
           value={state}
         ></input>
       </div>
       <div className="form-input margin-bottom-sm">
-        <label>Phone Number</label>
+        <label>Phone Number*</label>
         <input
           type="text"
           name="phone"
+          placeholder="phone (numbers only)"
+          pattern="[0-9]{1,15}"
           onChange={updatePhone}
           value={phone}
         ></input>
       </div>
+      <p className="margin-bottom-sm">*All fields are required for submission</p>
       <button className="btn btn--form" type="submit">
         Become a Patient
       </button>
