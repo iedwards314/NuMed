@@ -156,6 +156,25 @@ ul {
     justify-content: center;
 }
 
+/* Unauthorized Access */
+.section-unauthorized-access {
+    padding: 4.8rem 0 9.6rem 0;
+    background-color: #014989;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.unathorized-header{
+    color: #fff;
+}
+
+.unathorized-image{
+    height: 25rem;
+    width: 40rem;
+    border-radius: 10px;
+}
+
 /* Errors */
 .errors {
     color: red;

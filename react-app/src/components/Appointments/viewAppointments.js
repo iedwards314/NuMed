@@ -6,6 +6,7 @@ import { getAppointments, deleteAppointment } from "../../store/appointments";
 import './styles/Appointments.css';
 import { dbDateFrontendFunc } from "./functions/apptTimeFunc";
 import { UserCheck, SessionCheck } from "../../utils/user";
+import './styles/Appointments.css'
 
 const GetAllAppointments = () => {
   // const user = SessionCheck();
@@ -108,18 +109,15 @@ const GetAllAppointments = () => {
       )
     } else {
       return (
-        <h2 className="center-text">Unauthorized access 401</h2>
+        <section className="section-unauthorized-access">
+          <div className="center-text">
+            <h2 className="heading-secondary unathorized-header">Unauthorized access 401</h2>
+            <img className="unathorized-image" src="https://images.unsplash.com/photo-1612943680768-d82060323fd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzl8fGRvY3RvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Disappointed doctor" />
+          </div>
+        </section>
       )
     }
   }
-
-//   useEffect(() => {
-//     (async () => {
-//       const response = await fetch(`/api/appointments/user/${userId}`);
-//       const aptList = await response.json();
-//       setAppts(aptList);
-//     })();
-//   }, [dispatch, userId]);
 
   useEffect(() => {
     dispatch(getAppointments(userId));
@@ -136,12 +134,22 @@ const GetAllAppointments = () => {
     } else {
       return (
         <>
-        <h2>You have no appointments scheduled</h2>
+          <section className="section-no-appts center-text">
+            <div className="no-appts-container">
+              <h2 className="heading-secondary no-appts-header">You have no appointments scheduled</h2>
+              <img className="no-appts-img" src="https://images.unsplash.com/photo-1631217871099-88310a909a32?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njd8fGRvY3RvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Staff helping patient" />
+            </div>
+          </section>
         </>
       )}
   } else {
     return (
-      <h2 className="center-text">Unauthorized access 401</h2>
+    <section className="section-unauthorized-access">
+      <div className="center-text">
+        <h2 className="heading-secondary unathorized-header">Unauthorized access 401</h2>
+        <img className="unathorized-image" src="https://images.unsplash.com/photo-1612943680768-d82060323fd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzl8fGRvY3RvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Disappointed doctor" />
+      </div>
+    </section>
     )
   }
 };

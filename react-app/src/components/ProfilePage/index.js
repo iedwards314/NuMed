@@ -47,7 +47,12 @@ const ProfilePage = () => {
     }
     else{
         return (
-            <h2 className="center-text">Unauthorized access 401</h2>
+            <section className="section-unauthorized-access">
+            <div className="center-text">
+              <h2 className="heading-secondary unathorized-header">Unauthorized access 401</h2>
+              <img className="unathorized-image" src="https://images.unsplash.com/photo-1612943680768-d82060323fd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzl8fGRvY3RvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Disappointed doctor" />
+            </div>
+          </section>
         )
     }
 
