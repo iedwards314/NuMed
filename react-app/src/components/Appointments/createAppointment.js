@@ -169,7 +169,7 @@ const CreateAppointmentForm = () => {
                     <button type="submit"> Submit </button>
                 </form>
                     <NavLink to={`/appointments/user/${user.id}`} exact={true}>
-                        Cancel
+                        <button>Cancel</button>
                     </NavLink>
             </div>
 

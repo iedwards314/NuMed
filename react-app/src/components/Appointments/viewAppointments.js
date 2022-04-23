@@ -1,18 +1,20 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { SessionCheck } from "../../utils/user";
 import { NavLink, useParams } from "react-router-dom";
 import { getAppointments, deleteAppointment } from "../../store/appointments";
 import './styles/Appointments.css';
 import { dbDateFrontendFunc } from "./functions/apptTimeFunc";
+import { UserCheck, SessionCheck } from "../../utils/user";
 
 const GetAllAppointments = () => {
   // const user = SessionCheck();
   // console.log("user is...", user)
   const dispatch = useDispatch();
 //   const [appts, setAppts] = useState({});
+  const user = SessionCheck();
   const { userId } = useParams();
+  const userCheck = UserCheck(user, userId);
   const state = useSelector(state => state?.appointments.appointments)
   console.log("state GetAllApointments...", state);
   const apptsObj = useSelector((state) => state?.appointments);
@@ -20,7 +22,7 @@ const GetAllAppointments = () => {
   if(apptsObj){
       apptsArr = Object.values(Object.values(apptsObj)[0])
   }
-  console.log("appts...", apptsArr)
+  // console.log("appts...", apptsArr)
 
   //apptsArr[index][key] where appt[idx+1]
 
@@ -77,6 +79,7 @@ const GetAllAppointments = () => {
   }
 
   const apptMap = () => {
+    if(userCheck){
       return(
           <>
           <section className="container">
@@ -103,6 +106,11 @@ const GetAllAppointments = () => {
           </section>
           </>
       )
+    } else {
+      return (
+        <h2 className="center-text">Unauthorized access 401</h2>
+      )
+    }
   }
 
 //   useEffect(() => {

@@ -115,9 +115,8 @@ const UpdateAppointmentForm = () => {
         } else {
             return (
                 <>
-                    <p>true</p>
                     <select value={appointmentTime} required onChange={selectAppointmentTime}>
-                        <option value="" selected disabled hidden>Choose Here for Appointment time</option>
+                        <option value="" selected disabled hidden>Choose Here for the Updated Appointment time</option>
                         {apptTimeFunc(docAvailArr)}
                     </select>
                 </>
@@ -159,7 +158,7 @@ const UpdateAppointmentForm = () => {
                     <button type="submit"> Submit </button>
                 </form>
                 <NavLink to={`/appointments/user/${user.id}`} exact={true}>
-                        Cancel
+                    <button>Cancel</button>
                 </NavLink>
             </div>
             <div>
