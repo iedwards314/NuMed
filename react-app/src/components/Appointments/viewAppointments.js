@@ -1,18 +1,21 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { SessionCheck } from "../../utils/user";
 import { NavLink, useParams } from "react-router-dom";
 import { getAppointments, deleteAppointment } from "../../store/appointments";
 import './styles/Appointments.css';
 import { dbDateFrontendFunc } from "./functions/apptTimeFunc";
+import { UserCheck, SessionCheck } from "../../utils/user";
+import './styles/Appointments.css'
 
 const GetAllAppointments = () => {
   // const user = SessionCheck();
   // console.log("user is...", user)
   const dispatch = useDispatch();
 //   const [appts, setAppts] = useState({});
+  const user = SessionCheck();
   const { userId } = useParams();
+  const userCheck = UserCheck(user, userId);
   const state = useSelector(state => state?.appointments.appointments)
   console.log("state GetAllApointments...", state);
   const apptsObj = useSelector((state) => state?.appointments);
@@ -20,7 +23,7 @@ const GetAllAppointments = () => {
   if(apptsObj){
       apptsArr = Object.values(Object.values(apptsObj)[0])
   }
-  console.log("appts...", apptsArr)
+  // console.log("appts...", apptsArr)
 
   //apptsArr[index][key] where appt[idx+1]
 
@@ -77,6 +80,7 @@ const GetAllAppointments = () => {
   }
 
   const apptMap = () => {
+    if(userCheck){
       return(
           <>
           <section className="container">
@@ -103,30 +107,51 @@ const GetAllAppointments = () => {
           </section>
           </>
       )
+    } else {
+      return (
+        <section className="section-unauthorized-access">
+          <div className="center-text">
+            <h2 className="heading-secondary unathorized-header">Unauthorized access 401</h2>
+            <img className="unathorized-image" src="https://images.unsplash.com/photo-1612943680768-d82060323fd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzl8fGRvY3RvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Disappointed doctor" />
+          </div>
+        </section>
+      )
+    }
   }
-
-//   useEffect(() => {
-//     (async () => {
-//       const response = await fetch(`/api/appointments/user/${userId}`);
-//       const aptList = await response.json();
-//       setAppts(aptList);
-//     })();
-//   }, [dispatch, userId]);
 
   useEffect(() => {
     dispatch(getAppointments(userId));
 }, [dispatch, userId])
 
+  if(userCheck){
+    if(apptsArr && apptsArr.length > 0){
 
-if(apptsArr && apptsArr.length > 0){
-
+        return (
+          <>
+          {apptMap()}
+          </>
+        );
+    } else {
+      return (
+        <>
+          <section className="section-no-appts center-text">
+            <div className="no-appts-container">
+              <h2 className="heading-secondary no-appts-header">You have no appointments scheduled</h2>
+              <img className="no-appts-img" src="https://images.unsplash.com/photo-1631217871099-88310a909a32?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njd8fGRvY3RvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Staff helping patient" />
+            </div>
+          </section>
+        </>
+      )}
+  } else {
     return (
-      <>
-      {apptMap()}
-      </>
-    );
-} else return ("hello")
-
+    <section className="section-unauthorized-access">
+      <div className="center-text">
+        <h2 className="heading-secondary unathorized-header">Unauthorized access 401</h2>
+        <img className="unathorized-image" src="https://images.unsplash.com/photo-1612943680768-d82060323fd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzl8fGRvY3RvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="Disappointed doctor" />
+      </div>
+    </section>
+    )
+  }
 };
 
 export default GetAllAppointments;

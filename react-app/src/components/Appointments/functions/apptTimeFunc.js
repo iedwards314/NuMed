@@ -17,19 +17,19 @@ export const apptTimeFunc = (docAvailArr) => {
         let value = docAvailArr[i]?.start_time
         checkArr.push(value);
     }
-    console.log("checkArr is...", checkArr)
+    // console.log("checkArr is...", checkArr)
 
     let resArr = []
     for(let i = 0; i < schedArr.length; i++){ //push in available slots in array
         let testTime = schedArr[i]
         // unavailtime = docAvailArr[i]?.start_time
-        console.log("schedule array...", testTime)
+        // console.log("schedule array...", testTime)
         if(!checkArr?.includes(testTime)){
             resArr.push(testTime)
         }
     }
-    console.log("res array is...", resArr);
-    console.log("docAvalArr in func is ... ", docAvailArr)
+    // console.log("res array is...", resArr);
+    // console.log("docAvalArr in func is ... ", docAvailArr)
     if(resArr.length > 0){
         return (
             <>

@@ -32,7 +32,7 @@ const InsuranceForm = () => {
         }
         if(!subscriberNum) errors.push("Please enter the subscriber number");
         if(groupNum){
-            if(groupNum.length === 0 || groupNum.length > 100) errors.push("Please enter your group number between 1 - 30 characters.")
+            if(groupNum.length === 0 || groupNum.length > 30) errors.push("Please enter your group number between 1 - 30 characters.")
         }
         if(!groupNum) errors.push("Please enter your insurance group number");
 
@@ -68,50 +68,52 @@ const InsuranceForm = () => {
     }
 
     return(
-        <section className="session-create-insurance">
+        <section className="session-create-insurance container">
             {hasSubmitted && errors?.map((error) => (
                 <p style={{color: 'red', margin:"0px"}}>{error}</p>
             ))}
             <form className="form insurance-form" onSubmit={handleSubmit}>
                 <div className="form-input-container">
-                    <label className="form-label">
+                    <label className="form-label">Insurance Company Name*</label>
                         <input
                         className="form-input"
                         type="text"
                         name="InsuranceCo"
-                        placeholder="Enter the name of your insurance carrier (required)"
+                        placeholder="Provider Name (letters only)"
+                        pattern="[a-zA-Z]+"
                         value={insuranceCo}
                         required
                         onChange={createInsuranceCo}
                         />
-                    </label>
+
                 </div>
                 <div className="form-input-container">
-                    <label className="form-label">
+                    <label className="form-label">Subscriber Number*</label>
                         <input
                         className="form-input"
                         type="text"
                         name="SubscriberNum"
-                        placeholder="Enter your subscriber number (required)"
+                        pattern="[0-9]{1,30}"
+                        placeholder="Subscriber number (Numbers only)"
                         value={subscriberNum}
                         required
                         onChange={createSubscriberNum}
                         />
-                    </label>
                 </div>
                 <div className="form-input-container">
-                    <label className="form-label">
+                    <label className="form-label">Group Number*</label>
                         <input
                         className="form-input"
                         type="text"
                         name="GroupNum"
-                        placeholder="Enter your group number (required)"
+                        pattern="[a-zA-Z0-9-]+"
+                        placeholder="Group Number (numbers/letters only)"
                         value={groupNum}
                         required
                         onChange={createGroupNum}
                         />
-                    </label>
                 </div>
+                <p className="margin-bottom-sm">*Required fields for submission</p>
                 <button type="submit">Add Insurance Info</button>
             </form>
         </section>

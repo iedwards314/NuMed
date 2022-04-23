@@ -12,3 +12,28 @@
 .appointment-info-container {
 
 }
+
+/* No appts view */
+
+.section-no-appts{
+    padding: 4.8rem 0 9.6rem 0;
+    background-color: #014989;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-appts-container {
+/* does not appear needed */
+}
+
+.no-appts-header{
+    color: #fff;
+}
+
+.no-appts-img {
+    height: 25rem;
+    width: 40rem;
+    border-radius: 10px;
+    object-fit: cover;
+}

@@ -126,7 +126,7 @@ def seed_users():
         state='Texas',
         phone='9234567891',
         doctor_id='464',
-        image='https://images.unsplash.com/photo-1623854767648-e7bb8009f0db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODZ8fGRvY3RvcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+        image='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwZG9jdG9yfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
         specialty='COVID19')
 
     dr_smith = User(

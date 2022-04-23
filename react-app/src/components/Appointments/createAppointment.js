@@ -31,7 +31,7 @@ const CreateAppointmentForm = () => {
     //     console.log("doctor avail time is...", docAvailArr[0]?.start_time)
     // }
     const [apptDate, setApptDate] = useState(placeholder);
-    const [appointmentTime, setAppointmentTime] = useState("9");
+    const [appointmentTime, setAppointmentTime] = useState("");
     const [apptDescription, setApptDescription] = useState("");
     const [hasSubmitted, setHasSubmitted] =useState(false)
     const [errors, setErrors] =useState([]);
@@ -62,6 +62,9 @@ const CreateAppointmentForm = () => {
         setHasSubmitted(true);
 
         let errors = [];
+        if(appointmentTime === null){
+            errors.push("Please select a time for your appointment.")
+        }
         if(apptDescription) {
             if(apptDescription.length < 4 || apptDescription.length > 255) errors.push("Please enter a discription of the need for your appointment that is more than 4 but less than 255 characters. Example is 'sick' ")
         }
@@ -102,8 +105,8 @@ const CreateAppointmentForm = () => {
                 return(
                     <>
                         {/* {docAvailArr?.map((aptTime, idx) => <p>{aptTime[idx].start_time}</p>)} */}
-                        <h1>this is working</h1>
-                        <select value={appointmentTime} onChange={selectAppointmentTime}>
+                        <select value={appointmentTime} onChange={selectAppointmentTime} required>
+                                <option value="" selected disabled hidden>Choose Here for Appointment time</option>
                                 <option value="09">9:00 AM to 10:00 AM</option>
                                 <option value="10">10:00 AM to 11:00 AM</option>
                                 <option value="11">11:00 AM to 12:00 PM</option>
@@ -117,8 +120,8 @@ const CreateAppointmentForm = () => {
             } else {
                 return (
                     <>
-                        <p>true</p>
-                        <select value={appointmentTime} onChange={selectAppointmentTime}>
+                        <select value={appointmentTime} onChange={selectAppointmentTime} required>
+                        <option value="" selected disabled hidden>Choose Here for Appointment time</option>
                             {apptTimeFunc(docAvailArr)}
                         </select>
                     </>
@@ -166,7 +169,7 @@ const CreateAppointmentForm = () => {
                     <button type="submit"> Submit </button>
                 </form>
                     <NavLink to={`/appointments/user/${user.id}`} exact={true}>
-                        Cancel
+                        <button>Cancel</button>
                     </NavLink>
             </div>
 
