@@ -27,17 +27,12 @@ const UpdateAppointmentForm = () => {
     const docAvailArr = useSelector(state => state?.appointments?.availability?.availability)
     const doctor = useSelector(state => state?.appointments?.appointments[apptId]?.doctor_info)
 
-    console.log("the user in update appointment is...", user)
-    console.log("the appointment is...", userApt)
-    console.log("the doctor in the appointment is...", doctor)
-    console.log("doc avail array is...", docAvailArr)
-
     const doctorId = userApt?.doctor_id
 
     console.log("the doctor in the appointment is...", doctorId)
 
     const [apptDate, setApptDate] = useState(placeholder);
-    const [appointmentTime, setAppointmentTime] = useState(`${userApt?.start_time}`);
+    const [appointmentTime, setAppointmentTime] = useState("");
     const [apptDescription, setApptDescription] = useState(userApt?.description);
     const [hasSubmitted, setHasSubmitted] =useState(false)
     const [errors, setErrors] =useState([]);
@@ -63,6 +58,9 @@ const UpdateAppointmentForm = () => {
         let errors = [];
         if(apptDescription) {
             if(apptDescription.length < 4 || apptDescription.length > 255) errors.push("Please enter a discription of the need for your appointment that is more than 4 but less than 255 characters. Example is 'sick' ")
+        }
+        if(appointmentTime === null){
+            errors.push("Please select an updated time for your appointment.")
         }
 
         setErrors(errors);
@@ -102,14 +100,15 @@ const UpdateAppointmentForm = () => {
             return(
                 <>
                     {/* {docAvailArr?.map((aptTime, idx) => <p>{aptTime[idx].start_time}</p>)} */}
-                    <select value={appointmentTime} onChange={selectAppointmentTime}>
-                            <option value="09">9:00 AM to 10:00 AM</option>
-                            <option value="10">10:00 AM to 11:00 AM</option>
-                            <option value="11">11:00 AM to 12:00 PM</option>
-                            <option value="13">1:00 PM to 2:00 PM</option>
-                            <option value="14">2:00 PM to 3:00 PM</option>
-                            <option value="15">3:00 PM to 4:00 PM</option>
-                            <option value="16">4:00 PM to 5:00 PM</option>
+                    <select value={appointmentTime} onChange={selectAppointmentTime} required>
+                        <option value="" selected disabled hidden>Choose Here for Appointment time</option>
+                        <option value="09">9:00 AM to 10:00 AM</option>
+                        <option value="10">10:00 AM to 11:00 AM</option>
+                        <option value="11">11:00 AM to 12:00 PM</option>
+                        <option value="13">1:00 PM to 2:00 PM</option>
+                        <option value="14">2:00 PM to 3:00 PM</option>
+                        <option value="15">3:00 PM to 4:00 PM</option>
+                        <option value="16">4:00 PM to 5:00 PM</option>
                     </select>
                 </>
             )
@@ -117,7 +116,8 @@ const UpdateAppointmentForm = () => {
             return (
                 <>
                     <p>true</p>
-                    <select value={appointmentTime} onChange={selectAppointmentTime}>
+                    <select value={appointmentTime} required onChange={selectAppointmentTime}>
+                        <option value="" selected disabled hidden>Choose Here for Appointment time</option>
                         {apptTimeFunc(docAvailArr)}
                     </select>
                 </>
