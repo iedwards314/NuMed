@@ -102,6 +102,7 @@ ul {
     padding: 1.6rem 3.2rem;
     border-radius: 24px;
     transition: all 0.3s;
+    border: none;
 }
 
 .btn--action:link,
@@ -117,6 +118,7 @@ ul {
 
 .btn--form {
     background-color: #1d74f7;
+    border: none;
     color: #fff;
     align-self: end;
     padding: 1.2rem;
@@ -145,6 +147,10 @@ ul {
     margin-bottom: 3.2rem !important;
 }
 
+.margin-top-sm {
+    margin-top: 2.4rem !important;
+}
+
 /* forms */
 
 .form-header{
@@ -168,7 +174,8 @@ ul {
 
 .form-input label {
     font-size: 1.2rem;
-    color: #fff;
+    margin-bottom: 0.8rem;
+    color: #1f6fe5;
 }
 
 .form-input input{

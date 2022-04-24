@@ -1,4 +1,18 @@
+/* insurance form */
+.session-create-insurance{
+    padding: 9.6rem 0;
+}
+
+.session-update-insurance{
+    padding: 9.6rem 0;
+}
+
+.insurance-form-container{
+    width: 34rem;
+}
 /* insurance policy card list */
+
+
 
 .insurance-policies-list {
     list-style: none;
