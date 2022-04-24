@@ -146,14 +146,34 @@ ul {
 }
 
 /* forms */
-.form-input{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.2rem;
+
+.form-header{
+    font-weight: 700;
+    color: #1f6fe5;
+    letter-spacing: -0.5px;
+    font-size: 2.0rem;
+    line-height: 1.2;
+    margin-bottom: 1.6rem;
 }
 
 .form-grid{
     justify-content: center;
+}
+
+.form-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+}
+
+.form-input label {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.form-input input{
+    height: 3.0rem;
+    border-radius: 10px;
 }
 
 /* Unauthorized Access */
@@ -177,6 +197,7 @@ ul {
 
 /* Errors */
 .errors {
-    color: red;
+    color: #b30000;
     margin: 0px;
+    font-size: 1.6rem;
 }

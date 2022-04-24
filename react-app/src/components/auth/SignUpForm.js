@@ -68,7 +68,7 @@ const SignUpForm = () => {
     }
     if (phone.length <= 0 || phone.length > 15) {
       newErrors.push(
-        "Please enter a phone number betwee 1 and 15 characters in length "
+        "Please enter a phone number between 1 and 15 characters in length "
       );
     }
     setErrors(newErrors);
@@ -157,6 +157,7 @@ const SignUpForm = () => {
     <>
     <section className="section-signup container grid form-grid center-text">
     <form className="sign-up-container" onSubmit={onSignUp}>
+      <h2 className="form-header">Become a member!</h2>
       <div className='errors margin-bottom-md'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>

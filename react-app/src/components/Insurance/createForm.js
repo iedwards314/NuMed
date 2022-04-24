@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SessionCheck } from "../../utils/user";
 import { addInsurancePolicy } from "../../store/insurance";
+import './styles/Insurance.css'
 
 
 const InsuranceForm = () => {
@@ -68,7 +69,7 @@ const InsuranceForm = () => {
     }
 
     return(
-        <section className="session-create-insurance container">
+        <section className="session-create-insurance container grid form-grid center-text">
             {hasSubmitted && errors?.map((error) => (
                 <p style={{color: 'red', margin:"0px"}}>{error}</p>
             ))}
