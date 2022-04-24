@@ -121,7 +121,7 @@ const InsuranceForm = () => {
         <p className="footnote">*Required fields for submission</p>
         <p className="footnote">Insurance co takes letters and spaces</p>
         <p className="footnote">Subscriber number takes only numbers </p>
-        <p className="footnote margin-bottom-sm">Group number takes only numbers</p>
+        <p className="footnote margin-bottom-sm">Group number takes numbers and letters</p>
         <button className="btn btn--form margin-right-sm" type="submit">
           Add Insurance Info
         </button>
