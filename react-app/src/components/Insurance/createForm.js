@@ -75,7 +75,7 @@ const InsuranceForm = () => {
   };
 
   return (
-    <section className="session-create-insurance container grid form-grid center-text">
+    <section className="section-create-insurance container grid form-grid center-text">
       <form className="insurance-form-container" onSubmit={handleSubmit}>
         <h2 className="form-header">Insurance Info form</h2>
         {hasSubmitted &&
@@ -88,7 +88,7 @@ const InsuranceForm = () => {
             type="text"
             name="InsuranceCo"
             placeholder="Provider Name (letters and spaces only)"
-            pattern="[a-zA-Z0-9-]+"
+            pattern="[a-zA-Z\s]+"
             value={insuranceCo}
             required
             onChange={createInsuranceCo}
@@ -118,7 +118,10 @@ const InsuranceForm = () => {
             onChange={createGroupNum}
           />
         </div>
-        <p className="margin-bottom-sm">*Required fields for submission</p>
+        <p className="footnote">*Required fields for submission</p>
+        <p className="footnote">Insurance co takes letters and spaces</p>
+        <p className="footnote">Subscriber number takes only numbers </p>
+        <p className="footnote margin-bottom-sm">Group number takes only numbers</p>
         <button className="btn btn--form margin-right-sm" type="submit">
           Add Insurance Info
         </button>

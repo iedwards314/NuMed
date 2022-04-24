@@ -1,9 +1,13 @@
 /* insurance form */
-.session-create-insurance{
+.section-create-insurance{
     padding: 9.6rem 0;
 }
 
-.session-update-insurance{
+.section-update-insurance{
+    padding: 9.6rem 0;
+}
+
+.section-delete-insurance{
     padding: 9.6rem 0;
 }
 

@@ -87,7 +87,7 @@ const UpdateInsuranceForm = () => {
   };
 
   return (
-    <section className="session-update-insurance container grid form-grid center-text">
+    <section className="section-update-insurance container grid form-grid center-text">
       {hasSubmitted &&
         errors?.map((error) => (
           <p style={{ color: "red", margin: "0px" }}>{error}</p>
@@ -99,7 +99,8 @@ const UpdateInsuranceForm = () => {
           <input
             type="text"
             name="InsuranceCo"
-            placeholder="Enter the name of your insurance carrier (required)"
+            placeholder="Provider Name (letters and spaces only)"
+            pattern="[a-zA-Z\s]+"
             value={insuranceCo}
             required
             onChange={updateInsuranceCo}
@@ -110,7 +111,8 @@ const UpdateInsuranceForm = () => {
             <input
               type="text"
               name="SubscriberNum"
-              placeholder="Enter your subscriber number (required)"
+              pattern="[0-9]{1,30}"
+              placeholder="Subscriber number (Numbers only)"
               value={subscriberNum}
               required
               onChange={updateSubscriberNum}
@@ -121,13 +123,17 @@ const UpdateInsuranceForm = () => {
             <input
               type="text"
               name="GroupNum"
-              placeholder="Enter your group number (required)"
+              pattern="[a-zA-Z0-9-]+"
+              placeholder="Group Number (numbers/letters only)"
               value={groupNum}
               required
               onChange={updateGroupNum}
             />
         </div>
-        <p className="margin-bottom-sm">*Required fields for submission</p>
+        <p className="footnote">*Required fields for submission</p>
+        <p className="footnote">Insurance co takes letters and spaces</p>
+        <p className="footnote">Subscriber number takes only numbers </p>
+        <p className="footnote margin-bottom-sm">Group number takes only numbers</p>
         <button className="btn btn--form margin-right-sm" type="submit">
           Add Insurance Info
         </button>
