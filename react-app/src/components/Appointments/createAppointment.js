@@ -136,7 +136,7 @@ const CreateAppointmentForm = () => {
 
   return (
     <section className="section-create-appointment grid form-grid center-text">
-      <h2 className="form-header">{`Hello ${user?.first_name}, Please Create an Appointment`}</h2>
+      <h2 className="form-header">{`Hello ${user?.first_name} ${user?.last_name}, Please Create an Appointment`}</h2>
       <div className="grid form-grid center-text grid--2--cols">
         <div className="doctor-apt-info-card">
           <h3 className="form-header-secondary">{`Appointment with Dr. ${doctor[doctorId]?.last_name}`}</h3>
@@ -169,7 +169,7 @@ const CreateAppointmentForm = () => {
               />
             </div>
             <div className="form-input">
-                <label>Start Time (all times are Central Time)</label>
+                <label>Appointment Time (all times are Central Time)</label>
                 {availMap()}
             </div>
             <div className="form-input">

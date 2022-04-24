@@ -11,14 +11,18 @@
 
 .doctor-img-container img {
     width: 50rem;
-    height: 30rem;
+    height: 50rem;
     border-radius: 9px;
+    object-fit: cover;
 }
 
 .appointment-form-calendar {
     border-radius: 10px;
 }
 
+.appointment-update-current-info{
+    margin-bottom: 8px;
+}
 
 
 
