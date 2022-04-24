@@ -29,8 +29,6 @@ const UpdateAppointmentForm = () => {
 
     const doctorId = userApt?.doctor_id
 
-    console.log("the doctor in the appointment is...", doctorId)
-
     const [apptDate, setApptDate] = useState(placeholder);
     const [appointmentTime, setAppointmentTime] = useState("");
     const [apptDescription, setApptDescription] = useState(userApt?.description);
@@ -80,8 +78,6 @@ const UpdateAppointmentForm = () => {
         }
         let updatedAppointment;
         try {
-            // Thunk
-            console.log("successfully attempted submission...", payload)
             updatedAppointment = await dispatch(editAppointment(payload, apptId));
         } catch (error) {
             console.log("There was an error in submitted insurance");
@@ -95,7 +91,6 @@ const UpdateAppointmentForm = () => {
 
     //function to map available time slots
     const availMap = () => {
-        // console.log("docAvailArr present...", docAvailArr)
         if(!docAvailArr?.length){
             return(
                 <>

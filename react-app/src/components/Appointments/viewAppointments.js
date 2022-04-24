@@ -9,35 +9,15 @@ import { UserCheck, SessionCheck } from "../../utils/user";
 import './styles/Appointments.css'
 
 const GetAllAppointments = () => {
-  // const user = SessionCheck();
-  // console.log("user is...", user)
   const dispatch = useDispatch();
-//   const [appts, setAppts] = useState({});
   const user = SessionCheck();
   const { userId } = useParams();
   const userCheck = UserCheck(user, userId);
-  const state = useSelector(state => state?.appointments.appointments)
-  console.log("state GetAllApointments...", state);
   const apptsObj = useSelector((state) => state?.appointments);
   let apptsArr;
   if(apptsObj){
       apptsArr = Object.values(Object.values(apptsObj)[0])
   }
-  // console.log("appts...", apptsArr)
-
-  //apptsArr[index][key] where appt[idx+1]
-
-  // const doctorId = apptsArr[0]?.doctor_id //doctor Id
-  // const doctorObj = apptsArr[0]?.doctor_info //doctor info, keys="dr_image", "dr_last_name", "dr_specialty", "dr_phone"
-
-  // const patientObj = apptsArr[0]?.patient_info // patient info, keys="patient_first_name", "patient_last_name"
-
-
-  // const variable = apptsArr[0]?.doctor_info?.dr_last_name //doctor Id
-
-  // const formattedDate = userFormatCalendarDateFunc(apptsArr[0]?.start_date)
-
-  // console.log("start date is...", formattedDate)
 
   const destroyAppt = async (e, apptId) => {
     e.preventDefault();
@@ -47,8 +27,6 @@ const GetAllAppointments = () => {
     }
     // let destroyed;
     try {
-      console.log("hit distroyed", payload);
-        // destroyed = await dispatch(deleteAppointment(payload))
         await dispatch(deleteAppointment(payload))
     } catch (error) {
         console.log("error in delete")

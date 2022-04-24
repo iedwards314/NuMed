@@ -102,6 +102,7 @@ ul {
     padding: 1.6rem 3.2rem;
     border-radius: 24px;
     transition: all 0.3s;
+    border: none;
 }
 
 .btn--action:link,
@@ -117,6 +118,7 @@ ul {
 
 .btn--form {
     background-color: #1d74f7;
+    border: none;
     color: #fff;
     align-self: end;
     padding: 1.2rem;
@@ -145,15 +147,46 @@ ul {
     margin-bottom: 3.2rem !important;
 }
 
+.margin-top-sm {
+    margin-top: 2.4rem !important;
+}
+
 /* forms */
-.form-input{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.2rem;
+
+.form-header{
+    font-weight: 700;
+    color: #1f6fe5;
+    letter-spacing: -0.5px;
+    font-size: 2.0rem;
+    line-height: 1.2;
+    margin-bottom: 1.6rem;
 }
 
 .form-grid{
     justify-content: center;
+}
+
+.form-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+}
+
+.form-input label {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: #1f6fe5;
+}
+
+.form-input input{
+    height: 3.0rem;
+    border-radius: 10px;
+}
+
+.footnote {
+    font-size: 1rem;
+    font-weight: 500;
+    font-style: italic;
 }
 
 /* Unauthorized Access */
@@ -177,6 +210,7 @@ ul {
 
 /* Errors */
 .errors {
-    color: red;
+    color: #b30000;
     margin: 0px;
+    font-size: 1.6rem;
 }

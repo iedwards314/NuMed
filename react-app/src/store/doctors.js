@@ -40,13 +40,10 @@ const doctorReducer = (state = initialState, action) => {
         case LOAD:
             let newState = {}
             const allDoctors = {};
-            // console.log("action in store is...", action.doctors.doctors);
             action.doctors.doctors.forEach((doctor) => {
                 allDoctors[doctor.id] = doctor
             })
-            // console.log("allDoctors is...", allDoctors)
             newState = { ...state, doctors: allDoctors }
-            // console.log("new state is", newState)
             return newState
         case GET_ONE:
             setState = {...state, doctors: {...state.doctors}, selected: { [action.doctor.id]: {...action.doctor}}}

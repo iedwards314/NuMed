@@ -1,4 +1,22 @@
+/* insurance form */
+.section-create-insurance{
+    padding: 9.6rem 0;
+}
+
+.section-update-insurance{
+    padding: 9.6rem 0;
+}
+
+.section-delete-insurance{
+    padding: 9.6rem 0;
+}
+
+.insurance-form-container{
+    width: 34rem;
+}
 /* insurance policy card list */
+
+
 
 .insurance-policies-list {
     list-style: none;
