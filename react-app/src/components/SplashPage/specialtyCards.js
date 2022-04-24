@@ -13,8 +13,8 @@ const SpecialtyCards = () => {
                     <div className="specialty">
                         <img src="https://images.unsplash.com/photo-1643224297379-54023dacf558?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHhyYXl8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" className="specialty-image" alt="Doctor Specialty" />
                         <div className="specialty-content">
-                            <p className="specialty-name">Cancer Prevention</p>
-                            <p className="specialty-description">Lower risk of top 5 cancers with screenings and lifestyle plans.</p>
+                            <p className="specialty-name">Cancer Care</p>
+                            <p className="specialty-description">Lower risk of top 5 cancers with screenings and lifestyle plans. Including ongoing help with treatment.</p>
                         </div>
                     </div>
                 </NavLink>

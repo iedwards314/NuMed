@@ -43,9 +43,9 @@ const GetAllInsurance = () => {
         } else {
             return (
                 <>
-                    <div>
-                        <p>We have no insurance on file for you. Payment will be expected at time of service.</p>
-                    </div>
+
+                    <h3 className="header-third footnote">We have no insurance on file for you. Payment will be expected at time of service.</h3>
+
                 </>
             )
         }
