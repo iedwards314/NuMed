@@ -199,7 +199,7 @@ const UpdateAppointmentForm = () => {
             </div>
             <div className="form-input">
             <textarea
-              placeholder="Please tell us what about the reason for the appointment"
+              placeholder="Please tell us the reason for the appointment"
               wrap="soft"
               value={apptDescription}
               onChange={updateApptDescription}
