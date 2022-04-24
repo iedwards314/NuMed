@@ -28,12 +28,12 @@ const GetAllInsurance = () => {
                     {insuranceArr?.map(policy => (
                         <li key={policy.id} className="insurance-policy-card">
                             <div className="insurance-policy">
-                                <p className="insurance-header">Insurance Name</p>
-                                <p>{policy.insurance_co}</p>
-                                <p className="insurance-header">Subscriber Number</p>
-                                <p>{policy.subscriber_num}</p>
-                                <p className="insurance-header">Group Number</p>
-                                <p>{policy.group_num}</p>
+                                <p className="insurance-policy-header">Insurance Name</p>
+                                <p className="insurance-policy-info">{policy.insurance_co}</p>
+                                <p className="insurance-policy-header">Subscriber Number</p>
+                                <p className="insurance-policy-info">{policy.subscriber_num}</p>
+                                <p className="insurance-policy-header">Group Number</p>
+                                <p className="insurance-policy-info">{policy.group_num}</p>
                             </div>
                             <InsuranceButtons user={user} policy={policy} />
                         </li>
@@ -43,9 +43,9 @@ const GetAllInsurance = () => {
         } else {
             return (
                 <>
-                    <div>
-                        <p>We have no insurance on file for you. Payment will be expected at time of service.</p>
-                    </div>
+
+                    <h3 className="header-third footnote">We have no insurance on file for you. Payment will be expected at time of service.</h3>
+
                 </>
             )
         }

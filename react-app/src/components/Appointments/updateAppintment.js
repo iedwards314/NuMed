@@ -96,7 +96,7 @@ const UpdateAppointmentForm = () => {
                 <>
                     {/* {docAvailArr?.map((aptTime, idx) => <p>{aptTime[idx].start_time}</p>)} */}
                     <select value={appointmentTime} onChange={selectAppointmentTime} required>
-                        <option value="" selected disabled hidden>Choose Here for Appointment time</option>
+                        <option value="" disabled hidden>Choose Here for Appointment time</option>
                         <option value="09">9:00 AM to 10:00 AM</option>
                         <option value="10">10:00 AM to 11:00 AM</option>
                         <option value="11">11:00 AM to 12:00 PM</option>

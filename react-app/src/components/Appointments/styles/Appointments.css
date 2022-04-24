@@ -1,17 +1,26 @@
-.doctor-img-container{
+/* appointment form */
+.section-create-appointment{
+    padding: 9.6rem 0;
+}
 
+.appointment-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .doctor-img-container img {
-    width: 22.5rem;
-    height: 22.5rem;
+    width: 50rem;
+    height: 30rem;
     border-radius: 9px;
-
 }
 
-.appointment-info-container {
-
+.appointment-form-calendar {
+    border-radius: 10px;
 }
+
+
+
 
 /* No appts view */
 

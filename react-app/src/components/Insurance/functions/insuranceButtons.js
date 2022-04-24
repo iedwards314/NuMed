@@ -4,12 +4,12 @@ const InsuranceButtons = ({policy, user}) => {
     const policyId = policy?.id;
 
     return(
-        <div>
+        <div className="insurance-btns-container">
             <NavLink to={`/insurance/${policyId}`} >
-                <p>Edit</p>
+                <button className="btn-insurance">Edit</button>
             </NavLink>
             <NavLink to={`/insurance/delete/${policyId}`} >
-                <p>Delete</p>
+                <button className="btn-insurance margin-bottom-sm">Delete</button>
             </NavLink>
         </div>
     )

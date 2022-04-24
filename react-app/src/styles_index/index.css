@@ -162,6 +162,15 @@ ul {
     margin-bottom: 1.6rem;
 }
 
+.form-header-secondary {
+    font-weight: 700;
+    color: #014989;
+    letter-spacing: -0.5px;
+    font-size: 1.6rem;
+    line-height: 1.0;
+    margin-bottom: 1.2rem;
+}
+
 .form-grid{
     justify-content: center;
 }
@@ -180,6 +189,17 @@ ul {
 
 .form-input input{
     height: 3.0rem;
+    border-radius: 10px;
+}
+
+.form-input select{
+    height: 3.0rem;
+    border-radius: 10px;
+}
+
+.form-input textarea{
+    height: 10rem;
+    width: 30rem;
     border-radius: 10px;
 }
 

@@ -1,3 +1,23 @@
+.section-profile-header{
+    color: #1f6fe5;
+    background: url("https://images.unsplash.com/photo-1420136390439-1482fc2ce4b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fHN1bnJpc2UlMjBjYXJ0b29ufGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60") no-repeat center center;
+    background-size: cover;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-heading{
+    color: #fff;
+}
+
+.profile-header-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .section-profile-body {
     padding: 4.8rem 0 9.6rem 0;
 }
@@ -5,6 +25,38 @@
 .grid-profile {
     display: grid;
     grid-template-columns: 3fr 1fr;
+}
+
+.profile-left{
+ padding: 2.4rem 0 4.8rem 0;
+}
+
+.insurance-header{
+    color: #014989;
+}
+
+.btn-insurance,
+.btn-insurance:link,
+.btn-insurance:visited {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 1.2rem 2.0rem;
+    border-radius: 24px;
+    transition: all 0.3s;
+    border: none;
+    text-decoration: none;
+}
+
+.btn-insurance:link,
+.btn-insurance:visited {
+    background-color: #1f6fe5;
+    color: #fff;
+}
+
+.btn-insurance:hover,
+.btn-insurance:active {
+    background-color: #014989;
 }
 
 .profile-nav-list{

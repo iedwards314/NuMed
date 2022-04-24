@@ -23,16 +23,63 @@
     display: flex;
     flex-direction: row;
     gap: 1.6rem;
+
 }
+.insurance-header{
+    color: #014989;
+}
+
 
 .insurance-policy-card {
     font-size: 1.2rem;
     display: flex;
+    justify-content: center;
+    flex-direction: column;
     align-items: center;
     gap: 1.6rem;
     line-height: 1.2;
 }
 
-.insurance-header{
-    color: #014989;
+.insurance-policy{
+    width: 30rem;
+    border: #1f6fe5 solid;
+    border-radius: 9px;
+}
+
+.insurance-policy-header{
+    font-size: 1.8rem;
+    color: #1f6fe5;
+    margin-bottom: 4px;
+}
+
+.insurance-policy-info {
+    font-size: 1.6rem;
+    color: #1f6fe5;
+    color: #616871;
+}
+
+.btn-insurance,
+.btn-insurance:link,
+.btn-insurance:visited {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 1.2rem 2.0rem;
+    border-radius: 24px;
+    transition: all 0.3s;
+    border: none;
+    text-decoration: none;
+    background-color: #1f6fe5;
+    color: #fff;
+}
+
+.btn-insurance:link,
+.btn-insurance:visited {
+    background-color: #1f6fe5;
+    color: #fff;
+}
+
+.btn-insurance:hover,
+.btn-insurance:active {
+    background-color: #014989;
 }
