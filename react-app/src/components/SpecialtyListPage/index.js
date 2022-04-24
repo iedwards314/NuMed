@@ -18,14 +18,12 @@ const SpecialtyList = () => {
     const doctorsComponents = doctors?.map((doctor) => {
       return (
         <li key={doctor.id} className='specialty'>
-          <NavLink to={`/appointments/create/${doctor.id}`}>
+          <NavLink className="specialty-nav-link" to={`/appointments/create/${doctor.id}`}>
             <div className='doctor-info-container'>
-              <div className='doctor-image-container'>
-                <img className='specialty-image' src={`${doctor.image}`} alt={`Dr. {${doctor.last_name}`} />
-              </div>
-              <div className='doctor-info'>
-                <p>{`Dr. ${doctor.last_name}`}</p>
-                <p>{`Care Specialty: ${doctor.specialty}`}</p>
+              <img className='specialty-image' src={`${doctor.image}`} alt={`Dr. {${doctor.last_name}`} />
+              <div className='specialty-content'>
+                <p className='specialty-name'>{`Dr. ${doctor.last_name}`}</p>
+                <p className='specialty-description'>{`Care Specialty: ${doctor.specialty}`}</p>
               </div>
             </div>
           </NavLink>
@@ -34,11 +32,14 @@ const SpecialtyList = () => {
     });
 
     return (
-        <section className='container grid center grid--3--cols section-doctors'>
-            <h2 className='heading-third specialty-heading'>Choose from list of well qualified physicians to assist you</h2>
-            <div className='doctors-list-container'>
-              <ul className='doctors-list'>{doctorsComponents}</ul>
-            </div>
+        <section className="section-specialties">
+          <div className="container center-text">
+            <h2 className="heading-secondary specialty-heading"> Find Doctors with the {specialty} Care Specialty</h2>
+            <p className="subheading">Click on the doctor to schedule</p>
+          </div>
+          <div className="container center-text">
+            <ul className='margin-bottom-md center-text grid grid--3--cols'>{doctorsComponents}</ul>
+          </div>
         </section>
     )
 }
