@@ -64,7 +64,8 @@
 }
 
 .specialty-image{
-    width: 100%;
+    height: 35rem;
+    width: 35rem;
     object-fit: cover;
 }
 
