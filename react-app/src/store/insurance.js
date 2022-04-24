@@ -103,13 +103,10 @@ const insuranceReducer = (state = initialState, action) => {
         case LOAD:
             let newState = {}
             const allInsurancePolicies = {};
-            // console.log("action in store is...", action.insurance_policies.insurance_policies);
             action.insurance_policies.insurance_policies.forEach((insurance_policy) => {
                 allInsurancePolicies[insurance_policy.id] = insurance_policy
             })
-            // console.log("allInsurancePolicies is...", allInsurancePolicies)
             newState = { ...state, insurance_policies: allInsurancePolicies }
-            // console.log("new state is", newState)
             return newState
         case ADD_ONE:
             setState = {...state, insurance_policies: {...state.insurance_policies, [action.insurance_policy.id]: action.insurance_policy}, selected: {...state.selected}}

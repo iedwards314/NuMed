@@ -34,7 +34,6 @@ export const stringCalenderDateFunc = (apptDate) => {
     const year = parseInt(apptDate.getFullYear())
     const day = parseInt(apptDate.getDate())
     const month = parseInt(apptDate.getMonth())+1 //the getMonth is indexed
-    // console.log("month in string cal date func is...", month)
     if(month >= 10 && day >= 10){
         submissionDate = `${year}-${month}-${day}`
     } if( month >= 10 && day < 10 ){

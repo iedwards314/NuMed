@@ -55,7 +55,6 @@ export const getAppointment = (appointmentId) => async (dispatch) => {
 }
 
 export const getAvailability = (start_date, doctor_id) => async (dispatch) => {
-    // console.log("start date in store is...", start_date)
     const response = await fetch(`/api/appointments/availability/${start_date}/doctor/${doctor_id}`)
     if (response.ok) {
         const schedule = await response.json();
@@ -121,11 +120,9 @@ const appointmentsReducer = (state = initialState, action) => {
         case LOAD:
             let newState = {...state}
             const allAppointments = {};
-            // console.log("action in store is...", action.appointments.appointments);
             action.appointments.appointments.forEach((appointment) => {
                 allAppointments[appointment.id] = appointment
             })
-            // console.log("allAppointments is...", allAppointments)
             newState = { ...state, appointments: allAppointments }
             setState = {...newState}
             return setState
@@ -144,7 +141,6 @@ const appointmentsReducer = (state = initialState, action) => {
             setState = {...state, appointments: {...state.appointments}, selected: { [action.appointment.id]: {...action.appointment}}}
             return setState
         case GET_AVAIL:
-            // console.log("action.schedule is...", action.schedule)
             setState = {...state, appointments: {...state.appointments}, selected: {...state.selected}, availability: {...action.schedule}}
             return setState
 

@@ -26,23 +26,11 @@ const CreateAppointmentForm = () => {
     const doctor = useSelector(state => state?.doctors?.selected)
     const docAvailArr = useSelector(state => state?.appointments?.availability?.availability)
 
-    console.log("doctor availability is...", docAvailArr)
-    // if(docAvailArr){
-    //     console.log("doctor avail time is...", docAvailArr[0]?.start_time)
-    // }
     const [apptDate, setApptDate] = useState(placeholder);
     const [appointmentTime, setAppointmentTime] = useState("");
     const [apptDescription, setApptDescription] = useState("");
     const [hasSubmitted, setHasSubmitted] =useState(false)
     const [errors, setErrors] =useState([]);
-
-    // console.log("doctor in the create appt page is...", doctor);
-    // console.log("doctor last name in the create appt page is...", doctor[doctorId]?.last_name);
-
-    // console.log("apptDate is...", apptDate)
-    // console.log("apptDate as a string submission is...", stringCalenderDateFunc(apptDate))
-
-
 
     const selectAppointmentTime = (e) => {
         setAppointmentTime(e.target.value)
@@ -85,8 +73,6 @@ const CreateAppointmentForm = () => {
         }
         let createdAppointment;
         try {
-            // Thunk
-            // console.log("successfully attempted submission...", payload)
             createdAppointment = await dispatch(addAppointment(payload));
         } catch (error) {
             console.log("There was an error in submitted insurance");
@@ -100,7 +86,6 @@ const CreateAppointmentForm = () => {
 
     //function to map available time slots
     const availMap = () => {
-            // console.log("docAvailArr present...", docAvailArr)
             if(!docAvailArr?.length){
                 return(
                     <>

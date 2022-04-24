@@ -13,8 +13,7 @@ const GetAllInsurance = () => {
     const dispatch = useDispatch();
     const user = SessionCheck();
     const {userId} = useParams();
-    const insurance = useSelector(state => state.insurance_policies)
-    // console.log("state in get insurance", insurance);
+    const insurance = useSelector(state => state.insurance_policies);
     const insuranceObj = insurance?.insurance_policies;
     const insuranceArr = Object.values(insuranceObj);
 

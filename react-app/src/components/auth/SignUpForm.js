@@ -100,7 +100,6 @@ const SignUpForm = () => {
       phone,
     };
     try {
-      console.log("attempted sign-up with...", payload);
       const data = await dispatch(signUp(payload));
       if (data) {
         setErrors(data);
