@@ -16,15 +16,13 @@ const DoctorsList = () => {
 
     const doctorsComponents = doctors?.map((doctor) => {
       return (
-        <li key={doctor.id} className='specialty'>
-          <NavLink to={`/appointments/create/${doctor.id}`}>
-            <div className='doctor-info-container'>
-              <div className='doctor-image-container'>
-                <img className='specialty-image' src={`${doctor.image}`} alt={`Dr. {${doctor.last_name}`} />
-              </div>
-              <div className='doctor-info'>
-                <p>{`Dr. ${doctor.last_name}`}</p>
-                <p>{`Care Specialty: ${doctor.specialty}`}</p>
+        <li key={doctor.id} className='center-text specialty'>
+          <NavLink className="specialty-nav-link" to={`/appointments/create/${doctor.id}`}>
+            <div>
+              <img className='specialty-image' src={`${doctor.image}`} alt={`Dr. {${doctor.last_name}`} />
+              <div className='specialty-content'>
+                <p className='specialty-name'>{`Dr. ${doctor.last_name}`}</p>
+                <p className='specialty-description'>{`Care Specialty: ${doctor.specialty}`}</p>
               </div>
             </div>
           </NavLink>
@@ -33,12 +31,15 @@ const DoctorsList = () => {
     });
 
     return (
-        <section className='container center-text section-doctors'>
-            <div className='doctors-list-container'>
-            <h2 className='heading-third'>Choose from list of well qualified physicians to assist you</h2>
-              <ul className='doctors-list'>{doctorsComponents}</ul>
-            </div>
-        </section>
+      <section className="section-specialties">
+        <div className="container center-text">
+          <h2 className="heading-secondary specialty-heading">Our Doctors Are Here to Help</h2>
+          <p className="subheading">Click on the doctor to schedule</p>
+        </div>
+        <div className="container center-text">
+          <ul className='margin-bottom-md center-text grid grid--3--cols'>{doctorsComponents}</ul>
+        </div>
+      </section>
     )
 }
 
