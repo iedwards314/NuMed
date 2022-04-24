@@ -116,8 +116,28 @@ NuMed is an app for patients to find and schedule appointments with doctors in s
 ### Insurance
 Patients (users) after they have signed in to NuMed can create insurance information after filling out a form and store it in the app and it will be found in the profile page. On this page, patients can edit their insurance information to keep it up to date or even delete the insurance information.
 
+*Profile Page*
+
+![](Screenshots/ProfilePage.png)
+
+*Create Insurance Form Page (Edit/Delete also look like this)*
+
+![](Screenshots/InsuranceFormPage.png)
+
 ### Appointments
-Patients (users) after they have signed in to NuMed can create an appointment after filling out a form and see the appointment in the app (as well as past appointments). The list will be found in the my appointments page. On this page, patients can edit their appointment information by updating the date, the time, and the description of the appointment. Please note that updates specifically to the appointment description are not included as physicians are required to conduct a medical interview to comply with the hippocratic oath. As such any information in there can be updated when a patient sees the physician.
+Patients (users) after they have signed in to NuMed, the patient can click on the doctor image on the profile page or click the "Doctors" link in the nav bar to go to a doctors list page. Once the patient clicks on an image of a doctor they can create an appointment after filling out a form and see the appointment in the app (as well as past appointments). The list will be found in the my appointments page. On this page, patients can edit their appointment information by updating the date, the time, and the description of the appointment. Please note that updates specifically to the appointment description are not included as physicians are required to conduct a medical interview to comply with the hippocratic oath. As such any information in there can be updated when a patient sees the physician.
+
+*Doctors List Page*
+
+![](Screenshots/DoctorsListPage.png)
+
+*Create Appointment Form Page (Edit also looks like this)*
+
+![](Screenshots/CreateAppointmentForm.png)
+
+*Appointments Page*
+
+![](Screenshots/AppointmentsList.png)
 
 <br>
 
