@@ -139,7 +139,7 @@ const CreateAppointmentForm = () => {
       <h2 className="form-header">{`Hello ${user?.first_name} ${user?.last_name}, Please Create an Appointment`}</h2>
       <div className="grid form-grid center-text grid--2--cols">
         <div className="doctor-apt-info-card">
-          <h3 className="form-header-secondary">{`Appointment with Dr. ${doctor[doctorId]?.last_name}`}</h3>
+          <h3 className="form-header-secondary margin-top-sm">{`Appointment with Dr. ${doctor[doctorId]?.last_name}`}</h3>
           <div className="doctor-info-appt-form">
             <div className="doctor-img-container">
               <img

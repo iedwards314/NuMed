@@ -160,12 +160,12 @@ const UpdateAppointmentForm = () => {
       <h2 className="form-header">{`Hello ${userApt?.patient_info?.patient_first_name} ${userApt?.patient_info?.patient_last_name}, Please Update the Appointment`}</h2>
       <div className="grid form-grid center-text grid--2--cols">
         <div className="doctor-apt-info-card">
-          <h3 className="form-header-secondary">{`Appointment with Dr. ${doctor?.dr_last_name}`}</h3>
+          <h3 className="form-header-secondary margin-top-sm">{`Appointment with Dr. ${doctor?.dr_last_name}`}</h3>
           <div className="doctor-info-appt-form">
             <div className="doctor-img-container">
               <img src={doctor?.dr_image} alt={`Dr.${doctor?.dr_last_name}`} />
             </div>
-            <p>{`Specialty: ${doctor ? doctor?.dr_specialty : null}`}</p>
+            <p className="subheading">{`Specialty: ${doctor ? doctor?.dr_specialty : null}`}</p>
           </div>
         </div>
         <div>
