@@ -43,16 +43,18 @@ const GetAllAppointments = () => {
 
     if(aptDateObj > today){
       return (
-        <>
+        <div className="appointment-btn-container margin-top-sm margin-bottom-sm">
             <NavLink to={`/appointments/edit/${appt.id}`}>
-              <button>edit</button>
+              <button className="btn btn--form margin-right-sm">edit</button>
             </NavLink>
-            <button onClick={(e) => destroyAppt(e, appt.id)}>delete</button>
-        </>
+            <button className="btn btn--form" onClick={(e) => destroyAppt(e, appt.id)}>delete</button>
+        </div>
       )
     } else {
       return (
-        <p>This event cannot be rescheduled</p>
+        <div className="appointment-btn-container margin-top-sm">
+          <p className="footnote">This event cannot be rescheduled</p>
+        </div>
       )
     }
   }
@@ -61,22 +63,24 @@ const GetAllAppointments = () => {
     if(userCheck){
       return(
           <>
-          <section className="container">
-              <h2 className="heading-secondary">{`Hello ${apptsArr[0]?.patient_info.patient_first_name}`}</h2>
-              <p className="heading-third margin-bottom-md">Your appointments are scheduled for the following...</p>
-          <ul>
+          <section className="section-specialties center-text">
+            <div className="">
+
+            </div>
+              <h2 className="heading-secondary specialty-heading">{`Hello ${apptsArr[0]?.patient_info.patient_first_name} ${apptsArr[0]?.patient_info.patient_last_name}`}</h2>
+              <p className="subheading margin-bottom-sm">Your appointments are scheduled for the following...</p>
+          <ul className="container grid grid--3--cols">
 
           {apptsArr?.map((appt, idx)=>(
-            <li key={idx} className="grid grid--2--cols">
+            <li key={idx} className="doctor-apt-list-info-card">
                 <div className="doctor-img-container">
                     <img src={appt.doctor_info?.dr_image} alt={`Dr.${appt.doctor_info?.dr_last_name}`}/>
                 </div>
                 <div className="appointment-info-container">
-                    <p>Dr. {appt.doctor_info?.dr_last_name}</p>
-                    <p>{appt.doctor_info?.dr_specialty}</p>
-                    <p>{`Specialty: ${appt.doctor_info?.dr_specialty}`}</p>
-                    <p>{`Date: ${(appt.start_date)}`}</p>
-                    <p>{`Start time: ${dbDateFrontendFunc(appt.start_time)}`}</p>
+                    <p className="appointment-detail"> Appointment: Dr. {appt.doctor_info?.dr_last_name}</p>
+                    <p className="appointment-detail">{`Specialty: ${appt.doctor_info?.dr_specialty}`}</p>
+                    <p className="appointment-detail">{`Date: ${(appt.start_date)}`}</p>
+                    <p className="appointment-detail">{`Start time: ${dbDateFrontendFunc(appt.start_time)}`}</p>
                     {editDeleteButtons(appt)}
                 </div>
             </li>
