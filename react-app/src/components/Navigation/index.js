@@ -18,6 +18,7 @@ const Navigation = () => {
                 <NavLink className="main-nav-link" to="/doctors">
                     <div>Doctors</div>
                 </NavLink>
+                {(user?.doctor_id) ? <NavLink className="main-nav-link" to="/patients"><div>Patients</div></NavLink> : null}
             </>
         )
     }
