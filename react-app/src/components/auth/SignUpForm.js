@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
@@ -20,7 +20,7 @@ const SignUpForm = () => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const errorCheck = () => {
     const newErrors = [];
 
     if (first_name.length <= 0 || first_name.length > 100) {
@@ -33,27 +33,27 @@ const SignUpForm = () => {
         "Please enter your last name between 1 and 100 characters in length."
       );
     }
-    if (username.length <= 0 || username.length > 40) {
+    if (username.length <= 2 || username.length > 40) {
       newErrors.push(
-        "Please enter a username between 1 and 40 characters in length."
+        "Please enter a username between 3 and 40 characters in length."
       );
     }
-    if (email.length <= 0 || email.length > 255) {
+    if (email.length <= 5 || email.length > 255) {
       newErrors.push(
-        "Please enter an email between 1 and 255 characters in length."
+        "Please enter an email between 6 and 255 characters in length."
       );
     }
-    if (password.length <= 0 || password > 255) {
+    if (password.length <= 5 || password > 40) {
       newErrors.push(
-        "Please enter a password between 1 and 255 characters in length."
+        "Please enter a password between 6 and 40 characters in length."
       );
     }
     if (password !== repeatPassword) {
       newErrors.push("Passwords do not match.");
     }
-    if (address.length <= 0 || address.length > 255) {
+    if (address.length <= 6 || address.length > 255) {
       newErrors.push(
-        "Please enter an address between 1 and 255 characters in length."
+        "Please enter an address between 7 and 255 characters in length."
       );
     }
     if (city.length <= 0 || city.length > 60) {
@@ -61,33 +61,24 @@ const SignUpForm = () => {
         "Please enter a city between 1 and 60 characters in length."
       );
     }
-    if (state.length <= 0 || state.length > 50) {
+    if (state.length <= 1 || state.length > 50) {
       newErrors.push(
-        "Please enter a state between 1 and 50 characters in length "
+        "Please enter a state between 2 and 50 characters in length. "
       );
     }
-    if (phone.length <= 0 || phone.length > 15) {
+    if (phone.length <= 9 || phone.length > 15) {
       newErrors.push(
-        "Please enter a phone number between 1 and 15 characters in length "
+        "Please enter a phone number between 10 and 15 characters in length. "
       );
     }
-    setErrors(newErrors);
-  }, [
-    first_name,
-    last_name,
-    username,
-    email,
-    address,
-    city,
-    state,
-    phone,
-    password,
-    repeatPassword,
-  ]);
+    return newErrors
+  }
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (errors.length) return alert("Error submitting");
+    let submitErrors = errorCheck()
+    setErrors(submitErrors)
+    if (submitErrors.length) return;
     const payload = {
       first_name,
       last_name,
@@ -223,7 +214,7 @@ const SignUpForm = () => {
           placeholder="confirm password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
+          // required={true}
         ></input>
       </div>
       <div className="form-input">
@@ -269,7 +260,16 @@ const SignUpForm = () => {
           value={phone}
         ></input>
       </div>
-      <p className="margin-bottom-sm">*All fields are required for submission</p>
+      <p className="footnote">*Required fields for submission</p>
+      <p className="footnote">First and last name between 1 - 100 characters</p>
+      <p className="footnote">Username must be between 3 and 40 characters in length </p>
+      <p className="footnote">Email must be between 7 and 255 characters in length </p>
+      <p className="footnote">Password must be between 6 and 40 characters in length </p>
+      <p className="footnote">Address must be between 7 and 255 characters in length </p>
+      <p className="footnote">City must be between 1 and 60 characters in length </p>
+      <p className="footnote">State must be between 2 and 50 characters in length </p>
+
+      <p className="footnote margin-bottom-sm">Phone number must be between 10 and 15 characters in length.</p>
       <button className="btn btn--form" type="submit">
         Become a Patient
       </button>
