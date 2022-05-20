@@ -15,9 +15,6 @@ const Navigation = () => {
                 <NavLink to="/">
                     <img className="logo" alt="NuMed logo" src={logo} />
                 </NavLink>
-                <NavLink className="main-nav-link" to="/doctors">
-                    <div>Doctors</div>
-                </NavLink>
             </>
         )
     }

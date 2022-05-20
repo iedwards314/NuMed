@@ -1,4 +1,3 @@
-
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { SessionCheck } from "../../utils/user";
@@ -9,13 +8,28 @@ const LoggedInNav = () => {
   return (
     <nav className="main-nav">
       <ul className="main-nav-list">
-      <li>
-          <NavLink className="main-nav-link" to={`/appointments/user/${user.id}`} exact={true} activeClassName="active">
+        <li>
+          <NavLink className="main-nav-link" to="/doctors">
+            <div>Find Doctors</div>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className="main-nav-link"
+            to={`/appointments/user/${user.id}`}
+            exact={true}
+            activeClassName="active"
+          >
             My Appointments
           </NavLink>
         </li>
         <li>
-          <NavLink className="main-nav-link" to={`/users/${user.id}`} exact={true} activeClassName="active">
+          <NavLink
+            className="main-nav-link"
+            to={`/users/${user.id}`}
+            exact={true}
+            activeClassName="active"
+          >
             My Profile
           </NavLink>
         </li>
@@ -25,6 +39,6 @@ const LoggedInNav = () => {
       </ul>
     </nav>
   );
-}
+};
 
 export default LoggedInNav;

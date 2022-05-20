@@ -48,12 +48,14 @@ const GetAllAppointments = () => {
               <button className="btn btn--form margin-right-sm">edit</button>
             </NavLink>
             <button className="btn btn--form" onClick={(e) => destroyAppt(e, appt.id)}>delete</button>
+            <p className="footnote margin-top-extra-sm">Upcoming Event</p>
+
         </div>
       )
     } else {
       return (
         <div className="appointment-btn-container margin-top-sm">
-          <p className="footnote">This event cannot be rescheduled</p>
+          <p className="footnote margin-bottom-extra-sm">This event has occurred and cannot be rescheduled</p>
         </div>
       )
     }

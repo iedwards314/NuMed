@@ -135,7 +135,7 @@ const UpdateInsuranceForm = () => {
         <p className="footnote">Subscriber number takes only numbers </p>
         <p className="footnote margin-bottom-sm">Group number takes numbers and letters</p>
         <button className="btn btn--form margin-right-sm" type="submit">
-          Add Insurance Info
+          Update Insurance Info
         </button>
         <NavLink to={`/users/${user?.id}`}>
           <button className="btn btn--form">Cancel</button>

@@ -114,6 +114,7 @@ ul {
 .btn--action:hover,
 .btn--action:active {
     background-color: #014989;
+    cursor: pointer;
 }
 
 .btn--form {
@@ -125,7 +126,8 @@ ul {
 }
 
 .btn--form:hover {
-    background-color: #014989;;
+    background-color: #014989;
+    cursor: pointer;
     color: #fff;
 }
 
@@ -147,8 +149,16 @@ ul {
     margin-bottom: 3.2rem !important;
 }
 
+.margin-bottom-extra-sm {
+    margin-bottom: 1.6rem !important;
+}
+
 .margin-top-sm {
     margin-top: 2.4rem !important;
+}
+
+.margin-top-extra-sm {
+    margin-top: 1.6rem !important;
 }
 
 /* forms */
