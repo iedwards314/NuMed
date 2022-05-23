@@ -82,4 +82,5 @@
 .btn-insurance:hover,
 .btn-insurance:active {
     background-color: #014989;
+    cursor: pointer;
 }

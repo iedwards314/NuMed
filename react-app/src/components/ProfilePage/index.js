@@ -20,7 +20,7 @@ const ProfilePage = () => {
         return(
             <>
                 <main>
-                    <HeaderFunc />
+                    <HeaderFunc user = {user}/>
                     <section className="section-profile-body">
                       <div className="container grid grid-profile center-text" >
                           <div className="profile-left">
